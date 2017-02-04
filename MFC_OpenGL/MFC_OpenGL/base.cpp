@@ -1,16 +1,26 @@
 #include "stdafx.h"
 #include "base.hpp"
 #include "tex.hpp"
-//#include "helper.hpp"
+#include "helper.hpp"
 
 void Pot::show()
 {
-	glutSolidTeapot(sizef);
+	//glutSolidTeapot(sizef);
+	glutSolidCube(sizef);
 }
 
 void Cube::show()
 {
-	glutSolidCube(sizef);
+	glutSolidSphere(sizef, 50, 50);
+	//glutSolidCube(sizef);
+/*
+	GLUquadricObj *quadPlanet = gluNewQuadric();
+	//glGenerateMipmap(GL_TEXTURE_2D);
+	
+	gluQuadricTexture(quadPlanet, GLU_TRUE);
+	//glRotatef(angle, 0.0f, 1.0f, 0.0f);
+	gluSphere(quadPlanet, sizef, 50, 50);
+	*/
 }
 
 void Coord::globalshow()
@@ -47,6 +57,8 @@ void Coord::show()
 	
 	glTranslatef(0, 0, sizef);
 	gluCylinder(objCylinder, 0.03, 0.01, 0.05, 10, 5);			// x >
+	Helper::print(0.0f, 0.0f, 0.1f, "X");
+	
 
 	glPopMatrix();
 	glPushMatrix();
@@ -56,6 +68,7 @@ void Coord::show()
 
 	glTranslatef(0, 0, sizef);
 	gluCylinder(objCylinder, 0.03, 0.01, 0.05, 10, 5);			//y >
+	Helper::print(0.0f, 0.0f, 0.1f, "Y");
 	glPopMatrix();
 
 	glPushMatrix();
@@ -64,5 +77,6 @@ void Coord::show()
 
 	glTranslatef(0, 0, sizef);
 	gluCylinder(objCylinder, 0.03, 0.01, 0.05, 10, 5);			//z >
+	Helper::print(0.0f, 0.0f, 0.1f, "Z");
 	glPopMatrix();
 }

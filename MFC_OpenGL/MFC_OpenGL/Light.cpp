@@ -1,5 +1,4 @@
 #include "stdafx.h"
-
 #include "light.hpp"
 
 void Light::show()

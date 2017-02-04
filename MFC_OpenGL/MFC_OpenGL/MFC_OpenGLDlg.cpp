@@ -70,6 +70,10 @@ BEGIN_MESSAGE_MAP(CMFC_OpenGLDlg, CDialogEx)
 	ON_WM_TIMER()
 	ON_WM_SIZE()
 	ON_BN_CLICKED(IDOK, &CMFC_OpenGLDlg::OnBnClickedOk)
+	ON_BN_CLICKED(IDC_BUTTON_LEFT, &CMFC_OpenGLDlg::OnBnClickedButtonLeft)
+	ON_BN_CLICKED(IDC_BUTTON_DOWN, &CMFC_OpenGLDlg::OnBnClickedButtonDown)
+	ON_BN_CLICKED(IDC_BUTTON_UP, &CMFC_OpenGLDlg::OnBnClickedButtonUp)
+	ON_BN_CLICKED(IDC_BUTTON_RIGHT, &CMFC_OpenGLDlg::OnBnClickedButtonRight)
 END_MESSAGE_MAP()
 
 
@@ -149,14 +153,17 @@ void CMFC_OpenGLDlg::OnPaint()
 
 		// Draw the icon
 		dc.DrawIcon(x, y, m_hIcon);
+		BOX::draw(hDC);
+
 
 	}
 	else
 	{
+		BOX::draw(hDC);
 		CDialogEx::OnPaint();
 	}
 
-	BOX::draw(hDC);
+	
 }
 
 BOOL CMFC_OpenGLDlg::PreTranslateMessage(MSG* pMsg)
@@ -190,4 +197,26 @@ void CMFC_OpenGLDlg::OnBnClickedOk()
 {
 	//CDialogEx::OnOK();
 	BOX::fresh(hDC);
+}
+
+
+void CMFC_OpenGLDlg::OnBnClickedButtonLeft()
+{
+}
+
+
+void CMFC_OpenGLDlg::OnBnClickedButtonDown()
+{
+	BOX::down();
+}
+
+
+void CMFC_OpenGLDlg::OnBnClickedButtonUp()
+{
+	BOX::up(hDC);
+}
+
+
+void CMFC_OpenGLDlg::OnBnClickedButtonRight()
+{
 }

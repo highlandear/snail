@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "base.hpp"
 #include "tex.hpp"
-#include "helper.hpp"
+//#include "helper.hpp"
 #include <unordered_map>
 
 TMAP Texes::tmap;
@@ -27,13 +27,17 @@ void JpgTex::load()
 
 	glGenTextures(1, &tid);
 	glBindTexture(TEX_MOD, tid);
-	glTexParameteri(TEX_MOD, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(TEX_MOD, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+//	glTexParameteri(TEX_MOD, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//	glTexParameteri(TEX_MOD, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	
+	glTexParameteri(TEX_MOD, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(TEX_MOD, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+
 	glTexParameteri(TEX_MOD, GL_TEXTURE_WRAP_S, GL_REPEAT);//S方向重复  
 	glTexParameteri(TEX_MOD, GL_TEXTURE_WRAP_T, GL_REPEAT);//T方向重复 
 	glTexImage2D(TEX_MOD, 0, GL_RGB, w, h, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pData);
 
-	Helper::debug(pData, 10);
+	//Helper::debug(pData, 10);
 	
 	addnew(tid);
 }

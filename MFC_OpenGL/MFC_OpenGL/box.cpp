@@ -47,8 +47,8 @@ bool BOX::init(HDC hdc)
 void BOX::draw(HDC hdc)
 {
 	BaseTest::init();
-	//BaseTest::launch();
-	BaseTest::show();
+	BaseTest::launch();
+	//BaseTest::show();
 	glFlush();
 	SwapBuffers(hdc);
 }
@@ -62,6 +62,18 @@ void BOX::fresh(HDC hdc)
 void BOX::changeSize(HDC hdc, int w, int h)
 {
 
+}
+
+void BOX::up(HDC hdc)
+{
+	BaseTest::up();
+	glFlush();
+	SwapBuffers(hdc);
+}
+
+void BOX::down()
+{
+	BaseTest::down();
 }
 
 void BOX::call(UINT v)

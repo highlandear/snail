@@ -37,4 +37,8 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnBnClickedOk();
+	afx_msg void OnBnClickedButtonLeft();
+	afx_msg void OnBnClickedButtonDown();
+	afx_msg void OnBnClickedButtonUp();
+	afx_msg void OnBnClickedButtonRight();
 };

@@ -13,7 +13,7 @@ class Cube : public Base
 public:
 	virtual void show();
 	Cube(float s) { sizef = s; }
-	Cube() { sizef = 0.5f; }
+	Cube() { sizef = 1.0f; }
 	void operator ()() {};
 
 private:

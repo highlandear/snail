@@ -12,8 +12,13 @@ namespace Helper
 	
 	void print(GLfloat x, GLfloat y, const char * str)
 	{
-		glColor3f(0.0f, 0.0f, 1.0f);
 		glRasterPos2f(x, y);
+		for (int i = 0; i < strlen(str); i++)
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, *(str + i));
+	}
+	void print(GLfloat x, GLfloat y,GLfloat z, const char * str)
+	{
+		glRasterPos3f(x, y, z);
 		for (int i = 0; i < strlen(str); i++)
 			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, *(str + i));
 	}

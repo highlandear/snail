@@ -1,5 +1,4 @@
 #pragma once
-
 class VTest
 {
 protected:
@@ -12,6 +11,8 @@ public:
 	static void init();
 	static void launch();
 	static void show();
+	static void up();
+	static void down();
 private:
 	static GLfloat view;
 };

@@ -30,8 +30,18 @@ public:
 		
 		glBindTexture(TEX_MOD, tid);
 		glEnable(TEX_MOD);
+
+		glEnable(GL_DEPTH_TEST);
+		glShadeModel(GL_SMOOTH);
+		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 		glEnable(GL_TEXTURE_GEN_S);
-		glEnable(GL_TEXTURE_GEN_T);
+		glEnable(GL_AUTO_NORMAL);
+		glEnable(GL_NORMALIZE);
+
+
+		/*glEnable(GL_TEXTURE_GEN_R);
+		glEnable(GL_TEXTURE_GEN_S);
+		glEnable(GL_TEXTURE_GEN_T); */
 		return true;
 	}
 
@@ -103,3 +113,4 @@ public:
 		RawTex(L"show").load();
 	}
 };
+
