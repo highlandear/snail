@@ -36,9 +36,6 @@
     <ClInclude Include="helper.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="box.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="tex.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -48,13 +45,13 @@
     <ClInclude Include="light.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="test.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="camera.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="pos.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -68,9 +65,6 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="box.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="tex.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -80,10 +74,10 @@
     <ClCompile Include="Light.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test.cpp">
+    <ClCompile Include="camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="camera.cpp">
+    <ClCompile Include="world.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

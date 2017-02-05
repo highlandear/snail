@@ -187,7 +187,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="base.hpp" />
-    <ClInclude Include="box.hpp" />
     <ClInclude Include="camera.hpp" />
     <ClInclude Include="helper.hpp" />
     <ClInclude Include="light.hpp" />
@@ -197,12 +196,11 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="test.hpp" />
     <ClInclude Include="tex.hpp" />
+    <ClInclude Include="world.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="base.cpp" />
-    <ClCompile Include="box.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="MFC_OpenGL.cpp" />
@@ -213,8 +211,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="test.cpp" />
     <ClCompile Include="tex.cpp" />
+    <ClCompile Include="world.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MFC_OpenGL.rc" />

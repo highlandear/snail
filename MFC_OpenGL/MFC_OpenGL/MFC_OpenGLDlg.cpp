@@ -7,8 +7,7 @@
 #include "MFC_OpenGLDlg.h"
 #include "afxdialogex.h"
 
-#include "box.hpp"
-
+#include "world.hpp"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -109,11 +108,8 @@ BOOL CMFC_OpenGLDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
 	hDC = ::GetDC(this->GetSafeHwnd());
-	if (!BOX::init(hDC))
-	{
-		MessageBox(L"init wrong!", L"tip", MB_OK);
-		return FALSE;
-	}
+
+	WorldManager::getWorld().init(hDC);
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
@@ -153,24 +149,21 @@ void CMFC_OpenGLDlg::OnPaint()
 
 		// Draw the icon
 		dc.DrawIcon(x, y, m_hIcon);
-		BOX::draw(hDC);
-
-
 	}
 	else
 	{
-		BOX::draw(hDC);
 		CDialogEx::OnPaint();
 	}
 
-	
+	WorldManager::getWorld().draw();
+		
 }
 
 BOOL CMFC_OpenGLDlg::PreTranslateMessage(MSG* pMsg)
 {
 if (pMsg->message == WM_KEYDOWN)
 	{
-		BOX::call(pMsg->wParam);		
+		WorldManager::getWorld().call(pMsg->wParam);		
 	}
 	return CDialog::PreTranslateMessage(pMsg);
 }
@@ -186,7 +179,6 @@ void CMFC_OpenGLDlg::OnSize(UINT nType, int cx, int cy)
 {
 	CDialog::OnSize(nType, cx, cy);
 	
-	BOX::changeSize(hDC, cx, cy);
 }
 void CMFC_OpenGLDlg::OnTimer(UINT nIDEvent)
 {
@@ -195,8 +187,6 @@ void CMFC_OpenGLDlg::OnTimer(UINT nIDEvent)
 
 void CMFC_OpenGLDlg::OnBnClickedOk()
 {
-	//CDialogEx::OnOK();
-	BOX::fresh(hDC);
 }
 
 
@@ -207,13 +197,11 @@ void CMFC_OpenGLDlg::OnBnClickedButtonLeft()
 
 void CMFC_OpenGLDlg::OnBnClickedButtonDown()
 {
-	BOX::down();
 }
 
 
 void CMFC_OpenGLDlg::OnBnClickedButtonUp()
 {
-	BOX::up(hDC);
 }
 
 

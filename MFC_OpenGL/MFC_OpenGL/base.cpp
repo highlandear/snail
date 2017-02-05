@@ -11,8 +11,8 @@ void Pot::show()
 
 void Cube::show()
 {
-	glutSolidSphere(sizef, 50, 50);
-	//glutSolidCube(sizef);
+	//glutSolidSphere(sizef, 50, 50);
+	glutSolidCube(sizef);
 /*
 	GLUquadricObj *quadPlanet = gluNewQuadric();
 	//glGenerateMipmap(GL_TEXTURE_2D);
