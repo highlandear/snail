@@ -20,13 +20,28 @@ LRESULT AppManger::DlgProc(HWND hwndDlg, UINT message, WPARAM wParam, LPARAM lPa
 		case IDOK:
 		{
 			if (IsDlgButtonChecked(hwndDlg, IDC_FULLSCREEN))
-			{
 				m->setFullScreen();
-				MessageBox(hwndDlg, L"full", L"tip", MB_OK);
-
-			}
 			else
-				MessageBox(hwndDlg,  L"window", L"tip", MB_OK);
+				m->setFullScreen(false);
+
+			if (IsDlgButtonChecked(hwndDlg, IDC_16BPP))
+				m->setColor_16();
+			else if (IsDlgButtonChecked(hwndDlg, IDC_32BPP))
+				m->setColor_32();
+
+			if (IsDlgButtonChecked(hwndDlg, IDC_640_480))
+			{
+				m->setWidth(640); m->setHight(480);
+			}
+			else if (IsDlgButtonChecked(hwndDlg, IDC_800_600))
+			{
+				m->setWidth(800); m->setHight(600);
+			}
+			else if (IsDlgButtonChecked(hwndDlg, IDC_1024_768))
+			{
+				m->setWidth(1024); m->setHight(768);
+			}
+
 			EndDialog(hwndDlg, false);
 			m->create();
 			return TRUE;
