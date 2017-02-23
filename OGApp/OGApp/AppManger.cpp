@@ -2,7 +2,8 @@
 #include "Resource.h"
 #include "AppManger.hpp"
 
-MainWnd* AppManger::m;
+MainWnd* AppManger::pWnd;
+Setting AppManger::config;
 
 void AppManger::showDialog()
 {
@@ -20,30 +21,31 @@ LRESULT AppManger::DlgProc(HWND hwndDlg, UINT message, WPARAM wParam, LPARAM lPa
 		case IDOK:
 		{
 			if (IsDlgButtonChecked(hwndDlg, IDC_FULLSCREEN))
-				m->setFullScreen();
+				config.setFullScreen();
 			else
-				m->setFullScreen(false);
+				config.setFullScreen(false);
 
 			if (IsDlgButtonChecked(hwndDlg, IDC_16BPP))
-				m->setColor_16();
+				config.setColor_16();
+
 			else if (IsDlgButtonChecked(hwndDlg, IDC_32BPP))
-				m->setColor_32();
+				config.setColor_32();
 
 			if (IsDlgButtonChecked(hwndDlg, IDC_640_480))
 			{
-				m->setWidth(640); m->setHight(480);
+				config.setWidth(640); config.setHight(480);
 			}
 			else if (IsDlgButtonChecked(hwndDlg, IDC_800_600))
 			{
-				m->setWidth(800); m->setHight(600);
+				config.setWidth(800); config.setHight(600);
 			}
 			else if (IsDlgButtonChecked(hwndDlg, IDC_1024_768))
 			{
-				m->setWidth(1024); m->setHight(768);
+				config.setWidth(1024); config.setHight(768);
 			}
 
 			EndDialog(hwndDlg, false);
-			m->create();
+			pWnd->create(config.getColor(), config.isFull(), config.getWidth(), config.getHight());
 			return TRUE;
 		}
 		case IDCANCEL:
@@ -69,18 +71,15 @@ LRESULT AppManger::DlgProc(HWND hwndDlg, UINT message, WPARAM wParam, LPARAM lPa
 		EndDialog(hwndDlg, false);
 		PostQuitMessage(0);
 	}break;
+	case WM_INITDIALOG:
+	{
+		CheckDlgButton(hwndDlg, IDC_FULLSCREEN, BST_UNCHECKED);    
+		CheckRadioButton(hwndDlg, IDC_640_480, IDC_1024_768, IDC_640_480);
+		CheckRadioButton(hwndDlg, IDC_16BPP, IDC_32BPP, IDC_32BPP);
+	}
 
 	default:
 		break;
-	/*
-	switch (HIWORD(wParam))
-	{
-	case BN_CLICKED:
-		CheckDlgButton(hwndDlg, lParam, BST_CHECKED);
-		break;
-	}
-	break;
-	*/
 	}
 	return FALSE;
 }

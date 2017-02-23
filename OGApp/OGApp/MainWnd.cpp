@@ -1,116 +1,116 @@
 #include "MainWnd.hpp"
 #include "WinUser.h"
+#include <gl/gl.h>														/**< 包含OpenGL头文件 */
+#include <gl/glu.h>	
+#include <gl/glut.h>
 
-PIXELFORMATDESCRIPTOR MainWnd::pfd = {
-	sizeof(PIXELFORMATDESCRIPTOR),	// 像素描述结构的大小 
-	1,								// 版本号
-	PFD_DRAW_TO_WINDOW |			// 缓存区的输出显示在一个窗口中
-	PFD_SUPPORT_OPENGL |			// 缓存区支持OpenGL绘图
-	PFD_STEREO |					// 颜色缓存区是立体缓存
-	PFD_DOUBLEBUFFER,				// 颜色缓存区是双缓存
-	PFD_TYPE_RGBA,					// 使用RGBA颜色格式
-	16,								// 颜色缓存区中颜色值所占的位深
-	0, 0, 0, 0, 0, 0,				// 使用默认的颜色设置
-	0,								// 无Alpha缓存
-	0,								// 颜色缓存区中alpha成分的移位计数
-	0,								// 无累计缓存区
-	0, 0, 0, 0,						// 累计缓存区无移位
-	32,								// 32位深度缓存
-	0,								// 无蒙版缓存
-	0,								// 无辅助缓存区
-	PFD_MAIN_PLANE,					// 必须为PFD_MAIN_PLANE，设置为主绘图层
-	0,								// 表示OpenGL实现所支持的上层或下层平面的数量
-	0, 0, 0							// 过时，已不再使用
-};
+#pragma comment(lib, "opengl32.lib")
+#pragma comment(lib, "glu32.lib")
 
-bool MainWnd::changeScreenSetting()
+int MainWnd::SCREEN_MAX_X = GetSystemMetrics(SM_CXSCREEN);
+int MainWnd::SCREEN_MAX_Y = GetSystemMetrics(SM_CYSCREEN);
+
+void MainWnd::create(int b, bool f, int w, int h)
 {
-	DEVMODE dmScreenSettings;									// 设备模式
-	ZeroMemory(&dmScreenSettings, sizeof(DEVMODE));				// 清零结构
-	dmScreenSettings.dmSize = sizeof(DEVMODE);					// 结构大小
-	dmScreenSettings.dmPelsWidth = getWidth();					// 设置宽度
-	dmScreenSettings.dmPelsHeight = getHight();					// 设置高度
-	dmScreenSettings.dmBitsPerPel = bitsDepth;					// 设置位深度																	                     
-	dmScreenSettings.dmFields = DM_BITSPERPEL | DM_PELSWIDTH | DM_PELSHEIGHT;
+	int x0 = f ? 0 : (SCREEN_MAX_X - w) / 2;
+	int y0 = f ? 0 : (SCREEN_MAX_Y - h) / 2;
+	int w0 = f ? SCREEN_MAX_Y : w;
+	int h0 = f ? SCREEN_MAX_X : h;
 
-	return ChangeDisplaySettings(&dmScreenSettings, CDS_FULLSCREEN) == DISP_CHANGE_SUCCESSFUL;
-}
+	RECT rect = { x0, y0, x0 + w0, y0 + h0 };		
+	AdjustWindowRectEx(&rect, WS_TILEDWINDOW, 0, WS_EX_APPWINDOW | WS_EX_WINDOWEDGE);
+	x0 = rect.left;
+	y0 = rect.top;
 
-LRESULT MainWnd::mainProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
-{
-	return TRUE;
-}
+	w0 = rect.right - rect.left;
+	h0 = rect.bottom - rect.top;
+	
+	m_nDef = { x0, y0, w, h };
 
-void MainWnd::create()
-{
-	int x0 = 0, y0 = 0;
-	RECT windowRect = { getX0(), getY0(), getX0() + getWidth(), getY0() + getHight() };
-	if (isFullScreen())
+	m_hWnd = CreateWindowW(m_szClassName, m_szTitle, WS_OVERLAPPEDWINDOW, x0, y0, w0, h0, NULL, NULL, m_hInst, NULL);
+
+	if (! m_pEnv->init(m_hWnd))
 	{
-		if (changeScreenSetting())
-		{
-			ShowCursor(false);
-			style  = WS_POPUP;				// 设置窗口模式为顶层窗口
-			eStyle |= WS_EX_TOPMOST;
-		}
-		else
-		{
-			setFullScreen(false);
-			MessageBox(HWND_DESKTOP, L"显示模式转换失败！", L"Error", MB_OK | MB_ICONEXCLAMATION);
-		}
+		MessageBox(HWND_DESKTOP, L"gl errro", L"tip", MB_OK);
+		return;
 	}
-	else
-	{
-		eStyle = WS_EX_APPWINDOW | WS_EX_WINDOWEDGE;			// 使窗口具有3D外观
-		x0 = (GetSystemMetrics(SM_CXSCREEN) - getWidth()) / 2;  // 计算窗口居中用
-		y0 = (GetSystemMetrics(SM_CYSCREEN) - getHight()) / 2;
-
-		AdjustWindowRectEx(&windowRect, style, 0, eStyle);		
-		if (windowRect.left < 0)						// 如果窗口X坐标为负，移动坐标到0处，并调整窗口的位置
-		{
-			windowRect.right -= windowRect.left;
-			windowRect.left = 0;
-		}
-		if (windowRect.top < 0)							// 如果窗口Y坐标为负，移动坐标到0处，并调整窗口的位置
-		{
-			windowRect.bottom -= windowRect.top;
-			windowRect.top = 0;
-		}
-	}
-
-	int w = windowRect.right - windowRect.left;
-	int h = windowRect.bottom - windowRect.top;
-	m_hWnd = CreateWindowEx(eStyle,	className, title, style, x0, y0, w, h, HWND_DESKTOP, 0, instance, lpParam);
-
+	
+	m_pEnv->glshape(w, h);
 	ShowWindow(m_hWnd, SW_NORMAL);
-}
-
-void MainWnd::setFullScreen(bool f)
-{
-
+	UpdateWindow(m_hWnd);
 }
 
 void MainWnd::onKeyDown(UINT keyID)
 {
 	if (keyID == VK_F1)
 	{
-		if (isFullScreen())
+		m_bFull =! m_bFull;
+
+		int x = 0; int y = 0;
+		int w = 0; int h = 0;
+		if (m_bFull)
 		{
+			w = SCREEN_MAX_X;
+			h = SCREEN_MAX_Y;
+			SetWindowLong(m_hWnd, GWL_STYLE, WS_BORDER );
 			
-			SetWindowLong(m_hWnd, GWL_STYLE, WS_TILEDWINDOW);
-			SetWindowPos(m_hWnd, HWND_TOPMOST, 0, 0, 1024, 768, SWP_SHOWWINDOW);
-			setFullScreen(false);
 		}
 		else
 		{
-			setFullScreen();
-			HWND hDesk;
-			RECT rc;
-			hDesk = GetDesktopWindow();
-			GetWindowRect(hDesk, &rc);
-			SetWindowLong(m_hWnd, GWL_STYLE, WS_BORDER);
-			SetWindowPos(m_hWnd, HWND_TOPMOST, 0, 0, rc.right, rc.bottom, SWP_SHOWWINDOW);
-		}	
+			x = m_nDef.x; y = m_nDef.y;
+			w = m_nDef.wgl; h = m_nDef.hgl;
+			SetWindowLong(m_hWnd, GWL_STYLE, WS_TILEDWINDOW);
+		}
+		
+		SetWindowPos(m_hWnd, HWND_TOPMOST, x, y, w, h, SWP_SHOWWINDOW);
+
+		m_pEnv->glshape(m_nDef.wgl, m_nDef.hgl);
 	}
 
+
+	else if (keyID == VK_ESCAPE)
+	{
+		//PostMessage(m_hWnd, WM_QUIT, 0, 0);
+		m_pEnv->glshape(m_nDef.wgl, m_nDef.hgl);
+		m_pEnv->gldraw();
+	}
 }
+
+void MainWnd::onMoving(LPARAM lParam)
+{
+	RECT * pRect = (RECT *)lParam;
+	m_nDef.x = pRect->left;
+	m_nDef.y = pRect->top;
+}
+
+void MainWnd::onSizing(LPARAM lParam)
+{
+	RECT * pRect = (RECT *)lParam;
+	
+	m_nDef.x = pRect->left;
+	m_nDef.y = pRect->top;
+
+	m_nDef.wgl = pRect->right - pRect->left;
+	m_nDef.hgl = pRect->bottom - pRect->top;
+	m_pEnv->glshape(m_nDef.wgl, m_nDef.hgl);
+}
+
+void MainWnd::onSize(WPARAM wParam, LPARAM lParam)
+{
+	switch (wParam)
+	{
+	case SIZE_MAXIMIZED:
+	{
+		m_nDef.wgl = LOWORD(lParam);
+		m_nDef.hgl = HIWORD(lParam);
+		m_pEnv->glshape(m_nDef.wgl, m_nDef.hgl);
+	}break;
+	case SIZE_RESTORED:
+	{
+		m_nDef.wgl = LOWORD(lParam);
+		m_nDef.hgl = HIWORD(lParam);
+		m_pEnv->glshape(m_nDef.wgl, m_nDef.hgl);
+	}break;
+	}
+}
+

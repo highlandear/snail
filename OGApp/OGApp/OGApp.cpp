@@ -28,25 +28,18 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
-    // TODO: 在此放置代码。
-
     // 初始化全局字符串
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_OGAPP, szWindowClass, MAX_LOADSTRING);
 	MyRegisterClass(hInstance);
 
     // 执行应用程序初始化: 
-    if (!InitInstance (hInstance, nCmdShow))
-    {
-        return FALSE;
-    }
+	if (!InitInstance(hInstance, nCmdShow)) { return FALSE; }
 
+	HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_OGAPP));
 	MainWnd mw(hInstance, szTitle, szWindowClass);
-	AppManger am(&mw);
+	AppManger am(& mw);
 	am.showDialog();
-	//return TRUE;
-
-    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_OGAPP));
 
     MSG msg;
 
@@ -59,13 +52,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             DispatchMessage(&msg);
         }
     }
-
     return (int) msg.wParam;
-	
-//	return 0;
 }
-
-
 
 //
 //  函数: MyRegisterClass()
@@ -106,9 +94,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
 	hInst = hInstance; // 将实例句柄存储在全局变量中
-	//MainWnd mw(hInstance, szTitle, szWindowClass);
-	//AppManger am(&mw);
-	//am.showDialog();
+
 	return TRUE;
 }
 
@@ -135,70 +121,36 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             case IDM_ABOUT:
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
                 break;
-            case IDM_EXIT:
-                DestroyWindow(hWnd);
-                break;
+
             default:
                 return DefWindowProc(hWnd, message, wParam, lParam);
             }
         }
         break;
-	//case WM_QUIT:
-	//{
-	//	MessageBox(NULL, L"QUIT", L"TIP", MB_OK);
-	//}break;
-	//case WM_CLOSE:
-	//{
-
-	//	MessageBox(NULL, L"Close", L"TIP", MB_OK);
-
-	//}break;
+	case WM_SIZE:
+	{
+		AppManger::getMainWnd()->onSize(wParam, lParam);
+	}break;
+	case WM_SIZING:
+	{
+		AppManger::getMainWnd()->onSizing(lParam);
+	}break;
+	case WM_MOVING:
+	{
+		AppManger::getMainWnd()->onMoving(lParam);
+	}break;
 	case WM_KEYDOWN:
 	{
 		AppManger::getMainWnd()->onKeyDown(wParam);
 	}break;
-	case WM_CHAR:
+	case WM_PAINT:
 	{
-		PAINTSTRUCT        ps;        // used in WM_PAINT
-		HDC                hdc;    // handle to a device context
-		wchar_t buffer[80];        // used to print strings
-
-		char ascii_code = wParam;
-		int key_state = lParam;
-
-		// get a graphics context
-		hdc = GetDC(hWnd);
-
-		// set the foreground color to green
-		SetTextColor(hdc, RGB(0, 255, 0));
-
-		// set the background color to black
-		SetBkColor(hdc, RGB(0, 0, 0));
-
-		// set the transparency mode to OPAQUE
-		SetBkMode(hdc, OPAQUE);
-
-		// print the ascii code and key state
-		wsprintf(buffer, L"WM_CHAR: Character = %c   ", ascii_code);
-		TextOut(hdc, 0, 0, buffer, wcslen(buffer));
-
-		wsprintf(buffer, L"Key State = 0X%X  ", key_state);
-		TextOut(hdc, 0, 16, buffer, wcslen(buffer));
-
-		// release the dc back
-		ReleaseDC(hWnd, hdc);
-	}break;
-    case WM_PAINT:
-        {
-            PAINTSTRUCT ps;
-            HDC hdc = BeginPaint(hWnd, &ps);
-            // TODO: 在此处添加使用 hdc 的任何绘图代码...
-            EndPaint(hWnd, &ps);
-        }
-        break;
-    case WM_DESTROY:
-        PostQuitMessage(0);
-        break;
+		AppManger::getMainWnd()->maindraw();
+	}
+	break;
+	case WM_DESTROY:
+		PostQuitMessage(0);
+		break;
 
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);

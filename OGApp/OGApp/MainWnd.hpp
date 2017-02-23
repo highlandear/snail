@@ -1,72 +1,39 @@
 #pragma once
 #include <windows.h>
+#include "GLEnv.hpp"
 
 class MainWnd
-{
+{	
+	struct XYWH	{int x, y, wgl, hgl;} m_nDef = { 0, 0, 0, 0 };
+
 public:
-	void onKeyDown(UINT keyID);
-	void create();
-	bool changeScreenSetting();
 
-	MainWnd(HINSTANCE i, LPCWSTR t, LPCWSTR c) : instance(i), title(t), className(c), bitsDepth(16), fscreen(false)
-	{ 
-		upleft_x = 0;
-		upleft_y = 0;
-		window_w = 640;
-		window_h = 480;
-		screen_w = 1024;
-		screen_h = 768;
+	~MainWnd() { if (NULL != m_pEnv) delete m_pEnv; m_pEnv = NULL; }
 
-		m_hDC = 0;
-		m_hRC = 0;
-		m_hWnd = 0;
-
-		style = WS_TILEDWINDOW;
-		eStyle = WS_EX_APPWINDOW;		
+	MainWnd(HINSTANCE i, LPCWSTR t, LPCWSTR c) : m_hInst(i), m_szTitle(t), m_szClassName(c) , m_hWnd(0) 
+	{
+		m_pEnv = new GLEnv();
 	}
-	
-	inline int getWidth() { return fscreen ? screen_w : window_w; }
-	inline int getHight() { return fscreen ? screen_h : window_h; }
-	inline void setWidth(int w) { fscreen ? screen_w = w : window_w = w; }
-	inline void setHight(int h) { fscreen ? screen_h = h : window_h = h; }
-	inline int getX0() { return fscreen ?  0 : upleft_x; }
-	inline int getY0() { return fscreen ?  0 : upleft_y; }
-	inline void setX0(int x) { upleft_x = x; }
-	inline void setY0(int y) { upleft_y = y; }
-	inline bool isFullScreen() { return fscreen; }
-	void setFullScreen(bool f = true);
-	inline void setColor_16() { bitsDepth = 16; }
-	inline void setColor_32() { bitsDepth = 32; }
-	inline int geColorBits() { return bitsDepth; }
-
 	HWND getHwnd() { return m_hWnd; }
 
-	static LRESULT CALLBACK mainProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
-
-private:						// out
-	HWND	m_hWnd;				// window handle
-	HDC		m_hDC;				// 
-	HGLRC	m_hRC;
+	void onKeyDown(UINT keyID);
+	void onMoving(LPARAM lParam);
+	void onSizing(LPARAM lParam);
+	void onSize(WPARAM wParam, LPARAM lParam);
 	
-private:						// in 
-	HINSTANCE	instance;
-	LPCWSTR		title;			
-	LPCWSTR		className;
-	DWORD		style;			// 定义我们窗口类型，使用常规设定
-	DWORD		eStyle;
-	int			bitsDepth;		// 颜色位深
-	bool		fscreen;		// 是否全屏
-	LPVOID		lpParam;		//
+	void create(int b, bool f, int w, int h);
+	void maindraw() { m_pEnv->gldraw(); }
 
 private:
-	int		upleft_x;				// 窗口的左上角的X位置 
-	int		upleft_y;				// 窗口的左上角的Y位置 
-	int		window_w;				// 窗口的宽度
-	int		window_h;				// 窗口的高度
-	int		screen_w;				// 全屏的宽度
-	int		screen_h;				// 全屏的高度
-
+	HWND	m_hWnd;
+	GLEnv*	m_pEnv;
+	
 private:
-	static PIXELFORMATDESCRIPTOR pfd;
+	HINSTANCE	m_hInst;
+	LPCWSTR		m_szTitle;			
+	LPCWSTR		m_szClassName;
 
+	bool m_bFull;
+
+	static int SCREEN_MAX_X, SCREEN_MAX_Y;
 };
