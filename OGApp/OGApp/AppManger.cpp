@@ -2,7 +2,7 @@
 #include "Resource.h"
 #include "AppManger.hpp"
 
-MainWnd* AppManger::pWnd;
+MainWnd* AppManger::m_Pwnd;
 Setting AppManger::config;
 
 void AppManger::showDialog()
@@ -45,7 +45,10 @@ LRESULT AppManger::DlgProc(HWND hwndDlg, UINT message, WPARAM wParam, LPARAM lPa
 			}
 
 			EndDialog(hwndDlg, false);
-			pWnd->create(config.getColor(), config.isFull(), config.getWidth(), config.getHight());
+			m_Pwnd->create(config.getColor(), config.isFull(), config.getWidth(), config.getHight());
+			
+			startTimer(1, 10);
+
 			return TRUE;
 		}
 		case IDCANCEL:
@@ -82,4 +85,21 @@ LRESULT AppManger::DlgProc(HWND hwndDlg, UINT message, WPARAM wParam, LPARAM lPa
 		break;
 	}
 	return FALSE;
+}
+
+void AppManger::startTimer(UINT i, UINT e)
+{
+	if (NULL == m_Pwnd->getHwnd())
+		return;
+
+	SetTimer(m_Pwnd->getHwnd(), i, e, (TIMERPROC)AppManger::TimerProc);
+}
+
+void AppManger::TimerProc(HWND hwnd, UINT message, UINT iTimerID, DWORD dwTime)
+{
+	if (iTimerID == 1)
+	{
+		m_Pwnd->maindraw();
+	}
+
 }

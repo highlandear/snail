@@ -4,9 +4,6 @@
 #include <gl/glu.h>	
 #include <gl/glut.h>
 
-#pragma comment(lib, "opengl32.lib")
-#pragma comment(lib, "glu32.lib")
-
 int MainWnd::SCREEN_MAX_X = GetSystemMetrics(SM_CXSCREEN);
 int MainWnd::SCREEN_MAX_Y = GetSystemMetrics(SM_CYSCREEN);
 
@@ -29,12 +26,11 @@ void MainWnd::create(int b, bool f, int w, int h)
 
 	m_hWnd = CreateWindowW(m_szClassName, m_szTitle, WS_OVERLAPPEDWINDOW, x0, y0, w0, h0, NULL, NULL, m_hInst, NULL);
 
-	if (! m_pEnv->init(m_hWnd))
+	if (! m_pEnv->init(m_hWnd, b))
 	{
 		MessageBox(HWND_DESKTOP, L"gl errro", L"tip", MB_OK);
 		return;
 	}
-	
 	m_pEnv->glshape(w, h);
 	ShowWindow(m_hWnd, SW_NORMAL);
 	UpdateWindow(m_hWnd);
@@ -67,12 +63,11 @@ void MainWnd::onKeyDown(UINT keyID)
 		m_pEnv->glshape(m_nDef.wgl, m_nDef.hgl);
 	}
 
-
 	else if (keyID == VK_ESCAPE)
 	{
-		//PostMessage(m_hWnd, WM_QUIT, 0, 0);
-		m_pEnv->glshape(m_nDef.wgl, m_nDef.hgl);
-		m_pEnv->gldraw();
+		PostMessage(m_hWnd, WM_QUIT, 0, 0);
+		//m_pEnv->glshape(m_nDef.wgl, m_nDef.hgl);
+		//m_pEnv->gldraw();
 	}
 }
 
@@ -100,11 +95,6 @@ void MainWnd::onSize(WPARAM wParam, LPARAM lParam)
 	switch (wParam)
 	{
 	case SIZE_MAXIMIZED:
-	{
-		m_nDef.wgl = LOWORD(lParam);
-		m_nDef.hgl = HIWORD(lParam);
-		m_pEnv->glshape(m_nDef.wgl, m_nDef.hgl);
-	}break;
 	case SIZE_RESTORED:
 	{
 		m_nDef.wgl = LOWORD(lParam);
@@ -113,4 +103,6 @@ void MainWnd::onSize(WPARAM wParam, LPARAM lParam)
 	}break;
 	}
 }
+
+
 

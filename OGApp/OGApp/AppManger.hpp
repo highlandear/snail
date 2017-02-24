@@ -29,15 +29,21 @@ class AppManger
 
 public:
 
-	AppManger(MainWnd * w) { pWnd = w; }
+	AppManger(MainWnd * w) { m_Pwnd = w; }
 
 	void showDialog();
 
 	static LRESULT CALLBACK DlgProc(HWND hwndDlg, UINT message, WPARAM wParam, LPARAM lParam);
 
-	static MainWnd * getMainWnd() { return pWnd; }
+	static MainWnd * getMainWnd() { return m_Pwnd; }
+
+	static void startTimer(UINT i, UINT e);
+	
+	static void CALLBACK TimerProc(HWND hwnd, UINT message, UINT iTimerID, DWORD dwTime);
 
 private:
+
 	static Setting config;
-	static MainWnd * pWnd;	
+
+	static MainWnd * m_Pwnd;	
 };
