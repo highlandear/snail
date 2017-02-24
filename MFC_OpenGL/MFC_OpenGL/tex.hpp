@@ -35,11 +35,8 @@ public:
 		glShadeModel(GL_SMOOTH);
 		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 
-	//	glEnable(GL_TEXTURE_GEN_S);
 		glEnable(GL_AUTO_NORMAL);
 		glEnable(GL_NORMALIZE);
-
-
 		glEnable(GL_TEXTURE_GEN_R);
 		glEnable(GL_TEXTURE_GEN_S);
 		glEnable(GL_TEXTURE_GEN_T); 

@@ -1,11 +1,10 @@
 #pragma once
-//#include <windows.h>
 #include "camera.hpp"
 class World
 {
 public:
 	World () : cam(Camera(Pos(0.5, 0.5, 0.5))) {}
-	bool init(HDC & h);
+	bool init(HWND, int , int );
 	void draw();
 	void changeSize(int w, int h);
 	void fresh();
@@ -17,6 +16,8 @@ public:
 private:
 	Camera cam;
 	HDC hdc;
+	int width;
+	int hight;
 };
 
 class WorldManager

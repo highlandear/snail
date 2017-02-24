@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "base.hpp"
-#include "tex.hpp"
-//#include "helper.hpp"
+
 #include <unordered_map>
 
 TMAP Texes::tmap;

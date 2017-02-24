@@ -1,5 +1,4 @@
 #pragma once
-#include "stdafx.h"
 #include "pos.hpp"
 
 class Camera
@@ -17,8 +16,8 @@ public:
 
 
 private:
-	Pos p;
-	Pos f;
-	Dir v;
+	Pos p;					// position where camera located
+	Pos f;					// focus point
+	Dir v;					// dirction vector to describe how to see
 };
 

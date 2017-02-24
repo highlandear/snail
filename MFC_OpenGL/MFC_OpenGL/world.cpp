@@ -28,9 +28,12 @@ static PIXELFORMATDESCRIPTOR pfd =
 
 World WorldManager::wd = World();
 
-bool World::init(HDC& h)
+bool World::init(HWND hwnd, int wi, int hi)
 {
 	int pixelformat;
+	hdc = GetDC(hwnd);
+	if (NULL == hdc)
+		return false;
 
 	if (!(pixelformat = ChoosePixelFormat(hdc, &pfd)))
 		return false;
@@ -44,36 +47,39 @@ bool World::init(HDC& h)
 	if (!wglMakeCurrent(hdc, hrc))
 		return false;
 
-	hdc = h;
+	width = wi; 
+	hight = hi;
+	return true;
 }
 
 void World::draw()
 {
 	glClearColor(1.0, 1.0, 1.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //清空颜色和深度缓冲
-	int vsize = 500;
-	glViewport(0, 0, vsize, vsize);
-	
-	cam.set();
-	//glColor3f(1.0f, 1.0f, 1.0f);
-	Cube(0.8).show();
-	//Texes::detachAll();
-	Coord(0.0, 0.0, 0.0, 3.5f).show();
-	//Coord::globalshow();
-
+	glViewport(0, 0, 100, 100);
+	glBegin(GL_TRIANGLES);
+	glColor3f(1.f, 0.f, 0.f);	glVertex3f(0.0f, 1.0f, 0.0f);
+	glColor3f(0.f, 1.f, 0.f);	glVertex3f(-1.0f, -1.0f, 1.0f);
+	glColor3f(0.f, 0.f, 1.f);	glVertex3f(1.0f, -1.0f, 1.0f);
+	glEnd();
+	//cam.set();
+	glColor3f(1.0f, 0.0f, 1.0f);
+	/*Pot(0.8).show();
+	Coord(0.0, 0.0, 0.0, 1.0f).show();*/
+	//glutSolidTeapot(0.5f);
 	glFlush();
 	SwapBuffers(hdc);
 }
 
 void World::fresh()
 {
-	//draw();
-	glFlush();
-	SwapBuffers(hdc);
+	draw();
 }
 void World::changeSize(int w, int h)
 {
-
+	width = w;
+	hight = h;
+	draw();
 }
 
 void World::call(UINT v)

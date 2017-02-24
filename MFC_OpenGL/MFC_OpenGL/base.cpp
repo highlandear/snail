@@ -1,12 +1,14 @@
-#include "stdafx.h"
 #include "base.hpp"
 #include "tex.hpp"
 #include "helper.hpp"
 
 void Pot::show()
 {
-	//glutSolidTeapot(sizef);
+	glPushMatrix();
+
+	glTranslatef(2.0f, 0.0f, 0.0f);
 	glutSolidCube(sizef);
+	glPopMatrix();
 }
 
 void Cube::show()
@@ -42,7 +44,6 @@ void Coord::globalshow()
 	glVertex3f(0.0f, 0.0f, ln);
 
 	glEnd();
-
 }
 
 void Coord::show()

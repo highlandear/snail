@@ -107,9 +107,11 @@ BOOL CMFC_OpenGLDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
-	hDC = ::GetDC(this->GetSafeHwnd());
+	//hDC = ::GetDC(this->GetSafeHwnd());
 
-	WorldManager::getWorld().init(hDC);
+	CRect r;
+	this->GetWindowRect(&r);
+	WorldManager::getWorld().init(this->GetSafeHwnd(), r.Width(), r.Height());
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
@@ -155,7 +157,7 @@ void CMFC_OpenGLDlg::OnPaint()
 		CDialogEx::OnPaint();
 	}
 
-	WorldManager::getWorld().draw();
+	//WorldManager::getWorld().draw();
 		
 }
 
@@ -178,8 +180,9 @@ HCURSOR CMFC_OpenGLDlg::OnQueryDragIcon()
 void CMFC_OpenGLDlg::OnSize(UINT nType, int cx, int cy)
 {
 	CDialog::OnSize(nType, cx, cy);
-	
+	WorldManager::getWorld().changeSize(cx, cy);	
 }
+
 void CMFC_OpenGLDlg::OnTimer(UINT nIDEvent)
 {
 	CDialog::OnTimer(nIDEvent);
@@ -187,23 +190,20 @@ void CMFC_OpenGLDlg::OnTimer(UINT nIDEvent)
 
 void CMFC_OpenGLDlg::OnBnClickedOk()
 {
+	WorldManager::getWorld().draw();
 }
-
 
 void CMFC_OpenGLDlg::OnBnClickedButtonLeft()
 {
 }
 
-
 void CMFC_OpenGLDlg::OnBnClickedButtonDown()
 {
 }
 
-
 void CMFC_OpenGLDlg::OnBnClickedButtonUp()
 {
 }
-
 
 void CMFC_OpenGLDlg::OnBnClickedButtonRight()
 {
