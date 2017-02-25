@@ -145,11 +145,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	}break;
 	case WM_PAINT:
 	{
-		PAINTSTRUCT ps;
-		BeginPaint(hWnd, &ps);
 		AppManger::getMainWnd()->maindraw();
-		EndPaint(hWnd, &ps);
-	}	break;
+	}
+	break;
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		break;
