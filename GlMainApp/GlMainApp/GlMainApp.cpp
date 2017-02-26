@@ -42,6 +42,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	MainWnd mw;
 	AppManager am(&mw);
+	am.setTimer(1, 1000);
 
 	mw.create(hInstance, szTitle, szWindowClass);
 

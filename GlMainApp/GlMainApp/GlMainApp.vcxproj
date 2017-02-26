@@ -147,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppManager.hpp" />
+    <ClInclude Include="base.hpp" />
     <ClInclude Include="GLEnv.hpp" />
     <ClInclude Include="GlMainApp.h" />
     <ClInclude Include="MainWnd.hpp" />
@@ -157,6 +158,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AppManager.cpp" />
+    <ClCompile Include="base.cpp" />
     <ClCompile Include="GLEnv.cpp" />
     <ClCompile Include="GlMainApp.cpp" />
     <ClCompile Include="MainWnd.cpp" />
