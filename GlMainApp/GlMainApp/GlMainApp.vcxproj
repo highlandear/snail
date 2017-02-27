@@ -159,6 +159,7 @@
     <ClInclude Include="Tex.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Antialiasing.cpp" />
     <ClCompile Include="AppManager.cpp" />
     <ClCompile Include="Cube.cpp" />
     <ClCompile Include="DisplayList.cpp" />

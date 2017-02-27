@@ -8,6 +8,13 @@ static GLfloat LightDiffuse[] = { 1.0f, 1.0f, 1.0f, 1.0f };		// 漫射光参数
 static GLfloat LightSpecular[] = { 1.0f, 1.0f, 1.0f, 1.0f };	// 镜面光参数
 static GLfloat LightPosition[] = { 0.0f, 0.0f, 0.0f, 1.0f };	// 光源位置
 
+Texture::~Texture()
+{
+	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_LIGHTING);	
+	glDisable(GL_LIGHT1);
+}
+
 void Texture::init()
 {
 	TexManager::loadTest();
@@ -42,8 +49,11 @@ void Texture::init()
 	glEnable(GL_LIGHT1);
 }
 
-static void drawBoxWithNorm()
+static void drawBoxWithNorm(float r)
 {
+	glPushMatrix();
+	glScalef(r, r, r);
+
 	glBegin(GL_QUADS);
 	// 前侧面
 	glNormal3f(0.0f, 0.0f, 1.0f);								// 指定法线指向观察者
@@ -82,17 +92,33 @@ static void drawBoxWithNorm()
 	glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f, 1.0f, 1.0f);
 	glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f, 1.0f, -1.0f);
 	glEnd();
+	glPopMatrix();
+	glLoadIdentity();
 }
 
 void Texture::draw()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
+	glPushMatrix();
+		glTranslatef(0.0f, 0.0f, -7.0f);
+		glRotatef(getParam(), 1.0f, 1.0f, 0.0f);
+		drawBoxWithNorm(0.5);
+	glPopMatrix();
 	
-	glTranslatef(0.0f, 0.0f, -7.0f);
+	glPushMatrix();
+	glTranslatef(0.0f, 0.0f, -5.0f);
 	glRotatef(getParam(), 1.0f, 1.0f, 0.0f);
+	glEnable(GL_BLEND);
+	glDisable(GL_DEPTH_TEST);
+	glColor4f(1.0f, 1.0f, 1.0f, 0.5f);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+	drawBoxWithNorm(1);
+	glEnable(GL_DEPTH_TEST);
+	glDisable(GL_BLEND);
+glPopMatrix();
 
-	drawBoxWithNorm();
+
 	//glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
 	//glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
 	//glEnable(GL_TEXTURE_GEN_S);

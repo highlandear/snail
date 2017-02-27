@@ -6,7 +6,8 @@
 #include "keyStatus.hpp"
 
 #ifndef _IMPL_CLASS
-#define _IMPL_CLASS Texture
+//#define _IMPL_CLASS Texture
+#define _IMPL_CLASS Antialiasing
 #endif
 
 #ifndef _SAFE_DEL
@@ -25,10 +26,12 @@ public:
 	virtual void draw() = 0;
 	
 	virtual void init() = 0;
+	
+	virtual float getSpeed() { return 2.0f;}		// 默认的速度
 
 	bool isKeyDown(UINT keyID) { return KeyStatus::isKeyDown(keyID); }
 
-	virtual void update() { reto(m_Angle, 5.0f); }
+	virtual void update() { reto(m_Angle, getSpeed()); }
 
 	float getParam() { return m_Angle;	}
 
@@ -36,7 +39,7 @@ public:
 
 private:
 
-	float m_Angle;			// 控制旋转
+	float m_Angle;								// 控制旋转
 };
 /**
 	简单的绘图示例
@@ -98,8 +101,23 @@ private:
 	纹理
 */
 class Texture : public Impl
+{	
+public:
+	~Texture();
+
+	void draw();
+	void init();
+};
+
+/**
+	反走样
+*/
+
+class Antialiasing : public Impl
 {
 public:
 	void draw();
 	void init();
+
+	float getSpeed() { return 0.7f; }
 };

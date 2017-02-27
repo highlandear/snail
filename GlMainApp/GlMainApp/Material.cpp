@@ -1,5 +1,16 @@
 #include "base.hpp"
 
+
+GLfloat no_mat[] = { 0.0, 0.0, 0.0, 1.0 };				// 无材质颜色
+GLfloat mat_ambient[] = { 0.7, 0.7, 0.7, 1.0 };			// 环境颜色
+GLfloat mat_ambient_color[] = { 0.8, 0.6, 0.2, 1.0 };
+GLfloat mat_diffuse[] = { 0.2, 0.5, 0.8, 1.0 };			// 散射颜色
+GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };		// 镜面反射颜色
+GLfloat no_shininess[] = { 0.0 };						// 镜面反射指数为0 
+GLfloat low_shininess[] = { 5.0 };						// 镜面反射指数为5.0
+GLfloat high_shininess[] = { 100.0 };					// 镜面反射指数为100.0
+GLfloat mat_emission[] = { 0.3, 0.2, 0.3, 0.0 };		// 发射光颜色
+
 void Material::init()
 {
 	GLfloat ambient[] = { 0.0, 0.0, 0.0, 1.0 };	// 环境光
@@ -24,16 +35,6 @@ void Material::init()
 
 void Material::draw()
 {
-	GLfloat no_mat[] = { 0.0, 0.0, 0.0, 1.0 };				// 无材质颜色
-	GLfloat mat_ambient[] = { 0.7, 0.7, 0.7, 1.0 };			// 环境颜色
-	GLfloat mat_ambient_color[] = { 0.8, 0.6, 0.2, 1.0 };
-	GLfloat mat_diffuse[] = { 0.2, 0.5, 0.8, 1.0 };			// 散射颜色
-	GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };		// 镜面反射颜色
-	GLfloat no_shininess[] = { 0.0 };						// 镜面反射指数为0 
-	GLfloat low_shininess[] = { 5.0 };						// 镜面反射指数为5.0
-	GLfloat high_shininess[] = { 100.0 };					// 镜面反射指数为100.0
-	GLfloat mat_emission[] = { 0.3, 0.2, 0.3, 0.0 };		// 发射光颜色
-
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 

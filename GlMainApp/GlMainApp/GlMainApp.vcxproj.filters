@@ -95,6 +95,9 @@
     <ClCompile Include="Texture.cpp">
       <Filter>theme</Filter>
     </ClCompile>
+    <ClCompile Include="Antialiasing.cpp">
+      <Filter>theme</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GlMainApp.rc">
