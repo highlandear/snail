@@ -17,6 +17,8 @@ public:
 	HWND getHwnd() { return m_hWnd; }
 
 	void onKeyDown(UINT keyID);
+	void onKeyUp(UINT keyID);
+
 	void onMoving(LPARAM lParam);
 	void onSizing(LPARAM lParam);
 	void onSize(WPARAM wParam, LPARAM lParam);

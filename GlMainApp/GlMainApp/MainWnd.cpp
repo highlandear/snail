@@ -1,11 +1,5 @@
 #include "MainWnd.hpp"
-#include "WinUser.h"
-#include <gl/gl.h>														/**< 包含OpenGL头文件 */
-#include <gl/glu.h>	
-#include <gl/glut.h>
-
-#pragma comment(lib, "opengl32.lib")
-#pragma comment(lib, "glu32.lib")
+#include "keyStatus.hpp"
 
 int MainWnd::SCREEN_MAX_X = GetSystemMetrics(SM_CXSCREEN);
 int MainWnd::SCREEN_MAX_Y = GetSystemMetrics(SM_CYSCREEN);
@@ -52,6 +46,7 @@ bool MainWnd::create(HINSTANCE hIns, LPCWSTR title, LPCWSTR cname )
 
 void MainWnd::onKeyDown(UINT keyID)
 {
+	KeyStatus::setKeyDown(keyID);
 	if (keyID == VK_F1)
 	{
 		m_bFull =! m_bFull;
@@ -80,10 +75,15 @@ void MainWnd::onKeyDown(UINT keyID)
 
 	else if (keyID == VK_ESCAPE)
 	{
-		//PostMessage(m_hWnd, WM_QUIT, 0, 0);
-		m_pEnv->glshape(m_nDef.wgl, m_nDef.hgl);
-		m_pEnv->gldraw();
+		PostMessage(m_hWnd, WM_QUIT, 0, 0);
+		//m_pEnv->glshape(m_nDef.wgl, m_nDef.hgl);
+		//m_pEnv->gldraw();
 	}
+}
+
+void MainWnd::onKeyUp(UINT keyID)
+{
+	KeyStatus::setKeyUp(keyID);
 }
 
 void MainWnd::onMoving(LPARAM lParam)

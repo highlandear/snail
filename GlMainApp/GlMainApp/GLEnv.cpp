@@ -1,5 +1,7 @@
 #include "GLEnv.hpp"
 
+//Light GLEnv::imp;
+
 PIXELFORMATDESCRIPTOR GLEnv::pfd =
 {
 	sizeof(PIXELFORMATDESCRIPTOR),
@@ -46,6 +48,8 @@ bool GLEnv::init(HWND h, int b)
 
 	if (!wglMakeCurrent(m_hDC, hrc))
 		return false;
+	
+	m_pImp->init();
 
 	return true;
 }

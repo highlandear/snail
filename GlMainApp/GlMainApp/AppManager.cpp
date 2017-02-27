@@ -11,5 +11,4 @@ UINT AppManager::setTimer(UINT id, UINT eclapse)
 void AppManager::TimerProc(HWND hwnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime)
 {
 	pWnd->maindraw();
-	OutputDebugString(L"======================\n");
 }

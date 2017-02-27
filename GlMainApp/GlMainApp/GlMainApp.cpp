@@ -42,9 +42,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	MainWnd mw;
 	AppManager am(&mw);
-	am.setTimer(1, 1000);
-
-	mw.create(hInstance, szTitle, szWindowClass);
+	if (!mw.create(hInstance, szTitle, szWindowClass))
+		return FALSE;
+	
+	am.setTimer(1);
+	//
 
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_GLMAINAPP));
 
@@ -155,15 +157,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	{
 		AppManager::getMainWnd()->onKeyDown(wParam);
 	}break;
-
+	case WM_KEYUP:
+	{
+		AppManager::getMainWnd()->onKeyUp(wParam);
+	}break;
     case WM_PAINT:
-        {
+	{
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
 			AppManager::getMainWnd()->maindraw();
             EndPaint(hWnd, &ps);
-        }
-        break;
+	}break;
     case WM_DESTROY:
         PostQuitMessage(0);
         break;

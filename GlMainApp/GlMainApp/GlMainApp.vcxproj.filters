@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="theme">
+      <UniqueIdentifier>{f3d4aaae-34c9-4943-bfd5-3529e6b28d38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="theme\texture">
+      <UniqueIdentifier>{e01cec04-69ef-498e-bf77-46338de1f37a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -43,7 +49,13 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="base.hpp">
+      <Filter>theme</Filter>
+    </ClInclude>
+    <ClInclude Include="keyStatus.hpp">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tex.hpp">
+      <Filter>theme\texture</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -62,8 +74,26 @@
     <ClCompile Include="AppManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="base.cpp">
+    <ClCompile Include="material.cpp">
+      <Filter>theme</Filter>
+    </ClCompile>
+    <ClCompile Include="light.cpp">
+      <Filter>theme</Filter>
+    </ClCompile>
+    <ClCompile Include="keyStatus.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cube.cpp">
+      <Filter>theme</Filter>
+    </ClCompile>
+    <ClCompile Include="displayList.cpp">
+      <Filter>theme</Filter>
+    </ClCompile>
+    <ClCompile Include="Tex.cpp">
+      <Filter>theme\texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>theme</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
