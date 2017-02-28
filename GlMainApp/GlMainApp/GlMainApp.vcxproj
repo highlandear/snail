@@ -147,7 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppManager.hpp" />
-    <ClInclude Include="base.hpp" />
+    <ClInclude Include="Impl.hpp" />
     <ClInclude Include="GLEnv.hpp" />
     <ClInclude Include="GlMainApp.h" />
     <ClInclude Include="keyStatus.hpp" />
@@ -157,12 +157,17 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Tex.hpp" />
+    <ClInclude Include="EnvConfig.hpp" />
+    <ClInclude Include="Base.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Antialiasing.cpp" />
     <ClCompile Include="AppManager.cpp" />
+    <ClCompile Include="Base.cpp" />
     <ClCompile Include="Cube.cpp" />
     <ClCompile Include="DisplayList.cpp" />
+    <ClCompile Include="EnvConfig.cpp" />
+    <ClCompile Include="Fog.cpp" />
     <ClCompile Include="GLEnv.cpp" />
     <ClCompile Include="GlMainApp.cpp" />
     <ClCompile Include="keyStatus.cpp" />

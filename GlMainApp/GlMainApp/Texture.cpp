@@ -1,18 +1,13 @@
-#include "base.hpp"
+#include "Impl.hpp"
 
 #include "Tex.hpp"
 
-//static GLfloat LightAmbient[] = { 0.5f, 0.5f, 0.5f, 1.0f }; 	// 环境光参数
-static GLfloat LightAmbient[] = { 1.0f, 1.0f, 1.0f, 1.0f }; 	// 环境光参数
-static GLfloat LightDiffuse[] = { 1.0f, 1.0f, 1.0f, 1.0f };		// 漫射光参数
-static GLfloat LightSpecular[] = { 1.0f, 1.0f, 1.0f, 1.0f };	// 镜面光参数
-static GLfloat LightPosition[] = { 0.0f, 0.0f, 0.0f, 1.0f };	// 光源位置
+#include "EnvConfig.hpp"
 
 Texture::~Texture()
 {
 	glDisable(GL_DEPTH_TEST);
-	glDisable(GL_LIGHTING);	
-	glDisable(GL_LIGHT1);
+	EnvConfig::shutDown();
 }
 
 void Texture::init()
@@ -30,7 +25,6 @@ void Texture::init()
 	glShadeModel(GL_SMOOTH);
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 
-
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -39,11 +33,7 @@ void Texture::init()
 	//glEnable(GL_AUTO_NORMAL);
 	//glEnable(GL_NORMALIZE);
 	//glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-
-	glLightfv(GL_LIGHT1, GL_AMBIENT, LightAmbient);		// 设置环境光
-	glLightfv(GL_LIGHT1, GL_DIFFUSE, LightDiffuse);		// 设置漫射光
-	glLightfv(GL_LIGHT1, GL_SPECULAR, LightSpecular);	// 设置漫射光
-	glLightfv(GL_LIGHT1, GL_POSITION, LightPosition);	// 设置光源位置
+	EnvConfig::setDefaultLight();
 														
 	glEnable(GL_LIGHTING);								// 启用光照和光源
 	glEnable(GL_LIGHT1);

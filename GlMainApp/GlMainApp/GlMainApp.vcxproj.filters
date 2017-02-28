@@ -19,6 +19,12 @@
     <Filter Include="theme\texture">
       <UniqueIdentifier>{e01cec04-69ef-498e-bf77-46338de1f37a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="theme\enviroment">
+      <UniqueIdentifier>{30c6c25f-d5bd-4eb4-82bd-ab19a4fd5fee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="theme\utils">
+      <UniqueIdentifier>{a8836e94-523c-4eb5-be69-ab6b072eed80}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -48,14 +54,20 @@
     <ClInclude Include="mconfig.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="base.hpp">
-      <Filter>theme</Filter>
-    </ClInclude>
     <ClInclude Include="keyStatus.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Tex.hpp">
       <Filter>theme\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="EnvConfig.hpp">
+      <Filter>theme\enviroment</Filter>
+    </ClInclude>
+    <ClInclude Include="Impl.hpp">
+      <Filter>theme</Filter>
+    </ClInclude>
+    <ClInclude Include="Base.hpp">
+      <Filter>theme\utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -97,6 +109,15 @@
     </ClCompile>
     <ClCompile Include="Antialiasing.cpp">
       <Filter>theme</Filter>
+    </ClCompile>
+    <ClCompile Include="Fog.cpp">
+      <Filter>theme</Filter>
+    </ClCompile>
+    <ClCompile Include="EnvConfig.cpp">
+      <Filter>theme\enviroment</Filter>
+    </ClCompile>
+    <ClCompile Include="Base.cpp">
+      <Filter>theme\utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

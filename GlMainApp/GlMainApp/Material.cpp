@@ -1,4 +1,5 @@
-#include "base.hpp"
+#include "Impl.hpp"
+#include "Base.hpp"
 
 
 GLfloat no_mat[] = { 0.0, 0.0, 0.0, 1.0 };				// ÎÞ²ÄÖÊÑÕÉ«
@@ -167,7 +168,7 @@ void Material::draw()
 	glMaterialfv(GL_FRONT, GL_SPECULAR, no_mat);
 	glMaterialfv(GL_FRONT, GL_SHININESS, no_shininess);
 	glMaterialfv(GL_FRONT, GL_EMISSION, mat_emission);
-	glutSolidSphere(0.5, 50, 50);
+	gdraw::drawBall(0.5);
 	glPopMatrix();
 
 	glFlush();

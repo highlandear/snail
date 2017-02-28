@@ -1,5 +1,5 @@
 #pragma once
-#include "base.hpp"
+#include "Impl.hpp"
 
 class GLEnv
 {

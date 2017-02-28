@@ -1,4 +1,5 @@
-#include "base.hpp"
+#include "Impl.hpp"
+#include "Base.hpp"
 
 // 演示运动光源（R/G/B）的位置
 static float lightPositionR[] = { 0.0f, 0.0f, 5.0f, 1.0f };
@@ -17,7 +18,6 @@ static float specularLightB[] = { 0.0f, 0.0f, 1.0f, 1.0f };
 
 // 一个默认的光源
 static float diffuseLight[] = { 0.8f, 0.8f, 0.8f, 1.0f };
-//static float diffuseLight[] = { 1.0f, 1.0f, 0.0f, 1.0f };
 static float specularLight[] = { 1.0f, 1.0f, 1.0f, 1.0f };
 static float lightPosition[] = { 0.0f, 0.0f, 10.0f, 1.0f };
 
@@ -168,6 +168,7 @@ void Light::draw()
 	glRotatef(getParam(), 0.0f, 0.0f, 1.0f);
 	glColor3f(1.0, 1.0, 1.0);
 	glutSolidSphere(0.4, 50, 50);
+	gdraw::drawBall(0.4);
 	glPopMatrix();
 	glFlush();
 }
