@@ -82,9 +82,12 @@ void Fog::draw()
 
 	glLoadIdentity();
 	glColor3f(1.0f, 0.0f, 0.0f);
-	gdraw::wprint(-2.5f, 2.0f, -5.0f, L"OK\ntest");
+	tout::wprint(usage(), -1.5f, 1.0f, -5.0f);
 
 	glFlush();
 }
 
-
+std::wstring Fog::usage()
+{
+	return L"雾-效果，使用方法:\nF: 关闭雾效果\nW:向前，D:向后\n1，2，3分别是三种雾模式";
+}

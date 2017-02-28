@@ -4,6 +4,7 @@
 #include <gl/GLU.h>
 #include <gl/glut.h>
 #include "keyStatus.hpp"
+#include <string>
 
 #ifndef _IMPL_CLASS
 #define _IMPL_CLASS Fog
@@ -31,6 +32,8 @@ public:
 	virtual void draw() = 0;
 	
 	virtual void init() = 0;
+
+	std::wstring usage() {}
 	
 	virtual float getSpeed() { return 5.0f;}		// 默认的速度
 
@@ -138,6 +141,8 @@ public:
 	void init();
 
 	void update();
+
+	std::wstring usage();
 private:
 
 	GLfloat m_fZ;
