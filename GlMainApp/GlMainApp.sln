@@ -7,12 +7,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GlMainApp", "GlMainApp\GlMa
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tessellation", "..\..\..\otheworks\opengl\第13章\Tessellation\Tessellation.vcxproj", "{5DADBC7E-9E10-45C6-8C92-9A78D7F353E0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGL显示中文", "..\..\..\otheworks\opengl\第8章\OpenGL显示中文\OpenGL显示中文.vcxproj", "{6B72E7DE-EBAD-41AD-B6B1-0410672468BB}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "3DFont", "..\..\..\otheworks\opengl\第8章\3DFont\3DFont.vcxproj", "{3438FA40-D4E6-41DC-A099-0495AA965C99}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ShowMe", "ShowMe\ShowMe.vcxproj", "{F9EED021-4FD3-46F5-8E0F-26BCF442207A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -35,26 +29,6 @@ Global
 		{5DADBC7E-9E10-45C6-8C92-9A78D7F353E0}.Release|x64.ActiveCfg = Release|Win32
 		{5DADBC7E-9E10-45C6-8C92-9A78D7F353E0}.Release|x86.ActiveCfg = Release|Win32
 		{5DADBC7E-9E10-45C6-8C92-9A78D7F353E0}.Release|x86.Build.0 = Release|Win32
-		{6B72E7DE-EBAD-41AD-B6B1-0410672468BB}.Debug|x64.ActiveCfg = Debug|Win32
-		{6B72E7DE-EBAD-41AD-B6B1-0410672468BB}.Debug|x86.ActiveCfg = Debug|Win32
-		{6B72E7DE-EBAD-41AD-B6B1-0410672468BB}.Debug|x86.Build.0 = Debug|Win32
-		{6B72E7DE-EBAD-41AD-B6B1-0410672468BB}.Release|x64.ActiveCfg = Release|Win32
-		{6B72E7DE-EBAD-41AD-B6B1-0410672468BB}.Release|x86.ActiveCfg = Release|Win32
-		{6B72E7DE-EBAD-41AD-B6B1-0410672468BB}.Release|x86.Build.0 = Release|Win32
-		{3438FA40-D4E6-41DC-A099-0495AA965C99}.Debug|x64.ActiveCfg = Debug|Win32
-		{3438FA40-D4E6-41DC-A099-0495AA965C99}.Debug|x86.ActiveCfg = Debug|Win32
-		{3438FA40-D4E6-41DC-A099-0495AA965C99}.Debug|x86.Build.0 = Debug|Win32
-		{3438FA40-D4E6-41DC-A099-0495AA965C99}.Release|x64.ActiveCfg = Release|Win32
-		{3438FA40-D4E6-41DC-A099-0495AA965C99}.Release|x86.ActiveCfg = Release|Win32
-		{3438FA40-D4E6-41DC-A099-0495AA965C99}.Release|x86.Build.0 = Release|Win32
-		{F9EED021-4FD3-46F5-8E0F-26BCF442207A}.Debug|x64.ActiveCfg = Debug|x64
-		{F9EED021-4FD3-46F5-8E0F-26BCF442207A}.Debug|x64.Build.0 = Debug|x64
-		{F9EED021-4FD3-46F5-8E0F-26BCF442207A}.Debug|x86.ActiveCfg = Debug|Win32
-		{F9EED021-4FD3-46F5-8E0F-26BCF442207A}.Debug|x86.Build.0 = Debug|Win32
-		{F9EED021-4FD3-46F5-8E0F-26BCF442207A}.Release|x64.ActiveCfg = Release|x64
-		{F9EED021-4FD3-46F5-8E0F-26BCF442207A}.Release|x64.Build.0 = Release|x64
-		{F9EED021-4FD3-46F5-8E0F-26BCF442207A}.Release|x86.ActiveCfg = Release|Win32
-		{F9EED021-4FD3-46F5-8E0F-26BCF442207A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

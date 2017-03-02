@@ -1,6 +1,9 @@
 #pragma once
 #include <string>
 #include <unordered_map>
+#include <windows.h>
+#include <gl/GL.h>
+#include <gl/GLU.h>
 
 #define TEX_MOD GL_TEXTURE_2D
 

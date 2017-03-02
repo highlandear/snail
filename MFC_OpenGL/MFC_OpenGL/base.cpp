@@ -1,6 +1,8 @@
+#include "stdafx.h"
 #include "base.hpp"
 #include "tex.hpp"
 #include "helper.hpp"
+
 
 void Pot::show()
 {

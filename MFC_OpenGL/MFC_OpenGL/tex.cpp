@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "base.hpp"
+#include "tex.hpp"
 
 #include <unordered_map>
 

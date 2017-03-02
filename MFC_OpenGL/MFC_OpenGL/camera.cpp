@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "camera.hpp"
 
 void Camera::set() const
