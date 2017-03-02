@@ -141,6 +141,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             }
         }
         break;
+	case WM_LBUTTONDOWN:
+		AppManager::getMainWnd()->onLButtonDown(lParam);
+		break;
+	case WM_RBUTTONDOWN:
+		AppManager::getMainWnd()->onRButtonDown(lParam);
+		break;
 	case WM_SIZE:
 	{
 		AppManager::getMainWnd()->onSize(wParam, lParam);

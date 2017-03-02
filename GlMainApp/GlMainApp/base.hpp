@@ -1,8 +1,9 @@
 #pragma once
 #include <windows.h>
-#include <string>
 
-
+/**
+	一些标准物件的绘制
+*/
 namespace gdraw
 {
 	void drawBall(float radius);	
@@ -20,11 +21,4 @@ namespace gdraw
 	void print(float x, float y, float z, const char * str);
 
 	void wprint(float x, float y, float z, const wchar_t *str);	
-};
-
-namespace tout
-{
-	//void xprint(wchar_t * wstring, float x, float y, float z);
-	void xprint(std::wstring str, float x, float y, float z);
-	void wprint(std::wstring str, float x, float y, float z);
 };

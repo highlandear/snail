@@ -7,7 +7,9 @@
 #include <string>
 
 #ifndef _IMPL_CLASS
-#define _IMPL_CLASS Fog
+#define _IMPL_CLASS Tessellation
+//#define _IMPL_CLASS Light
+//#define _IMPL_CLASS Fog
 //#define _IMPL_CLASS Texture
 //#define _IMPL_CLASS Antialiasing
 #endif
@@ -80,6 +82,7 @@ public:
 	void draw();
 	void init();
 	void update();
+	std::wstring usage();
 
 private:
 
@@ -150,4 +153,24 @@ private:
 	static const int OBJ_NUM = 5;
 
 	static GLfloat s_fnColor[4];			// 雾的颜色
+};
+
+/**
+	网格化示例
+*/
+class Tessellation : public Impl
+{
+public:
+	~Tessellation();
+	void init();
+	void update();
+	void draw();
+	std::wstring usage();
+	float getSpeed() { return 4.0f; }
+
+private:
+
+	GLuint m_uList;
+
+	const static int LIST_NUM = 3;
 };

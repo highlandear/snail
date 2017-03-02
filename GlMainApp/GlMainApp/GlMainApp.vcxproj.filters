@@ -25,6 +25,9 @@
     <Filter Include="theme\utils">
       <UniqueIdentifier>{a8836e94-523c-4eb5-be69-ab6b072eed80}</UniqueIdentifier>
     </Filter>
+    <Filter Include="theme\tessellation">
+      <UniqueIdentifier>{5cc0e400-f0c5-431b-98fc-272ae8f5c43f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -57,17 +60,26 @@
     <ClInclude Include="keyStatus.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Tex.hpp">
-      <Filter>theme\texture</Filter>
-    </ClInclude>
     <ClInclude Include="EnvConfig.hpp">
       <Filter>theme\enviroment</Filter>
     </ClInclude>
     <ClInclude Include="Impl.hpp">
       <Filter>theme</Filter>
     </ClInclude>
-    <ClInclude Include="Base.hpp">
+    <ClInclude Include="base.hpp">
       <Filter>theme\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="gout.hpp">
+      <Filter>theme\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="tex.hpp">
+      <Filter>theme\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="gmath.hpp">
+      <Filter>theme\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="tess.hpp">
+      <Filter>theme\tessellation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -101,9 +113,6 @@
     <ClCompile Include="displayList.cpp">
       <Filter>theme</Filter>
     </ClCompile>
-    <ClCompile Include="Tex.cpp">
-      <Filter>theme\texture</Filter>
-    </ClCompile>
     <ClCompile Include="Texture.cpp">
       <Filter>theme</Filter>
     </ClCompile>
@@ -116,8 +125,23 @@
     <ClCompile Include="EnvConfig.cpp">
       <Filter>theme\enviroment</Filter>
     </ClCompile>
-    <ClCompile Include="Base.cpp">
+    <ClCompile Include="base.cpp">
       <Filter>theme\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="gout.cpp">
+      <Filter>theme\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Tessellation.cpp">
+      <Filter>theme</Filter>
+    </ClCompile>
+    <ClCompile Include="tex.cpp">
+      <Filter>theme\texture</Filter>
+    </ClCompile>
+    <ClCompile Include="gmath.cpp">
+      <Filter>theme\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="tess.cpp">
+      <Filter>theme\tessellation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

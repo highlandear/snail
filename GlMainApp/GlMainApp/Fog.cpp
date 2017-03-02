@@ -1,5 +1,7 @@
 #include "Impl.hpp"
-#include "Base.hpp"
+#include "gout.hpp"
+#include "base.hpp"
+
 
 #include"EnvConfig.hpp"
 
@@ -82,7 +84,7 @@ void Fog::draw()
 
 	glLoadIdentity();
 	glColor3f(1.0f, 0.0f, 0.0f);
-	tout::wprint(usage(), -1.5f, 1.0f, -5.0f);
+	gout::wprint(usage(), -1.5f, 1.0f, -5.0f);
 
 	glFlush();
 }

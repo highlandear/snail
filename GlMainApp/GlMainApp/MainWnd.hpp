@@ -17,13 +17,21 @@ public:
 	HWND getHwnd() { return m_hWnd; }
 
 	void onKeyDown(UINT keyID);
+
 	void onKeyUp(UINT keyID);
 
 	void onMoving(LPARAM lParam);
+
 	void onSizing(LPARAM lParam);
+
 	void onSize(WPARAM wParam, LPARAM lParam);
+
+	void onLButtonDown(LPARAM lParam);
+
+	void onRButtonDown(LPARAM lParam);
 	
 	bool create(HINSTANCE hIns, LPCWSTR title, LPCWSTR cname);
+
 	void maindraw() { m_pEnv->gldraw(); }
 
 private:

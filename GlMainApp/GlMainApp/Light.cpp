@@ -1,5 +1,6 @@
 #include "Impl.hpp"
-#include "Base.hpp"
+#include "base.hpp"
+#include "gout.hpp"
 
 // 演示运动光源（R/G/B）的位置
 static float lightPositionR[] = { 0.0f, 0.0f, 5.0f, 1.0f };
@@ -170,5 +171,18 @@ void Light::draw()
 	glutSolidSphere(0.4, 50, 50);
 	gdraw::drawBall(0.4);
 	glPopMatrix();
+	
+	
+	glLoadIdentity();
+
+
+	glColor3f(1.0f, 0.0f, 0.0f);
+	gout::wprint(usage(), -1.5f, 1.0f, -5.0f);
+
 	glFlush();
+}
+
+std::wstring Light::usage()
+{
+	return L"R, G, B键，可关闭相关的光源";
 }

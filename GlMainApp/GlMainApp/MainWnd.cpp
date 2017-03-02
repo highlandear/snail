@@ -124,3 +124,14 @@ void MainWnd::onSize(WPARAM wParam, LPARAM lParam)
 	}
 }
 
+// TODO: 坐标拾取时再实现
+void MainWnd::onLButtonDown(LPARAM lParam)
+{
+	//MessageBox(NULL, L"鼠标左键点击", L"Win32_Mouse", MB_OK);
+}
+
+void MainWnd::onRButtonDown(LPARAM lParam)
+{
+
+}
+
