@@ -60,9 +60,6 @@
     <ClInclude Include="keyStatus.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="EnvConfig.hpp">
-      <Filter>theme\enviroment</Filter>
-    </ClInclude>
     <ClInclude Include="Impl.hpp">
       <Filter>theme</Filter>
     </ClInclude>
@@ -80,6 +77,9 @@
     </ClInclude>
     <ClInclude Include="tess.hpp">
       <Filter>theme\tessellation</Filter>
+    </ClInclude>
+    <ClInclude Include="global.hpp">
+      <Filter>theme\enviroment</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -122,9 +122,6 @@
     <ClCompile Include="Fog.cpp">
       <Filter>theme</Filter>
     </ClCompile>
-    <ClCompile Include="EnvConfig.cpp">
-      <Filter>theme\enviroment</Filter>
-    </ClCompile>
     <ClCompile Include="base.cpp">
       <Filter>theme\utils</Filter>
     </ClCompile>
@@ -142,6 +139,12 @@
     </ClCompile>
     <ClCompile Include="tess.cpp">
       <Filter>theme\tessellation</Filter>
+    </ClCompile>
+    <ClCompile Include="Quadrics.cpp">
+      <Filter>theme</Filter>
+    </ClCompile>
+    <ClCompile Include="global.cpp">
+      <Filter>theme\enviroment</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

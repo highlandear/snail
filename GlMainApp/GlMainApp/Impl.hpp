@@ -7,7 +7,8 @@
 #include <string>
 
 #ifndef _IMPL_CLASS
-#define _IMPL_CLASS Tessellation
+#define _IMPL_CLASS Quadrics
+//#define _IMPL_CLASS Tessellation
 //#define _IMPL_CLASS Light
 //#define _IMPL_CLASS Fog
 //#define _IMPL_CLASS Texture
@@ -173,4 +174,20 @@ private:
 	GLuint m_uList;
 
 	const static int LIST_NUM = 3;
+};
+
+/**
+	二次几何体
+*/
+class Quadrics :public Impl
+{
+public:
+	~Quadrics();
+	void init();
+	void update();
+	void draw();
+	std::wstring usage();
+
+private:
+	GLUquadricObj  * m_pQuadric;
 };

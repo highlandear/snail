@@ -1,9 +1,9 @@
-#include "EnvConfig.hpp"
+#include "global.hpp"
 #include <windows.h>
 #include <gl/GL.h>
 #include <gl/GLU.h>
 
-namespace EnvConfig
+namespace global
 {
 	GLfloat LightAmbient[] = { 0.5f, 0.5f, 0.5f, 1.0f };	// 环境光参数
 	GLfloat LightDiffuse[] = { 1.0f, 1.0f, 1.0f, 1.0f };	// 漫射光参数
@@ -16,16 +16,10 @@ namespace EnvConfig
 	GLfloat mat_specular[] = { 1.0,0.0,1.0,1.0 };           // 镜面反射颜色
 	GLfloat mat_shininess[] = { 10.0 };                     // 镜面反射指数
 
-	void shutDown() 
+	void shutDefaultDown() 
 	{
 		glDisable(GL_LIGHTING);
 		glDisable(GL_LIGHT1);
-	}
-
-	void setDefault()
-	{
-		setDefaultLight();
-		setDefaultMaterial();
 	}
 
 	void setDefaultLight()

@@ -160,7 +160,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="tess.hpp" />
     <ClInclude Include="tex.hpp" />
-    <ClInclude Include="EnvConfig.hpp" />
+    <ClInclude Include="global.hpp" />
     <ClInclude Include="base.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -169,7 +169,7 @@
     <ClCompile Include="base.cpp" />
     <ClCompile Include="Cube.cpp" />
     <ClCompile Include="DisplayList.cpp" />
-    <ClCompile Include="EnvConfig.cpp" />
+    <ClCompile Include="global.cpp" />
     <ClCompile Include="Fog.cpp" />
     <ClCompile Include="GLEnv.cpp" />
     <ClCompile Include="GlMainApp.cpp" />
@@ -179,6 +179,7 @@
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="MainWnd.cpp" />
     <ClCompile Include="Material.cpp" />
+    <ClCompile Include="Quadrics.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

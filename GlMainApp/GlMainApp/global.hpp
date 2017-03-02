@@ -1,9 +1,8 @@
 #pragma once
 
-namespace EnvConfig
+namespace global
 {
-	void shutDown();
-	void setDefault();
+	void shutDefaultDown();
 	void setDefaultLight();
 	void setDefaultMaterial();
 };

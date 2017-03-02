@@ -96,7 +96,9 @@ public:
 	
 	static void clear();
 
-	static void loadTest();
+//	static void loadTest();
+	static void loadBmpTexrure(std::wstring name, std::wstring fpn);
+	static void loadRawTexrure(std::wstring name);
 	
 private:
 

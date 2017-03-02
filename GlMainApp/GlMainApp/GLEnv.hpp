@@ -16,8 +16,6 @@ public:
 
 	void gldraw() { m_pImp->draw(); m_pImp->update(); SwapBuffers(m_hDC); };
 
-//	void onKeyUp(UINT keyID) {}
-
 private:
 
 	HWND m_hWnd;

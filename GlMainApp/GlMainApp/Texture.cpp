@@ -1,20 +1,19 @@
 #include "Impl.hpp"
 
-#include "Tex.hpp"
+#include "tex.hpp"
 
-#include "EnvConfig.hpp"
+#include "global.hpp"
 
 Texture::~Texture()
 {
 	glDisable(GL_DEPTH_TEST);
-	EnvConfig::shutDown();
+	global::shutDefaultDown();
 }
 
 void Texture::init()
 {
-	TexManager::loadTest();
-	// me 
-	// show
+	TexManager::loadBmpTexrure(L"me", L"C:\\Users\\hzs\\Desktop\\me\\image.bmp");
+	TexManager::loadRawTexrure(L"raw");
 	TexManager::attach(L"me");
 
 	glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
@@ -33,7 +32,8 @@ void Texture::init()
 	//glEnable(GL_AUTO_NORMAL);
 	//glEnable(GL_NORMALIZE);
 	//glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-	EnvConfig::setDefaultLight();
+	global::setDefaultLight();
+	global::setDefaultMaterial();
 														
 	glEnable(GL_LIGHTING);								// 启用光照和光源
 	glEnable(GL_LIGHT1);

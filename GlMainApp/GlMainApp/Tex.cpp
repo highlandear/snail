@@ -27,7 +27,8 @@ bool RawTex::load()
 bool BmpTex::load()
 {
 	FILE * p;
-	/*FILE * p =*/ _wfopen_s(&p, m_szPathName.c_str(), L"r");
+	_wfopen_s(&p, m_szPathName.c_str(), L"r");
+
 	if (NULL == p)
 		return false;
 
@@ -73,6 +74,10 @@ bool BmpTex::load()
 	setTextureID(id);
 
 	glBindTexture(GL_TEXTURE_2D, id);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, m_nWith, m_nHight, 0, GL_RGB, GL_UNSIGNED_BYTE, m_pData);
 
@@ -95,6 +100,10 @@ unsigned int TexManager:: get(std::wstring n)
 
 bool TexManager::attach(std::wstring n)
 {
+	if (n == L"leaf")
+	{
+
+	}
 	unsigned tid = get(n);
 	if (0 == tid)
 		return false;
@@ -109,8 +118,8 @@ void TexManager::detachAll()
 {
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glDisable(GL_TEXTURE_2D);
-	glDisable(GL_TEXTURE_GEN_S);
-	glDisable(GL_TEXTURE_GEN_T);
+	//glDisable(GL_TEXTURE_GEN_S);
+	//glDisable(GL_TEXTURE_GEN_T);
 }
 
 void TexManager::clear()
@@ -120,16 +129,17 @@ void TexManager::clear()
 	glDisable(GL_TEXTURE_2D);
 }
 
-void TexManager::loadTest()
+void TexManager::loadBmpTexrure(std::wstring name, std::wstring fpn)
 {
-	std::wstring fpn = L"C:\\Users\\hzs\\Desktop\\me\\image.bmp";
-	BmpTex a(L"me", fpn);
-	a.load();
-	
-	put(a);
-
-	RawTex b(L"show");
-	b.load();
-
-	put(b);
+		BmpTex t(name, fpn);
+		t.load();		
+		put(t);
 }
+
+void TexManager::loadRawTexrure(std::wstring name)
+{
+	RawTex t(name);
+	t.load();
+	put(t);
+}
+

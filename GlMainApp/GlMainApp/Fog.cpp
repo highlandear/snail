@@ -3,11 +3,11 @@
 #include "base.hpp"
 
 
-#include"EnvConfig.hpp"
+#include"global.hpp"
 
 Fog::~Fog()
 {
-	EnvConfig::shutDown();
+	global::shutDefaultDown();
 	glDisable(GL_FOG);
 }
 
@@ -15,7 +15,7 @@ GLfloat Fog::s_fnColor[4] = { 0.5,0.5,0.5,1.0 };
 
 void Fog::init()
 {
-	EnvConfig::setDefault();								// 启用光照和光源
+	global::setDefaultLight();								// 启用光照和光源
 
 	// 雾效
 	glEnable(GL_FOG);
