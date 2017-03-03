@@ -3,11 +3,14 @@
 #include <gl/GL.h>
 #include <gl/GLU.h>
 #include <gl/glut.h>
+#include <gl/glext.h>
+
 #include "keyStatus.hpp"
 #include <string>
 
 #ifndef _IMPL_CLASS
-#define _IMPL_CLASS BezierSurface
+#define _IMPL_CLASS MultiTexture
+//#define _IMPL_CLASS BezierSurface
 //#define _IMPL_CLASS Bezier
 //#define _IMPL_CLASS Quadrics
 //#define _IMPL_CLASS Tessellation
@@ -226,6 +229,9 @@ private:
 
 };
 
+/**
+	Bezier曲面
+*/
 class BezierSurface : public Impl
 {
 
@@ -246,4 +252,25 @@ private:
 
 	int m_nU;
 	int m_nV;
+};
+
+/**
+	opengl扩展的 多重纹理
+*/
+class MultiTexture :public Impl
+{
+public:
+	void init();
+
+	void update();
+
+	void draw();
+
+	bool isSupported();
+
+private:
+	static PFNGLMULTITEXCOORD2FVARBPROC glMtcoord2ARB;
+	static PFNGLACTIVETEXTUREARBPROC glATARB;
+
+	float m_fMove;
 };

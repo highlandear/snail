@@ -23,6 +23,8 @@ public :
 
 	static void wprint3D(std::wstring, float x, float y, float z, float d);
 
+	static bool isExtSupported(const char * ext);
+
 private:
 
 	static void xprint(std::wstring str, float x, float y, float z);

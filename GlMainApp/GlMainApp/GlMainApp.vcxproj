@@ -181,6 +181,7 @@
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="MainWnd.cpp" />
     <ClCompile Include="Material.cpp" />
+    <ClCompile Include="MultiTexture.cpp" />
     <ClCompile Include="Quadrics.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

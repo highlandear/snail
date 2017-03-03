@@ -131,3 +131,14 @@ std::wstring gout::wstringPos(float x, float y)
 
 	return ws.str();
 }
+
+
+bool gout::isExtSupported(const char * ext)
+{
+	char * str = (char *)glGetString(GL_EXTENSIONS);
+	if (NULL == str)
+		return false;
+	std::string s(str);
+
+	return s.find(ext) != std::string::npos;
+}

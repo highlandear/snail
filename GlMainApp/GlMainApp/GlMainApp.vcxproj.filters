@@ -152,6 +152,9 @@
     <ClCompile Include="BezierSurface.cpp">
       <Filter>theme</Filter>
     </ClCompile>
+    <ClCompile Include="MultiTexture.cpp">
+      <Filter>theme</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GlMainApp.rc">
