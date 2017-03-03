@@ -1,4 +1,5 @@
 #include "Impl.hpp"
+#include "global.hpp"
 
 void DisplayList::init()
 {
@@ -53,11 +54,7 @@ void DisplayList::init()
 	
 	glEndList();							// List end
 
-	glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
-	glClearDepth(1.0f);
-	glDepthFunc(GL_LEQUAL);
-	glEnable(GL_DEPTH_TEST);
-	glShadeModel(GL_SMOOTH);
+	global::gset();
 }
 
 void DisplayList::draw()

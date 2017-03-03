@@ -5,13 +5,15 @@
 
 namespace global
 {
-	GLfloat LightAmbient[] = { 0.5f, 0.5f, 0.5f, 1.0f };	// 环境光参数
+//	GLfloat LightAmbient[] = { 0.5f, 0.5f, 0.5f, 1.0f };	// 环境光参数
+	GLfloat LightAmbient[] = { 1.0f, 1.0f, 1.0f, 1.0f };	// 环境光参数
 	GLfloat LightDiffuse[] = { 1.0f, 1.0f, 1.0f, 1.0f };	// 漫射光参数
 	GLfloat LightSpecular[] = { 1.0f, 1.0f, 1.0f, 1.0f };	// 镜面光参数
 	GLfloat LightPosition[] = { 0.0f, 0.0f, 0.0f, 1.0f };	// 光源位置
 
 															// 定义材质属性
 	GLfloat mat_ambient[] = { 0.0,0.1,0.8,1.0 };            // 环境颜色
+//	GLfloat mat_ambient[] = { 1.0f, 1.0f, 1.0f,1.0 };            // 环境颜色
 	GLfloat mat_diffuse[] = { 0.0,0.3,0.6,1.0 };            // 散射颜色
 	GLfloat mat_specular[] = { 1.0,0.0,1.0,1.0 };           // 镜面反射颜色
 	GLfloat mat_shininess[] = { 10.0 };                     // 镜面反射指数
@@ -41,5 +43,14 @@ namespace global
 		glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);    // 设置镜面反射指数
 	}
 
+	void gset()
+	{
+		glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
+		glClearDepth(1.0f);
+		glDepthFunc(GL_LEQUAL);
+		glEnable(GL_DEPTH_TEST);
+		glShadeModel(GL_SMOOTH);
+		glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+	}
 
 };

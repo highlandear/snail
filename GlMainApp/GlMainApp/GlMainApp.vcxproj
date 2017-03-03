@@ -167,6 +167,8 @@
     <ClCompile Include="Antialiasing.cpp" />
     <ClCompile Include="AppManager.cpp" />
     <ClCompile Include="base.cpp" />
+    <ClCompile Include="Bezier.cpp" />
+    <ClCompile Include="BezierSurface.cpp" />
     <ClCompile Include="Cube.cpp" />
     <ClCompile Include="DisplayList.cpp" />
     <ClCompile Include="global.cpp" />

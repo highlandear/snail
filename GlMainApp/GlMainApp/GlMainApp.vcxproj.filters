@@ -16,17 +16,17 @@
     <Filter Include="theme">
       <UniqueIdentifier>{f3d4aaae-34c9-4943-bfd5-3529e6b28d38}</UniqueIdentifier>
     </Filter>
-    <Filter Include="theme\texture">
-      <UniqueIdentifier>{e01cec04-69ef-498e-bf77-46338de1f37a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="theme\enviroment">
-      <UniqueIdentifier>{30c6c25f-d5bd-4eb4-82bd-ab19a4fd5fee}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="theme\utils">
+    <Filter Include="utils">
       <UniqueIdentifier>{a8836e94-523c-4eb5-be69-ab6b072eed80}</UniqueIdentifier>
     </Filter>
-    <Filter Include="theme\tessellation">
+    <Filter Include="texture">
+      <UniqueIdentifier>{e01cec04-69ef-498e-bf77-46338de1f37a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tessellation">
       <UniqueIdentifier>{5cc0e400-f0c5-431b-98fc-272ae8f5c43f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="enviroment">
+      <UniqueIdentifier>{30c6c25f-d5bd-4eb4-82bd-ab19a4fd5fee}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -64,22 +64,22 @@
       <Filter>theme</Filter>
     </ClInclude>
     <ClInclude Include="base.hpp">
-      <Filter>theme\utils</Filter>
+      <Filter>utils</Filter>
     </ClInclude>
     <ClInclude Include="gout.hpp">
-      <Filter>theme\utils</Filter>
+      <Filter>utils</Filter>
     </ClInclude>
     <ClInclude Include="tex.hpp">
-      <Filter>theme\texture</Filter>
+      <Filter>texture</Filter>
     </ClInclude>
     <ClInclude Include="gmath.hpp">
-      <Filter>theme\utils</Filter>
+      <Filter>utils</Filter>
     </ClInclude>
     <ClInclude Include="tess.hpp">
-      <Filter>theme\tessellation</Filter>
+      <Filter>tessellation</Filter>
     </ClInclude>
     <ClInclude Include="global.hpp">
-      <Filter>theme\enviroment</Filter>
+      <Filter>enviroment</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -123,28 +123,34 @@
       <Filter>theme</Filter>
     </ClCompile>
     <ClCompile Include="base.cpp">
-      <Filter>theme\utils</Filter>
+      <Filter>utils</Filter>
     </ClCompile>
     <ClCompile Include="gout.cpp">
-      <Filter>theme\utils</Filter>
+      <Filter>utils</Filter>
     </ClCompile>
     <ClCompile Include="Tessellation.cpp">
       <Filter>theme</Filter>
     </ClCompile>
     <ClCompile Include="tex.cpp">
-      <Filter>theme\texture</Filter>
+      <Filter>texture</Filter>
     </ClCompile>
     <ClCompile Include="gmath.cpp">
-      <Filter>theme\utils</Filter>
+      <Filter>utils</Filter>
     </ClCompile>
     <ClCompile Include="tess.cpp">
-      <Filter>theme\tessellation</Filter>
+      <Filter>tessellation</Filter>
     </ClCompile>
     <ClCompile Include="Quadrics.cpp">
       <Filter>theme</Filter>
     </ClCompile>
     <ClCompile Include="global.cpp">
-      <Filter>theme\enviroment</Filter>
+      <Filter>enviroment</Filter>
+    </ClCompile>
+    <ClCompile Include="Bezier.cpp">
+      <Filter>theme</Filter>
+    </ClCompile>
+    <ClCompile Include="BezierSurface.cpp">
+      <Filter>theme</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

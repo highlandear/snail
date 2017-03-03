@@ -28,6 +28,8 @@ void Quadrics::init()
 	TexManager::loadBmpTexrure(L"sea", L"tex\\sea.bmp");
 	TexManager::loadBmpTexrure(L"web", L"tex\\web.bmp");
 	TexManager::loadBmpTexrure(L"leaf", L"tex\\leaf.bmp");
+	TexManager::loadRawTexrure(L"raw");
+
 
 	global::setDefaultLight();
 
@@ -75,6 +77,7 @@ void Quadrics::draw()
 	glPopMatrix();
 	
 	// »æÖÆÔ²×¶Ìå
+	//TexManager::attach(L"raw");
 	TexManager::attach(L"sea");
 	glPushMatrix();
 	{

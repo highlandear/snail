@@ -7,7 +7,9 @@
 #include <string>
 
 #ifndef _IMPL_CLASS
-#define _IMPL_CLASS Quadrics
+#define _IMPL_CLASS BezierSurface
+//#define _IMPL_CLASS Bezier
+//#define _IMPL_CLASS Quadrics
 //#define _IMPL_CLASS Tessellation
 //#define _IMPL_CLASS Light
 //#define _IMPL_CLASS Fog
@@ -23,6 +25,10 @@
 #define _SAFE_DEL_ARRAY(p) { if(p){delete[] (p);  (p)=NULL;} }
 #endif
 
+#ifndef _SIZE
+#define _SIZE(n) (sizeof(n)/sizeof(n[0]))
+#endif // !_SIZE
+
 /**
 	一些示例的具体实现
 **/
@@ -36,7 +42,7 @@ public:
 	
 	virtual void init() = 0;
 
-	std::wstring usage() {}
+	std::wstring usage() { return L""; }
 	
 	virtual float getSpeed() { return 5.0f;}		// 默认的速度
 
@@ -179,7 +185,7 @@ private:
 /**
 	二次几何体
 */
-class Quadrics :public Impl
+class Quadrics : public Impl
 {
 public:
 	~Quadrics();
@@ -190,4 +196,54 @@ public:
 
 private:
 	GLUquadricObj  * m_pQuadric;
+};
+
+/**
+	Bezier曲线
+*/
+class Bezier : public Impl
+{
+
+public:
+	void init();
+
+	void update();
+
+	void draw();
+
+	std::wstring usage();
+
+	void drawPoints(GLfloat points[][3], int points_num);
+
+	void drawBezierCurve(GLfloat points[][3], int points_num);
+
+	void drawColorfullCurve(GLfloat points[][3], int sz);
+
+private:
+	
+	int m_nPointNum;
+	bool m_bColorfull;
+
+};
+
+class BezierSurface : public Impl
+{
+
+public:
+	void init();
+
+	void update();
+
+	void draw();
+
+	std::wstring usage();
+
+	void drawBezierSurface(int uz, int vz);
+
+private:
+	//{ GL_FILL,GL_LINE };
+	GLenum m_eMode;
+
+	int m_nU;
+	int m_nV;
 };
