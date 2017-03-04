@@ -155,6 +155,9 @@
     <ClCompile Include="MultiTexture.cpp">
       <Filter>theme</Filter>
     </ClCompile>
+    <ClCompile Include="Emboss.cpp">
+      <Filter>theme</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GlMainApp.rc">

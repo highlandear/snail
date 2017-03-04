@@ -77,6 +77,26 @@ private:
 	static const int BITMAP_FLAG = 0x4D42;
 };
 
+class TgaTex : public Tex
+{
+public:
+	TgaTex(std::wstring n, std::wstring pn) : Tex(n), m_szPathName(pn) {}
+
+	TgaTex(std::wstring pn) : Tex(pn), m_szPathName(pn) {}
+
+	~TgaTex() { _SAFE_DEL_ARRAY(m_pData); }
+
+	bool load();
+
+private:
+	std::wstring m_szPathName;			// bmp格式图片文件名（含路径）
+	int m_nWith;						// bmp的宽度
+	int m_nHight;						// bmp的高度
+	unsigned char * m_pData;			// 按RGB格式读取出的像素纹理数据
+
+	unsigned int m_uType;				// GL_RGB 或GL_RGBA
+};
+
 /**
 	纹理管理器
 */
@@ -84,7 +104,6 @@ class TexManager
 {
 public:
 	typedef std::unordered_map<std::wstring, unsigned int> TMAP;
-//	static void put(std::wstring n, unsigned int tid);
 
 	static void put(Tex & t);
 	
@@ -96,8 +115,10 @@ public:
 	
 	static void clear();
 
-//	static void loadTest();
 	static void loadBmpTexrure(std::wstring name, std::wstring fpn);
+
+	static void loadTgaTexrure(std::wstring name, std::wstring fpn);
+	
 	static void loadRawTexrure(std::wstring name);
 	
 private:

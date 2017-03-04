@@ -171,6 +171,7 @@
     <ClCompile Include="BezierSurface.cpp" />
     <ClCompile Include="Cube.cpp" />
     <ClCompile Include="DisplayList.cpp" />
+    <ClCompile Include="Emboss.cpp" />
     <ClCompile Include="global.cpp" />
     <ClCompile Include="Fog.cpp" />
     <ClCompile Include="GLEnv.cpp" />

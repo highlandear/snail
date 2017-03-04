@@ -28,17 +28,10 @@ void MultiTexture::init()
 
 	global::gset();
 
-	TexManager::loadBmpTexrure(L"sea", L"tex\\sea.bmp");
-	TexManager::loadBmpTexrure(L"leaf", L"tex\\leaf.bmp");
-	TexManager::loadBmpTexrure(L"galaxy", L"tex\\galaxy.bmp");
-	TexManager::loadBmpTexrure(L"web", L"tex\\web.bmp");
 	TexManager::loadBmpTexrure(L"wall", L"tex\\wall.bmp");
 	TexManager::loadBmpTexrure(L"fog", L"tex\\fog.bmp");
 	TexManager::loadBmpTexrure(L"lake", L"tex\\lake.bmp");
-	TexManager::loadBmpTexrure(L"wall", L"tex\\wall.bmp");
 	TexManager::loadBmpTexrure(L"sun", L"tex\\sun.bmp");
-
-	TexManager::loadRawTexrure(L"raw");
 }
 
 void MultiTexture::update()
@@ -53,9 +46,6 @@ GLfloat righ_up[] = { 1.0f, 1.0f };
 
 void MultiTexture::draw()
 {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glLoadIdentity();
-
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 

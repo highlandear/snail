@@ -9,7 +9,8 @@
 #include <string>
 
 #ifndef _IMPL_CLASS
-#define _IMPL_CLASS MultiTexture
+#define _IMPL_CLASS Emboss
+//#define _IMPL_CLASS MultiTexture
 //#define _IMPL_CLASS BezierSurface
 //#define _IMPL_CLASS Bezier
 //#define _IMPL_CLASS Quadrics
@@ -257,7 +258,7 @@ private:
 /**
 	opengl扩展的 多重纹理
 */
-class MultiTexture :public Impl
+class MultiTexture : public Impl
 {
 public:
 	void init();
@@ -273,4 +274,17 @@ private:
 	static PFNGLACTIVETEXTUREARBPROC glATARB;
 
 	float m_fMove;
+};
+
+/**
+	浮雕凸凹映射
+*/
+class Emboss : public Impl
+{
+public:
+	void init();
+
+	void update();
+
+	void draw();
 };
