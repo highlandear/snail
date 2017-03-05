@@ -270,7 +270,7 @@ public:
 	bool isSupported();
 
 private:
-	static PFNGLMULTITEXCOORD2FVARBPROC glMtcoord2ARB;
+	static PFNGLMULTITEXCOORD2FVARBPROC glMtcoord2fvARB;
 	static PFNGLACTIVETEXTUREARBPROC glATARB;
 
 	float m_fMove;
@@ -287,4 +287,9 @@ public:
 	void update();
 
 	void draw();
+
+private:
+	static PFNGLACTIVETEXTUREARBPROC       glActiveTextureARB;
+	static PFNGLMULTITEXCOORD2FARBPROC     glMultiTexCoord2fARB ;
+	static PFNGLCLIENTACTIVETEXTUREARBPROC glClientActiveTextureARB;
 };

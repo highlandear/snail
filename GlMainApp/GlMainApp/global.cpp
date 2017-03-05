@@ -12,8 +12,8 @@ namespace global
 	GLfloat LightPosition[] = { 0.0f, 0.0f, 0.0f, 1.0f };	// 光源位置
 
 															// 定义材质属性
-	GLfloat mat_ambient[] = { 0.0,0.1,0.8,1.0 };            // 环境颜色
-//	GLfloat mat_ambient[] = { 1.0f, 1.0f, 1.0f,1.0 };            // 环境颜色
+//	GLfloat mat_ambient[] = { 0.0,0.1,0.8,1.0 };            // 环境颜色
+	GLfloat mat_ambient[] = { 1.0f, 1.0f, 1.0f,1.0 };        // 环境颜色
 	GLfloat mat_diffuse[] = { 0.0,0.3,0.6,1.0 };            // 散射颜色
 	GLfloat mat_specular[] = { 1.0,0.0,1.0,1.0 };           // 镜面反射颜色
 	GLfloat mat_shininess[] = { 10.0 };                     // 镜面反射指数

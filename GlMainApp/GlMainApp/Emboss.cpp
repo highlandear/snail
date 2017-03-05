@@ -1,9 +1,24 @@
 #include "Impl.hpp"
 #include "global.hpp"
 #include "tex.hpp"
+#include "gout.hpp"
+
+PFNGLACTIVETEXTUREARBPROC      Emboss::glActiveTextureARB = NULL;
+PFNGLMULTITEXCOORD2FARBPROC    Emboss::glMultiTexCoord2fARB = NULL;
+PFNGLCLIENTACTIVETEXTUREARBPROC Emboss::glClientActiveTextureARB = NULL;
 
 void Emboss::init()
 {
+	if (!gout::isExtSupported("GL_ARB_multitexture"))
+		return;
+
+	glActiveTextureARB = (PFNGLCLIENTACTIVETEXTUREARBPROC)wglGetProcAddress("glActiveTextureARB");
+	glMultiTexCoord2fARB = (PFNGLMULTITEXCOORD2FARBPROC)wglGetProcAddress("glMultiTexCoord2fARB");
+	glClientActiveTextureARB = (PFNGLACTIVETEXTUREARBPROC)wglGetProcAddress("glClientActiveTextureARB");
+
+	if (!glActiveTextureARB || !glMultiTexCoord2fARB || !glClientActiveTextureARB)
+		return;
+
 	global::gset();
 
 	TexManager::loadTgaTexrure(L"wf", L"tex\\woodfloor.tga");
@@ -12,6 +27,9 @@ void Emboss::init()
 		return;
 
 	global::setDefaultLight();
+
+	global::setDefaultMaterial();
+
 }
 
 void Emboss::update()

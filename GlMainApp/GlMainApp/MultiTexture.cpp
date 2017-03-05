@@ -3,7 +3,7 @@
 #include "global.hpp"
 #include "tex.hpp"
 
-PFNGLMULTITEXCOORD2FVARBPROC MultiTexture::glMtcoord2ARB = NULL;
+PFNGLMULTITEXCOORD2FVARBPROC MultiTexture::glMtcoord2fvARB = NULL;
 PFNGLACTIVETEXTUREARBPROC MultiTexture::glATARB = NULL;
 
 bool MultiTexture::isSupported()
@@ -22,8 +22,8 @@ void MultiTexture::init()
 	if (NULL == glATARB)
 		return;
 
-	glMtcoord2ARB = (PFNGLMULTITEXCOORD2FVARBPROC)wglGetProcAddress("glMultiTexCoord2fvARB");
-	if (NULL == glMtcoord2ARB)
+	glMtcoord2fvARB = (PFNGLMULTITEXCOORD2FVARBPROC)wglGetProcAddress("glMultiTexCoord2fvARB");
+	if (NULL == glMtcoord2fvARB)
 		return;
 
 	global::gset();
@@ -62,20 +62,20 @@ void MultiTexture::draw()
 	glScalef(2.0f, 2.0f, 2.0f);
 	glBegin(GL_QUADS);
 	{
-		glMtcoord2ARB(GL_TEXTURE0_ARB, left_up);
-		glMtcoord2ARB(GL_TEXTURE1_ARB, left_up);
+		glMtcoord2fvARB(GL_TEXTURE0_ARB, left_up);
+		glMtcoord2fvARB(GL_TEXTURE1_ARB, left_up);
 		glVertex3f(-1, 1, 0);
 
-		glMtcoord2ARB(GL_TEXTURE0_ARB, lef_down);
-		glMtcoord2ARB(GL_TEXTURE1_ARB, lef_down);
+		glMtcoord2fvARB(GL_TEXTURE0_ARB, lef_down);
+		glMtcoord2fvARB(GL_TEXTURE1_ARB, lef_down);
 		glVertex3f(-1, -1, 0);
 
-		glMtcoord2ARB(GL_TEXTURE0_ARB, righ_down);
-		glMtcoord2ARB(GL_TEXTURE1_ARB, righ_down);
+		glMtcoord2fvARB(GL_TEXTURE0_ARB, righ_down);
+		glMtcoord2fvARB(GL_TEXTURE1_ARB, righ_down);
 		glVertex3f(1, -1, 0);
 
-		glMtcoord2ARB(GL_TEXTURE0_ARB, righ_up);
-		glMtcoord2ARB(GL_TEXTURE1_ARB, righ_up);
+		glMtcoord2fvARB(GL_TEXTURE0_ARB, righ_up);
+		glMtcoord2fvARB(GL_TEXTURE1_ARB, righ_up);
 		glVertex3f(1, 1, 0);
 	}
 	glEnd(); 
@@ -100,20 +100,20 @@ void MultiTexture::draw()
 			{ 1.0f + m_fMove, 1.0f }
 		};
 
-		glMtcoord2ARB(GL_TEXTURE0_ARB, left_up);
-		glMtcoord2ARB(GL_TEXTURE1_ARB, cood[0]);
+		glMtcoord2fvARB(GL_TEXTURE0_ARB, left_up);
+		glMtcoord2fvARB(GL_TEXTURE1_ARB, cood[0]);
 		glVertex3f(-1, 1, 0);
 
-		glMtcoord2ARB(GL_TEXTURE0_ARB, lef_down );
-		glMtcoord2ARB(GL_TEXTURE1_ARB, cood[1]);
+		glMtcoord2fvARB(GL_TEXTURE0_ARB, lef_down );
+		glMtcoord2fvARB(GL_TEXTURE1_ARB, cood[1]);
 		glVertex3f(-1, -1, 0);
 
-		glMtcoord2ARB(GL_TEXTURE0_ARB, righ_down);
-		glMtcoord2ARB(GL_TEXTURE1_ARB, cood[2]);
+		glMtcoord2fvARB(GL_TEXTURE0_ARB, righ_down);
+		glMtcoord2fvARB(GL_TEXTURE1_ARB, cood[2]);
 		glVertex3f(1, -1, 0);
 
-		glMtcoord2ARB(GL_TEXTURE0_ARB, righ_up);
-		glMtcoord2ARB(GL_TEXTURE1_ARB, cood[3]);
+		glMtcoord2fvARB(GL_TEXTURE0_ARB, righ_up);
+		glMtcoord2fvARB(GL_TEXTURE1_ARB, cood[3]);
 		glVertex3f(1, 1, 0);
 
 	}
