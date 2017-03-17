@@ -82,7 +82,7 @@ public:
 	static void off(int index) { lights[index].off(); }
 	static void enable() { glEnable(GL_LIGHTING); }
 	static void disable() { glDisable(GL_LIGHTING); }
-	static bool isEnabled(){return glIsEnabled(GL_LIGHTING);}
+	static bool isEnabled(){return GL_TRUE == glIsEnabled(GL_LIGHTING);}
 
 	/*
 		0号光源作为默认光源 GL_LIGHT0

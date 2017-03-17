@@ -12,13 +12,13 @@ namespace global
 	GLfloat mat_shininess[] = { 10.0f };                     // 镜面反射指数
 
 	
-	void setDefaultMaterial()
-	{
-		glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);        // 设置环境颜色
-		glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);        // 设置散射颜色
-		glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);      // 设置镜面反射颜色
-		glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);    // 设置镜面反射指数
-	}
+	//void setDefaultMaterial()
+	//{
+	//	glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);        // 设置环境颜色
+	//	glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);        // 设置散射颜色
+	//	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);      // 设置镜面反射颜色
+	//	glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);    // 设置镜面反射指数
+	//}
 
 	void gset()
 	{

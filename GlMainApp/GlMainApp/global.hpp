@@ -2,6 +2,6 @@
 
 namespace global
 {
-	void setDefaultMaterial();
+//	void setDefaultMaterial();
 	void gset();
 };

@@ -27,34 +27,6 @@ struct Pos : public Triple<float>
 	Pos() : Triple(0.0f, 0.0f, 0.0f) {}
 };
 
-//
-//struct Dir : public Triple<float>
-//{
-//	Dir(float x0, float y0, float z0) : Triple(x0, y0, z0) {}
-//	Dir() : Triple(0.0f, 0.0f, 0.0f) {}
-//};
-
-struct Vector3D : public Triple<float>
-{
-	Vector3D(float x0, float y0, float z0) : Triple(x0, y0, z0) {}
-	Vector3D() : Triple(0.0f, 0.0f, 0.0f) {}
-
-	// µã³Ë
-	float X(Vector3D & v) { return (x * v.x + y * v.y + z * v.z); }
-
-	// ²æ³Ë
-	Vector3D & operator * (Vector3D & v)
-	{
-		Vector3D vec;
-
-		vec.x = y * v.z - z * v.y;
-		vec.y = z * v.x - x * v.z;
-		vec.z = x * v.y - y * v.x;
-
-		return vec;
-	}
-};
-
 struct TexCoord : public Pair<float>
 {
 	TexCoord(float x0, float y0) : Pair(x0, y0) {}

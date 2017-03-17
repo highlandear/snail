@@ -1,4 +1,4 @@
-#include "base.hpp"
+#include "gdraw.hpp"
 #include <gl/glut.h>
 #include <vector>
 
@@ -48,16 +48,16 @@ void gdraw::drawTeaPot(float size, float x, float y, float z)
 	glPopMatrix();
 }
 
-void gdraw::print(float x, float y, float z, const char * str)
-{
-	glRasterPos3f(x, y, z);
-	for (size_t i = 0; i < strlen(str); i++)
-		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, *(str + i));
-}
-
-void gdraw::wprint(float x, float y, float z, const wchar_t *str)
-{
-	glRasterPos3f(x, y, z);
-	for (size_t i = 0; i < wcslen(str); i++)
-		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, *(str + i));
-}
+//void gdraw::print(float x, float y, float z, const char * str)
+//{
+//	glRasterPos3f(x, y, z);
+//	for (size_t i = 0; i < strlen(str); i++)
+//		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, *(str + i));
+//}
+//
+//void gdraw::wprint(float x, float y, float z, const wchar_t *str)
+//{
+//	glRasterPos3f(x, y, z);
+//	for (size_t i = 0; i < wcslen(str); i++)
+//		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, *(str + i));
+//}

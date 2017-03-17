@@ -1,5 +1,5 @@
 #include "Impl.hpp"
-#include "base.hpp"
+#include "gdraw.hpp"
 #include "gout.hpp"
 
 // 演示运动光源（R/G/B）的位置

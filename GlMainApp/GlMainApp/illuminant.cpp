@@ -9,7 +9,7 @@ void LightManager::onDefault()
 	GLfloat ld[] = { 1.0f, 1.0f, 1.0f, 1.0f };	// 漫射光参数
 	GLfloat ls[] = { 1.0f, 1.0f, 1.0f, 1.0f };	// 镜面光参数
 	GLfloat lp[] = { 0.0f, 0.0f, 0.0f, 1.0f };	// 光源位置
-	GLfloat lat[] = { 0.0f };
+	GLfloat lat[] = { 0.03f };
 
 	on(0);
 

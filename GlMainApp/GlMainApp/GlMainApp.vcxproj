@@ -162,13 +162,14 @@
     <ClInclude Include="tess.hpp" />
     <ClInclude Include="tex.hpp" />
     <ClInclude Include="global.hpp" />
-    <ClInclude Include="base.hpp" />
+    <ClInclude Include="gdraw.hpp" />
     <ClInclude Include="tuple.hpp" />
+    <ClInclude Include="vector3D.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Antialiasing.cpp" />
     <ClCompile Include="AppManager.cpp" />
-    <ClCompile Include="base.cpp" />
+    <ClCompile Include="gdraw.cpp" />
     <ClCompile Include="Bezier.cpp" />
     <ClCompile Include="BezierSurface.cpp" />
     <ClCompile Include="Cube.cpp" />
@@ -197,7 +198,6 @@
     <ClCompile Include="Tessellation.cpp" />
     <ClCompile Include="tex.cpp" />
     <ClCompile Include="Texture.cpp" />
-    <ClCompile Include="vector3D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GlMainApp.rc" />

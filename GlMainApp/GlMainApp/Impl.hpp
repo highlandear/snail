@@ -7,6 +7,7 @@
 #include "keyStatus.hpp"
 #include <string>
 #include "illuminant.hpp"
+#include "vector3D.hpp"
 
 #ifndef _IMPL_CLASS
 #define _IMPL_CLASS Emboss
@@ -285,14 +286,21 @@ public:
 
 	void draw();
 
+	void start();
+
 private:
+	unsigned int m_uTexID;
+
 	GLight m_Light;
+
+	float m_fRedis;
 
 private:
 	static PFNGLACTIVETEXTUREARBPROC       glActiveTextureARB;
 	static PFNGLMULTITEXCOORD2FARBPROC     glMultiTexCoord2fARB ;
 	static PFNGLCLIENTACTIVETEXTUREARBPROC glClientActiveTextureARB;
 	static const int VER_NUM = 4;
+	
 	static struct VertexInfo
 	{
 		float tu, tv;     // Œ∆¿Ì

@@ -16,9 +16,6 @@
     <Filter Include="theme">
       <UniqueIdentifier>{f3d4aaae-34c9-4943-bfd5-3529e6b28d38}</UniqueIdentifier>
     </Filter>
-    <Filter Include="utils">
-      <UniqueIdentifier>{a8836e94-523c-4eb5-be69-ab6b072eed80}</UniqueIdentifier>
-    </Filter>
     <Filter Include="texture">
       <UniqueIdentifier>{e01cec04-69ef-498e-bf77-46338de1f37a}</UniqueIdentifier>
     </Filter>
@@ -30,6 +27,15 @@
     </Filter>
     <Filter Include="light">
       <UniqueIdentifier>{07bdbfad-b9e8-4d4c-bd16-a7377c19e267}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="math">
+      <UniqueIdentifier>{b518d233-36ee-4ce1-be78-6cebfafff7d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="helper">
+      <UniqueIdentifier>{a8836e94-523c-4eb5-be69-ab6b072eed80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="base">
+      <UniqueIdentifier>{ca7389c0-0164-4a94-b641-8e271301f599}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -66,17 +72,11 @@
     <ClInclude Include="Impl.hpp">
       <Filter>theme</Filter>
     </ClInclude>
-    <ClInclude Include="base.hpp">
-      <Filter>utils</Filter>
-    </ClInclude>
     <ClInclude Include="gout.hpp">
-      <Filter>utils</Filter>
+      <Filter>helper</Filter>
     </ClInclude>
     <ClInclude Include="tex.hpp">
       <Filter>texture</Filter>
-    </ClInclude>
-    <ClInclude Include="gmath.hpp">
-      <Filter>utils</Filter>
     </ClInclude>
     <ClInclude Include="tess.hpp">
       <Filter>tessellation</Filter>
@@ -84,11 +84,20 @@
     <ClInclude Include="global.hpp">
       <Filter>enviroment</Filter>
     </ClInclude>
-    <ClInclude Include="tuple.hpp">
-      <Filter>utils</Filter>
-    </ClInclude>
     <ClInclude Include="illuminant.hpp">
       <Filter>light</Filter>
+    </ClInclude>
+    <ClInclude Include="gmath.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="gdraw.hpp">
+      <Filter>helper</Filter>
+    </ClInclude>
+    <ClInclude Include="tuple.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="vector3D.hpp">
+      <Filter>math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -131,20 +140,14 @@
     <ClCompile Include="Fog.cpp">
       <Filter>theme</Filter>
     </ClCompile>
-    <ClCompile Include="base.cpp">
-      <Filter>utils</Filter>
-    </ClCompile>
     <ClCompile Include="gout.cpp">
-      <Filter>utils</Filter>
+      <Filter>helper</Filter>
     </ClCompile>
     <ClCompile Include="Tessellation.cpp">
       <Filter>theme</Filter>
     </ClCompile>
     <ClCompile Include="tex.cpp">
       <Filter>texture</Filter>
-    </ClCompile>
-    <ClCompile Include="gmath.cpp">
-      <Filter>utils</Filter>
     </ClCompile>
     <ClCompile Include="tess.cpp">
       <Filter>tessellation</Filter>
@@ -167,11 +170,14 @@
     <ClCompile Include="Emboss.cpp">
       <Filter>theme</Filter>
     </ClCompile>
-    <ClCompile Include="vector3D.cpp">
-      <Filter>utils</Filter>
-    </ClCompile>
     <ClCompile Include="illuminant.cpp">
       <Filter>light</Filter>
+    </ClCompile>
+    <ClCompile Include="gmath.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="gdraw.cpp">
+      <Filter>helper</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

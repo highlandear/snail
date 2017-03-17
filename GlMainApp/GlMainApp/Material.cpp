@@ -1,5 +1,5 @@
 #include "Impl.hpp"
-#include "Base.hpp"
+#include "gdraw.hpp"
 
 
 GLfloat no_mat[] = { 0.0f, 0.0f, 0.0f, 1.0f };				// ÎŞ²ÄÖÊÑÕÉ«

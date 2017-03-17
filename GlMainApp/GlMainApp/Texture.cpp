@@ -33,7 +33,7 @@ void Texture::init()
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);	
 
 	LightManager::onDefault();
-	global::setDefaultMaterial();
+//	global::setDefaultMaterial();
 														
 	glEnable(GL_LIGHTING);								// 启用光照和光源
 	glEnable(GL_LIGHT1);
