@@ -120,6 +120,9 @@ public:
 	static void loadTgaTexrure(std::wstring name, std::wstring fpn);
 	
 	static void loadRawTexrure(std::wstring name);
+
+	static void enable() { glEnable(GL_TEXTURE_2D); }
+	static void disable() { glDisable(GL_TEXTURE_2D); }
 	
 private:
 

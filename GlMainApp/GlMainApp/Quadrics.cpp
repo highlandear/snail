@@ -2,6 +2,7 @@
 #include "global.hpp"
 #include "tex.hpp"
 #include "gout.hpp"
+#include "illuminant.hpp"
 
 Quadrics::~Quadrics()
 {
@@ -11,7 +12,8 @@ Quadrics::~Quadrics()
 		m_pQuadric = NULL;
 	}
 	
-	global::shutDefaultDown();
+	//global::shutDefaultDown();
+	LightManager::offDefault();
 }
 
 void Quadrics::init()
@@ -30,8 +32,7 @@ void Quadrics::init()
 	TexManager::loadBmpTexrure(L"leaf", L"tex\\leaf.bmp");
 	TexManager::loadRawTexrure(L"raw");
 
-
-	global::setDefaultLight();
+	LightManager::onDefault();
 
 	m_pQuadric = gluNewQuadric();
 	gluQuadricNormals(m_pQuadric, GLU_SMOOTH);

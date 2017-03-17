@@ -2,12 +2,15 @@
 
 #include "tex.hpp"
 
+#include "illuminant.hpp"
+
 #include "global.hpp"
 
 Texture::~Texture()
 {
 	glDisable(GL_DEPTH_TEST);
-	global::shutDefaultDown();
+//	global::shutDefaultDown();
+	LightManager::offDefault();
 }
 
 void Texture::init()
@@ -29,10 +32,7 @@ void Texture::init()
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);	
 
-	//glEnable(GL_AUTO_NORMAL);
-	//glEnable(GL_NORMALIZE);
-	//glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-	global::setDefaultLight();
+	LightManager::onDefault();
 	global::setDefaultMaterial();
 														
 	glEnable(GL_LIGHTING);								// 启用光照和光源

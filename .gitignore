@@ -1,0 +1,12 @@
+*.obj
+/GlMainApp/GlMainApp/Debug/*.log
+*.tlog
+*.res
+*.pch
+*.idb
+*.pdb
+/GlMainApp/GlMainApp/Debug
+*.ipch
+*.htm
+*.log
+*.ilk

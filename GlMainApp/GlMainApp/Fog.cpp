@@ -5,9 +5,11 @@
 
 #include"global.hpp"
 
+#include "illuminant.hpp"
+
 Fog::~Fog()
 {
-	global::shutDefaultDown();
+	LightManager::onDefault();
 	glDisable(GL_FOG);
 }
 
@@ -15,8 +17,7 @@ GLfloat Fog::s_fnColor[4] = { 0.5,0.5,0.5,1.0 };
 
 void Fog::init()
 {
-	global::setDefaultLight();								// 启用光照和光源
-
+	LightManager::onDefault();
 	// 雾效
 	glEnable(GL_FOG);
 	{

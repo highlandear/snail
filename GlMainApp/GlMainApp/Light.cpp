@@ -3,9 +3,9 @@
 #include "gout.hpp"
 
 // 演示运动光源（R/G/B）的位置
-static float lightPositionR[] = { 0.0f, 0.0f, 5.0f, 1.0f };
-static float lightPositionG[] = { 0.0f, 0.0f, 5.0f, 1.0f };
-static float lightPositionB[] = { 0.0f, 0.0f, 5.0f, 1.0f };
+static float LightPositionR[] = { 0.0f, 0.0f, 5.0f, 1.0f };
+static float LightPositionG[] = { 0.0f, 0.0f, 5.0f, 1.0f };
+static float LightPositionB[] = { 0.0f, 0.0f, 5.0f, 1.0f };
 
 // 定义三个光源的漫射光
 static float diffuseLightR[] = { 1.0f, 0.0f, 0.0f, 1.0f };
@@ -20,7 +20,7 @@ static float specularLightB[] = { 0.0f, 0.0f, 1.0f, 1.0f };
 // 一个默认的光源
 static float diffuseLight[] = { 0.8f, 0.8f, 0.8f, 1.0f };
 static float specularLight[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-static float lightPosition[] = { 0.0f, 0.0f, 10.0f, 1.0f };
+static float LightPosition[] = { 0.0f, 0.0f, 10.0f, 1.0f };
 
 void Light::init()
 {
@@ -36,22 +36,22 @@ void Light::init()
 	// 设置0号光源 
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuseLight);
 	glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight);
-	glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
+	glLightfv(GL_LIGHT0, GL_POSITION, LightPosition);
 
 	// 设置1号光源 -> 红光源
 	glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuseLightR);
 	glLightfv(GL_LIGHT1, GL_SPECULAR, specularLightR);
-	glLightfv(GL_LIGHT1, GL_POSITION, lightPositionR);
+	glLightfv(GL_LIGHT1, GL_POSITION, LightPositionR);
 
 	// 设置2号光源 -> 绿色
 	glLightfv(GL_LIGHT2, GL_DIFFUSE, diffuseLightG);
 	glLightfv(GL_LIGHT2, GL_SPECULAR, specularLightG);
-	glLightfv(GL_LIGHT2, GL_POSITION, lightPositionG);
+	glLightfv(GL_LIGHT2, GL_POSITION, LightPositionG);
 
 	// 设置3号光源 -> 蓝色
 	glLightfv(GL_LIGHT3, GL_DIFFUSE, diffuseLightB);
 	glLightfv(GL_LIGHT3, GL_SPECULAR, specularLightB);
-	glLightfv(GL_LIGHT3, GL_POSITION, lightPositionB);
+	glLightfv(GL_LIGHT3, GL_POSITION, LightPositionB);
 
 	glEnable(GL_LIGHT0);
 }
@@ -105,10 +105,10 @@ void Light::draw()
 	glRotatef(m_bRedY, 0.0f, 1.0f, 0.0f);
 
 	// 设置红色光源位置
-	glLightfv(GL_LIGHT1, GL_POSITION, lightPositionR);
+	glLightfv(GL_LIGHT1, GL_POSITION, LightPositionR);
 
 	// 在光源位置处绘制一个球代表光源
-	glTranslatef(lightPositionR[0], lightPositionR[1], lightPositionR[2]);
+	glTranslatef(LightPositionR[0], LightPositionR[1], LightPositionR[2]);
 	glColor3f(1.0f, 0.0f, 0.0f);
 
 	glPushAttrib(GL_LIGHTING_BIT);
@@ -126,10 +126,10 @@ void Light::draw()
 	glRotatef(m_bGreenY, 0.0f, 1.0f, 0.0f);
 
 	// 设置绿色光源位置
-	glLightfv(GL_LIGHT2, GL_POSITION, lightPositionG);
+	glLightfv(GL_LIGHT2, GL_POSITION, LightPositionG);
 
 	// 在光源位置处绘制一个球代表光源
-	glTranslatef(lightPositionG[0], lightPositionG[1], lightPositionG[2]);
+	glTranslatef(LightPositionG[0], LightPositionG[1], LightPositionG[2]);
 	glColor3f(0.0f, 1.0f, 0.0f);	// 绿色
 
 	glPushAttrib(GL_LIGHTING_BIT);
@@ -147,10 +147,10 @@ void Light::draw()
 	glRotatef(m_bBlueY, 0.0f, 1.0f, 0.0f);
 
 	// 设置蓝色光源位置
-	glLightfv(GL_LIGHT3, GL_POSITION, lightPositionB);
+	glLightfv(GL_LIGHT3, GL_POSITION, LightPositionB);
 
 	// 在光源位置处绘制一个球代表光源
-	glTranslatef(lightPositionB[0], lightPositionB[1], lightPositionB[2]);
+	glTranslatef(LightPositionB[0], LightPositionB[1], LightPositionB[2]);
 	glColor3f(0.0f, 0.0f, 1.0f);	// 蓝色
 
 	glPushAttrib(GL_LIGHTING_BIT);

@@ -2,6 +2,8 @@
 #include "global.hpp"
 #include "tex.hpp"
 #include "gout.hpp"
+
+#include "illuminant.hpp"
 /*
 	ÇúÃæ¿ØÖÆµã
 */
@@ -34,7 +36,7 @@ void BezierSurface::init()
 {
 	global::gset();
 
-	global::setDefaultLight();
+	LightManager::onDefault();
 
 	global::setDefaultMaterial();
 	glEnable(GL_TEXTURE_2D);

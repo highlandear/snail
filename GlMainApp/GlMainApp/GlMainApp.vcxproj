@@ -149,6 +149,7 @@
     <ClInclude Include="AppManager.hpp" />
     <ClInclude Include="gmath.hpp" />
     <ClInclude Include="gout.hpp" />
+    <ClInclude Include="illuminant.hpp" />
     <ClInclude Include="Impl.hpp" />
     <ClInclude Include="GLEnv.hpp" />
     <ClInclude Include="GlMainApp.h" />
@@ -162,6 +163,7 @@
     <ClInclude Include="tex.hpp" />
     <ClInclude Include="global.hpp" />
     <ClInclude Include="base.hpp" />
+    <ClInclude Include="tuple.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Antialiasing.cpp" />
@@ -178,6 +180,7 @@
     <ClCompile Include="GlMainApp.cpp" />
     <ClCompile Include="gmath.cpp" />
     <ClCompile Include="gout.cpp" />
+    <ClCompile Include="illuminant.cpp" />
     <ClCompile Include="keyStatus.cpp" />
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="MainWnd.cpp" />
@@ -194,6 +197,7 @@
     <ClCompile Include="Tessellation.cpp" />
     <ClCompile Include="tex.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="vector3D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GlMainApp.rc" />

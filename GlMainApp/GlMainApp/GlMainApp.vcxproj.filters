@@ -28,6 +28,9 @@
     <Filter Include="enviroment">
       <UniqueIdentifier>{30c6c25f-d5bd-4eb4-82bd-ab19a4fd5fee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="light">
+      <UniqueIdentifier>{07bdbfad-b9e8-4d4c-bd16-a7377c19e267}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -80,6 +83,12 @@
     </ClInclude>
     <ClInclude Include="global.hpp">
       <Filter>enviroment</Filter>
+    </ClInclude>
+    <ClInclude Include="tuple.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="illuminant.hpp">
+      <Filter>light</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +166,12 @@
     </ClCompile>
     <ClCompile Include="Emboss.cpp">
       <Filter>theme</Filter>
+    </ClCompile>
+    <ClCompile Include="vector3D.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="illuminant.cpp">
+      <Filter>light</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

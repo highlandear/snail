@@ -4,9 +4,9 @@
 #include <gl/GLU.h>
 #include <gl/glut.h>
 #include <gl/glext.h>
-
 #include "keyStatus.hpp"
 #include <string>
+#include "illuminant.hpp"
 
 #ifndef _IMPL_CLASS
 #define _IMPL_CLASS Emboss
@@ -126,7 +126,6 @@ class Texture : public Impl
 {	
 public:
 	~Texture();
-
 	void draw();
 	void init();
 };
@@ -139,7 +138,6 @@ class Antialiasing : public Impl
 public:
 	void draw();
 	void init();
-
 	float getSpeed() { return 0.7f; }
 };
 
@@ -153,10 +151,9 @@ public:
 	~Fog();
 	void draw();
 	void init();
-
 	void update();
-
 	std::wstring usage();
+
 private:
 
 	GLfloat m_fZ;
@@ -199,6 +196,7 @@ public:
 	std::wstring usage();
 
 private:
+
 	GLUquadricObj  * m_pQuadric;
 };
 
@@ -210,11 +208,8 @@ class Bezier : public Impl
 
 public:
 	void init();
-
 	void update();
-
 	void draw();
-
 	std::wstring usage();
 
 	void drawPoints(GLfloat points[][3], int points_num);
@@ -279,6 +274,8 @@ private:
 /**
 	浮雕凸凹映射
 */
+#include "tuple.hpp"
+
 class Emboss : public Impl
 {
 public:
@@ -289,7 +286,21 @@ public:
 	void draw();
 
 private:
+	GLight m_Light;
+
+private:
 	static PFNGLACTIVETEXTUREARBPROC       glActiveTextureARB;
 	static PFNGLMULTITEXCOORD2FARBPROC     glMultiTexCoord2fARB ;
 	static PFNGLCLIENTACTIVETEXTUREARBPROC glClientActiveTextureARB;
+	static const int VER_NUM = 4;
+	static struct VertexInfo
+	{
+		float tu, tv;     // 纹理
+		float nx, ny, nz; // 法线
+		float x, y, z;    // 顶点坐标
+	} g_VerInfo [];
+	
+	TexCoord tc[VER_NUM];	// 偏移后的纹理坐标
+	Vector3D vt[VER_NUM];	// 顶点的切线T分量
+	Vector3D vb[VER_NUM];	// 顶点的切线B分量
 };
