@@ -30,6 +30,8 @@ public:
 
 	UINT getTextureID() { return m_uID; }
 
+	virtual void useMipmap() = 0;
+
 private:
 	std::wstring m_szName;
 	UINT m_uID;
@@ -47,6 +49,8 @@ public:
 	bool load();
 
 	static GLfloat simple_data[];
+
+	void useMipmap() {}
 
 private:
 	GLfloat  * m_pData;
@@ -67,6 +71,7 @@ public:
 
 	bool load();
 
+	void useMipmap();
 private:
 	std::wstring m_szPathName;			// bmp格式图片文件名（含路径）
 
@@ -87,6 +92,8 @@ public:
 	~TgaTex() { _SAFE_DEL_ARRAY(m_pData); }
 
 	bool load();
+
+	void useMipmap();
 
 private:
 	std::wstring m_szPathName;			// bmp格式图片文件名（含路径）

@@ -38,7 +38,6 @@ void BezierSurface::init()
 
 	LightManager::onDefault();
 
-//	global::setDefaultMaterial();
 	glEnable(GL_TEXTURE_2D);
 	
 	TexManager::loadBmpTexrure(L"sea", L"tex\\sea.bmp");

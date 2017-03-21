@@ -88,6 +88,16 @@ bool BmpTex::load()
 	return true;
 }
 
+
+void BmpTex::useMipmap()
+{
+	gluBuild2DMipmaps(GL_TEXTURE_2D, GL_RGB, m_nWith, m_nHight, GL_RGB, GL_UNSIGNED_BYTE, m_pData);
+}
+
+void TgaTex::useMipmap()
+{
+	gluBuild2DMipmaps(GL_TEXTURE_2D, GL_RGB, m_nWith, m_nHight, GL_RGB, GL_UNSIGNED_BYTE, m_pData);
+}
 bool TgaTex::load()
 {
 	FILE *p;

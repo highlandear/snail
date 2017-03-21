@@ -11,8 +11,8 @@ bool MainWnd::create(HINSTANCE hIns, LPCWSTR title, LPCWSTR cname )
 	int h = config.getHight();
 	int f = config.isFull();
 
-	int x0 = f ? 0 : SCREEN_MAX_X > w ? (SCREEN_MAX_X - w) / 2 : 0;
-	int y0 = f ? 0 : SCREEN_MAX_Y > h ? (SCREEN_MAX_Y - h) / 2 : 0;
+	int x0 = f ? 0 : SCREEN_MAX_X > w ? (SCREEN_MAX_X - w) >> 1 : 0;
+	int y0 = f ? 0 : SCREEN_MAX_Y > h ? (SCREEN_MAX_Y - h) >> 1 : 0;
 	int w0 = f ? SCREEN_MAX_Y : w;
 	int h0 = f ? SCREEN_MAX_X : h;
 

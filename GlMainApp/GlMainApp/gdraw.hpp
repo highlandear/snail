@@ -17,8 +17,8 @@ namespace gdraw
 	void drawTeaPot(float size);
 
 	void drawTeaPot(float size, float x, float y, float z);
+	
+	void drawGrid(float field, float interval);
 
-	void print(float x, float y, float z, const char * str);
-
-	void wprint(float x, float y, float z, const wchar_t *str);	
+	void drawCube();
 };

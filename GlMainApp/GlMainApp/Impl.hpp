@@ -10,7 +10,7 @@
 #include "vector3D.hpp"
 
 #ifndef _IMPL_CLASS
-#define _IMPL_CLASS Emboss
+#define _IMPL_CLASS CameraTest
 //#define _IMPL_CLASS MultiTexture
 //#define _IMPL_CLASS BezierSurface
 //#define _IMPL_CLASS Bezier
@@ -271,6 +271,43 @@ private:
 
 	float m_fMove;
 };
+
+/**
+	…„œÒª˙ µœ÷
+*/
+#include "gcamera.hpp"
+class CameraTest : public Impl
+{
+public:
+	void init();
+
+	void update();
+
+	void draw();
+
+//	std::wstring usage();
+
+	float getCamSpeed();
+
+private:
+	Camera m_Cam;
+
+	float m_fDeg;
+
+//	float m_fSpeed;
+};
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
 	∏°µÒÕπ∞º”≥…‰

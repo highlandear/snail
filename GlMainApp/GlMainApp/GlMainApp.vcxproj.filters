@@ -37,6 +37,12 @@
     <Filter Include="base">
       <UniqueIdentifier>{ca7389c0-0164-4a94-b641-8e271301f599}</UniqueIdentifier>
     </Filter>
+    <Filter Include="camera">
+      <UniqueIdentifier>{c556e55f-1166-44fd-9a1f-75544e024c02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="physic">
+      <UniqueIdentifier>{d534dd8d-5158-462b-a04f-ee24b1e3469a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -98,6 +104,12 @@
     </ClInclude>
     <ClInclude Include="vector3D.hpp">
       <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="gcamera.hpp">
+      <Filter>camera</Filter>
+    </ClInclude>
+    <ClInclude Include="speed.hpp">
+      <Filter>physic</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +190,15 @@
     </ClCompile>
     <ClCompile Include="gdraw.cpp">
       <Filter>helper</Filter>
+    </ClCompile>
+    <ClCompile Include="vector3D.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="gcamera.cpp">
+      <Filter>camera</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraTest.cpp">
+      <Filter>theme</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
