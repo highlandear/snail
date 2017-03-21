@@ -3,6 +3,7 @@
 #include <gl/GL.h>
 #include <gl/GLU.h>
 
+
 void Camera::set()
 {
 	gluLookAt(p.x, p.y, p.z, f.x, f.y, f.z, u.x, u.y, u.z);
@@ -28,17 +29,10 @@ void Camera::yaw(float sv)
 
 void Camera::up(float sv)
 {
-	Dir v = Vector3D(0.0f, sv, 0.0f);
+	Vec v = u * sv;
 
 	f += v;
 	p += v;
-}
-
-void Camera::dup(float sv)
-{
-	Dir v = Vector3D(0.0f, sv, 0.0f);
-
-	f += v;
 }
 
 void Camera::roll(float a, float x, float y, float z)
@@ -49,83 +43,69 @@ void Camera::roll(float a, float x, float y, float z)
 	f = p + vta;
 }
 
-void Camera::setViewByMouse()
-
+void Camera::followMouse()
 {
-	POINT mousePos;									  /**< 保存当前鼠标位置 */
-	int middleX = GetSystemMetrics(SM_CXSCREEN) >> 1; /**< 得到屏幕宽度的一半 */
-	int middleY = GetSystemMetrics(SM_CYSCREEN) >> 1; /**< 得到屏幕高度的一半 */
-	float angleY = 0.0f;							  /**< 摄像机左右旋转角度 */
-	float angleZ = 0.0f;		                      /**< 摄像机上下旋转角度 */
-	static float currentRotX = 0.0f;
+	POINT mp;
+	GetCursorPos(&mp);
 
-	/** 得到当前鼠标位置 */
-	GetCursorPos(&mousePos);
-	ShowCursor(TRUE);
+	POINT mid = { GetSystemMetrics(SM_CXSCREEN) >> 1 , GetSystemMetrics(SM_CYSCREEN) >> 1 };
 
-	/** 如果鼠标没有移动,则不用更新 */
-	if ((mousePos.x == middleX) && (mousePos.y == middleY))
+	if (mp.x == mid.x && mp.y == mid.y)
 		return;
 
-	/** 设置鼠标位置在屏幕中心 */
-	SetCursorPos(middleX, middleY);
+	SetCursorPos(mid.x, mid.y);
 
-	/**< 得到鼠标移动方向 */
-	angleY = (float)((middleX - mousePos.x)) / 1000.0f;
-	angleZ = (float)((middleY - mousePos.y)) / 1000.0f;
+	float angY = (float)(mid.x - mp.x) / 1000.0f;
+	float angX = (float)(mid.y - mp.y) / 1000.0f;
+	roll(angY, 0.0f, 1.0f, 0.0f);
 
-	static float lastRotX = 0.0f;      /**< 用于保存旋转角度 */
-	lastRotX = currentRotX;
+	Vec axis = (f - p) * u;
+	axis.normalize();
 
-	/** 跟踪摄像机上下旋转角度 */
-	currentRotX += angleZ;
+	if (angX > 1.0f) angX = 1.0f;
+	if (angX < -1.0) angX = -1.0f;
 
-	/** 如果上下旋转弧度大于1.0,我们截取到1.0并旋转 */
-	if (currentRotX > 1.0f)
-	{
-		currentRotX = 1.0f;
+	roll(angX, axis.x, axis.y, axis.z);	
+}
 
-		/** 根据保存的角度旋转方向 */
-		if (lastRotX != 1.0f)
-		{
-			/** 通过叉积找到与旋转方向垂直的向量 */
-			Vec vAxis = f - p;
-			vAxis = vAxis*(u);
-			vAxis = vAxis.normalize();
+void Camera::update()
+{
+	// 前后
+	if (isKeyDown('W'))
+		go(getMoveSpeed());
+	else if (isKeyDown('S'))
+		go(- getMoveSpeed());
 
-			///旋转
-			roll(1.0f - lastRotX, vAxis.x, vAxis.y, vAxis.z);
-		}
-	}
-	/** 如果旋转弧度小于-1.0,则也截取到-1.0并旋转 */
-	else if (currentRotX < -1.0f)
-	{
-		currentRotX = -1.0f;
+	// 左右
+	if (isKeyDown('A'))
+		yaw(getMoveSpeed());
+	else if (isKeyDown('D'))
+		yaw(- getMoveSpeed());
 
-		if (lastRotX != -1.0f)
-		{
+	// 上下
+	if (isKeyDown(VK_UP))
+		up(getMoveSpeed());
+	else if (isKeyDown(VK_DOWN))
+		up(-getMoveSpeed());
 
-			/** 通过叉积找到与旋转方向垂直的向量 */
-			Vec vAxis = f - p;
-			vAxis = vAxis*(u);
-			vAxis = vAxis.normalize();
+	// 顺逆 时钟
+	if (isKeyDown(VK_LEFT))
+		roll(getRollSpeed(), 0.0f, 1.0f, 0.0f);
+	else if (isKeyDown(VK_RIGHT))
+		roll(- getRollSpeed(), 0.0f, 1.0f, 0.0f);
+	
+	// Ctrl 键，跟踪鼠标
+	if (isKeyDown(VK_CONTROL))
+		followMouse();
 
-			///旋转
-			roll(-1.0f - lastRotX, vAxis.x, vAxis.y, vAxis.z);
-		}
-	}
-	/** 否则就旋转angleZ度 */
-	else
-	{
-		/** 找到与旋转方向垂直向量 */
-		Vec vAxis = f - p;
-		vAxis = vAxis*(u);
-		vAxis = vAxis.normalize();
+}
 
-		///旋转
-		roll(angleZ, vAxis.x, vAxis.y, vAxis.z);
-	}
+float Camera::getMoveSpeed()
+{
+	return isKeyDown(VK_SHIFT) ? 0.3f : 0.1f;
+}
 
-	/** 总是左右旋转摄像机 */
-	roll(angleY, 0, 1, 0);
+float Camera::getRollSpeed()
+{
+	return isKeyDown(VK_SHIFT) ? 0.01f : 0.003f;
 }

@@ -285,14 +285,10 @@ public:
 
 	void draw();
 
-//	std::wstring usage();
-
-	float getCamSpeed();
+	std::wstring usage();
 
 private:
 	Camera m_Cam;
-
-	float m_fDeg;
 
 //	float m_fSpeed;
 };
