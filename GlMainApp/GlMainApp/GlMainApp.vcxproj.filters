@@ -43,6 +43,9 @@
     <Filter Include="physic">
       <UniqueIdentifier>{d534dd8d-5158-462b-a04f-ee24b1e3469a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="terrain">
+      <UniqueIdentifier>{f8eac82a-aa23-4d76-befe-e717b0136bdc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -110,6 +113,12 @@
     </ClInclude>
     <ClInclude Include="speed.hpp">
       <Filter>physic</Filter>
+    </ClInclude>
+    <ClInclude Include="terrian.hpp">
+      <Filter>terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="coord.hpp">
+      <Filter>helper</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +208,15 @@
     </ClCompile>
     <ClCompile Include="CameraTest.cpp">
       <Filter>theme</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>theme</Filter>
+    </ClCompile>
+    <ClCompile Include="terrian.cpp">
+      <Filter>terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="coord.cpp">
+      <Filter>helper</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

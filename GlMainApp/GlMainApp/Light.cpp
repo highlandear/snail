@@ -113,7 +113,7 @@ void Light::draw()
 
 	glPushAttrib(GL_LIGHTING_BIT);
 	glDisable(GL_LIGHTING);			// 先关闭光照
-	glutSolidSphere(0.2, 50, 50);
+//	glutSolidSphere(0.2, 50, 50);
 	glEnable(GL_LIGHTING);			// 再启用光照
 	glPopAttrib();
 	glPopMatrix();
@@ -134,7 +134,7 @@ void Light::draw()
 
 	glPushAttrib(GL_LIGHTING_BIT);
 	glDisable(GL_LIGHTING);			// 关闭光照
-	glutSolidSphere(0.1, 50, 50);
+//	glutSolidSphere(0.1, 50, 50);
 	glEnable(GL_LIGHTING);			// 启用光照
 	glPopAttrib();
 	glPopMatrix();
@@ -155,7 +155,7 @@ void Light::draw()
 
 	glPushAttrib(GL_LIGHTING_BIT);
 	glDisable(GL_LIGHTING);			// 关闭光照
-	glutSolidSphere(0.1, 50, 50);
+//	glutSolidSphere(0.1, 50, 50);
 	glEnable(GL_LIGHTING);			// 启用光照
 	glPopAttrib();
 	glPopMatrix();
@@ -168,7 +168,7 @@ void Light::draw()
 	glRotatef(getParam(), 0.0f, 1.0f, 0.0f);
 	glRotatef(getParam(), 0.0f, 0.0f, 1.0f);
 	glColor3f(1.0, 1.0, 1.0);
-	glutSolidSphere(0.4, 50, 50);
+//	glutSolidSphere(0.4, 50, 50);
 	gdraw::drawBall(0.4);
 	glPopMatrix();
 	

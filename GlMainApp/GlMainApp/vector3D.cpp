@@ -2,7 +2,6 @@
 
 /*
 	矩阵 乘 向量
-
 */
 Vector3D Vector3D::rihgtProduct(float m[3][3])
 {
@@ -15,22 +14,19 @@ Vector3D Vector3D::rihgtProduct(float m[3][3])
 }
 
 /*
-	延 （Ax, Ay, Az） 向量旋转 theta 弧度
+	沿（Ax, Ay, Az） 向量旋转 theta 弧度
 */
 Vector3D Vector3D::roll(float theta, float Ax, float Ay, float Az)
 {
 	float c = cosf(theta);
 	float s = sinf(theta);
-
 	
 	// 旋转 矩阵
-	
 	float mat[3][3] = {
 		{ c + (1-c)*Ax*Ax,  (1 - c)*Ax*Ay - s*Az,  (1 - c)*Ax*Az + s*Ay},
 		{ (1-c)*Ax*Ay+s*Az,  c+(1-c)*Ay*Ay,        (1-c)*Ay*Az-s*Ax },
 		{ (1-c)*Ax*Az-s*Ay,  (1-c)*Ay*Az+s*Ax,       c+(1-c)*Az*Az}
 	};
 
-	
 	return rihgtProduct(mat);
 }

@@ -20,7 +20,7 @@ void Antialiasing::draw()
 	glDisable(GL_BLEND);
 
 	glColor3f(0.0f, 0.0f, 1.0f);
-	glutWireCube(2.5);
+//	glutWireCube(2.5);
 
 	// 反走样效果
 	glEnable(GL_LINE_SMOOTH);
@@ -29,7 +29,7 @@ void Antialiasing::draw()
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 
 	glColor3f(1.0f, 0.0f, 1.0f);
-	glutWireCube(2.2);
+//	glutWireCube(2.2);
 	
 	glLoadIdentity();
 

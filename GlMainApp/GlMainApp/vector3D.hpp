@@ -32,7 +32,7 @@ typedef struct Vector3D : public Triple<float>
 	// 归一化
 	Vector3D Vector3D::normalize()
 	{
-		float ln = len();                  /**< 计算向量长度 */
+		float ln = len();
 		if (ln == 0) ln = 1;
 
 		x /= ln;

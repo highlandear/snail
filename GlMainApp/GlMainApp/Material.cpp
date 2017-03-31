@@ -47,7 +47,7 @@ void Material::draw()
 	glMaterialfv(GL_FRONT, GL_SPECULAR, no_mat);
 	glMaterialfv(GL_FRONT, GL_SHININESS, no_shininess);
 	glMaterialfv(GL_FRONT, GL_EMISSION, no_mat);
-	glutSolidSphere(0.5, 50, 50);
+//	glutSolidSphere(0.5, 50, 50);
 	glPopMatrix();
 
 	/** 第一行第二列绘制的球有漫反射光和镜面光，并有低高光，而无环境光 。*/
@@ -58,7 +58,7 @@ void Material::draw()
 	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
 	glMaterialfv(GL_FRONT, GL_SHININESS, low_shininess);
 	glMaterialfv(GL_FRONT, GL_EMISSION, no_mat);
-	glutSolidSphere(0.5, 50, 50);
+//	glutSolidSphere(0.5, 50, 50);
 	glPopMatrix();
 
 	/** 第一行第三列绘制的球有漫反射光和镜面光，并有很亮的高光，而无环境光 。*/
@@ -69,7 +69,7 @@ void Material::draw()
 	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
 	glMaterialfv(GL_FRONT, GL_SHININESS, high_shininess);
 	glMaterialfv(GL_FRONT, GL_EMISSION, no_mat);
-	glutSolidSphere(0.5, 50, 50);
+//	glutSolidSphere(0.5, 50, 50);
 	glPopMatrix();
 
 	/** 第一行第四列绘制的球有漫反射光和辐射光，而无环境和镜面反射光。*/
@@ -80,7 +80,7 @@ void Material::draw()
 	glMaterialfv(GL_FRONT, GL_SPECULAR, no_mat);
 	glMaterialfv(GL_FRONT, GL_SHININESS, no_shininess);
 	glMaterialfv(GL_FRONT, GL_EMISSION, mat_emission);
-	glutSolidSphere(0.5, 50, 50);
+//	glutSolidSphere(0.5, 50, 50);
 	glPopMatrix();
 
 	/** 第二行第一列绘制的球有漫反射光和环境光，而镜面反射光。*/
@@ -91,7 +91,7 @@ void Material::draw()
 	glMaterialfv(GL_FRONT, GL_SPECULAR, no_mat);
 	glMaterialfv(GL_FRONT, GL_SHININESS, no_shininess);
 	glMaterialfv(GL_FRONT, GL_EMISSION, no_mat);
-	glutSolidSphere(0.5, 50, 50);
+//	glutSolidSphere(0.5, 50, 50);
 	glPopMatrix();
 
 	/** 第二行第二列绘制的球有漫反射光、环境光和镜面光，且有低高光。*/
@@ -102,7 +102,7 @@ void Material::draw()
 	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
 	glMaterialfv(GL_FRONT, GL_SHININESS, low_shininess);
 	glMaterialfv(GL_FRONT, GL_EMISSION, no_mat);
-	glutSolidSphere(0.5, 50, 50);
+//	glutSolidSphere(0.5, 50, 50);
 	glPopMatrix();
 
 	/** 第二行第三列绘制的球有漫反射光、环境光和镜面光，且有很亮的高光。*/
@@ -113,7 +113,7 @@ void Material::draw()
 	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
 	glMaterialfv(GL_FRONT, GL_SHININESS, high_shininess);
 	glMaterialfv(GL_FRONT, GL_EMISSION, no_mat);
-	glutSolidSphere(0.5, 50, 50);
+//	glutSolidSphere(0.5, 50, 50);
 	glPopMatrix();
 
 	/** 第二行第四列绘制的球有漫反射光、环境光和辐射光，而无镜面光。*/
@@ -124,7 +124,7 @@ void Material::draw()
 	glMaterialfv(GL_FRONT, GL_SPECULAR, no_mat);
 	glMaterialfv(GL_FRONT, GL_SHININESS, no_shininess);
 	glMaterialfv(GL_FRONT, GL_EMISSION, mat_emission);
-	glutSolidSphere(0.5, 50, 50);
+//	glutSolidSphere(0.5, 50, 50);
 	glPopMatrix();
 
 	/** 第三行第一列绘制的球有漫反射光和有颜色的环境光，而无镜面光。*/
@@ -135,7 +135,7 @@ void Material::draw()
 	glMaterialfv(GL_FRONT, GL_SPECULAR, no_mat);
 	glMaterialfv(GL_FRONT, GL_SHININESS, no_shininess);
 	glMaterialfv(GL_FRONT, GL_EMISSION, no_mat);
-	glutSolidSphere(0.5, 50, 50);
+//	glutSolidSphere(0.5, 50, 50);
 	glPopMatrix();
 
 	/** 第三行第二列绘制的球有漫反射光和有颜色的环境光以及镜面光，且有低高光。*/
@@ -146,7 +146,7 @@ void Material::draw()
 	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
 	glMaterialfv(GL_FRONT, GL_SHININESS, low_shininess);
 	glMaterialfv(GL_FRONT, GL_EMISSION, no_mat);
-	glutSolidSphere(0.5, 50, 50);
+//	glutSolidSphere(0.5, 50, 50);
 	glPopMatrix();
 
 	/** 第三行第三列绘制的球有漫反射光和有颜色的环境光以及镜面光，且有很亮的高光。*/
@@ -157,7 +157,7 @@ void Material::draw()
 	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
 	glMaterialfv(GL_FRONT, GL_SHININESS, high_shininess);
 	glMaterialfv(GL_FRONT, GL_EMISSION, no_mat);
-	glutSolidSphere(0.5, 50, 50);
+//	glutSolidSphere(0.5, 50, 50);
 	glPopMatrix();
 
 	/** 第三行第四列绘制的球有漫反射光和有颜色的环境光以及辐射光，而无镜面光。*/

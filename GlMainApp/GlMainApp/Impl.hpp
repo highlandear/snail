@@ -2,15 +2,17 @@
 #include <windows.h>
 #include <gl/GL.h>
 #include <gl/GLU.h>
-#include <gl/glut.h>
+//#include <gl/glut.h>
 #include <gl/glext.h>
 #include "keyStatus.hpp"
 #include <string>
 #include "illuminant.hpp"
 #include "vector3D.hpp"
+#include "terrian.hpp"
 
 #ifndef _IMPL_CLASS
-#define _IMPL_CLASS CameraTest
+#define _IMPL_CLASS World
+//#define _IMPL_CLASS CameraTest
 //#define _IMPL_CLASS MultiTexture
 //#define _IMPL_CLASS BezierSurface
 //#define _IMPL_CLASS Bezier
@@ -289,20 +291,31 @@ public:
 
 private:
 	Camera m_Cam;
-
-//	float m_fSpeed;
 };
 
 
+#include "coord.hpp"
+class World : public Impl
+{
 
+public:	
 
+	void init();
 
+	void update();
 
+	void draw();
 
+	std::wstring usage();
 
+private:
+	Camera m_Cam;
 
+	Terrain m_Ter;
 
+	Coord m_Cor;
 
+};
 
 
 /**

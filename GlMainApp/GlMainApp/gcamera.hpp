@@ -22,9 +22,7 @@ public:
 	
 	void update();
 
-private:
-
-	
+private:	
 	/*
 		前后平移 （从 p 延 p->f 即（f-p）方向移动）
 	*/
@@ -64,6 +62,6 @@ private:
 
 private:
 	Pos p;					// position where camera located
-	Pos f;					// focus direction
+	Pos f;					// focus position
 	Vec u;					// dirction vector to describe how to see "the up direction"
 };

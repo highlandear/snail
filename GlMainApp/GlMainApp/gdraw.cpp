@@ -1,5 +1,6 @@
 #include "gdraw.hpp"
 #include <gl/glut.h>
+#include <gl/GL.h>
 #include <vector>
 
 
@@ -20,7 +21,7 @@ void gdraw::drawBall(float radius, float x, float y, float z)
 
 void gdraw::drawCube(float size)
 {
-	glutSolidCube(size);
+//	glutSolidCube(size);
 }
 
 void gdraw::drawCube(float size, float x, float y, float z)
@@ -28,14 +29,14 @@ void gdraw::drawCube(float size, float x, float y, float z)
 	glPushMatrix();
 	{
 		glTranslatef(x, y, z);
-		glutSolidCube(size);
+	//	glutSolidCube(size);
 	}
 	glPopMatrix();
 }
 
 void gdraw::drawTeaPot(float size)
 {
-	glutSolidTeapot(size);
+//	glutSolidTeapot(size);
 }
 
 void gdraw::drawTeaPot(float size, float x, float y, float z)
@@ -43,7 +44,7 @@ void gdraw::drawTeaPot(float size, float x, float y, float z)
 	glPushMatrix();
 	{
 		glTranslatef(x, y, z);
-		glutSolidTeapot(size);
+//		glutSolidTeapot(size);
 	}
 	glPopMatrix();
 }

@@ -23,4 +23,14 @@ public:
 	{
 		return cosf(_DEG2RAD(degree));
 	}
+
+	/*
+		双线性插值公式
+		f(x,y)= f(0, 0)(1 - x)(1 - y) + f(1, 0)x(1 - y) + f(0, 1)(1 - x)y + f(1, 1)xy
+	*/
+	static float bili_interpolation(float f00, float f01, float f10, float f11, float x, float y)
+	{
+		return f00 * (1.0f - x) * (1.0f - y) + f01 * (1.0f - x) * y + f10 * x * (1.0f - y) + f11 * x * y;
+	}
+
 };
