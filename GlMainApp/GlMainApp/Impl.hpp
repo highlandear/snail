@@ -313,7 +313,7 @@ private:
 
 	Terrain m_Ter;
 
-	Coord m_Cor;
+//	Coord m_Cor;
 
 };
 

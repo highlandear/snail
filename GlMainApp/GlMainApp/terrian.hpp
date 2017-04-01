@@ -26,8 +26,6 @@ public:
 	*/
 	int getAveHeight(float x, float z);
 
-	/** 设置纹理坐标 */
-//	void setTexCoord(float x, float z);
 
 	void draw();
 
@@ -41,6 +39,10 @@ public:
 	void drawPoints();
 
 	void drawGridPoints();
+
+	void drawSign();
+
+	void setTexCoord(float x, float z);
 
 private:
 	std::wstring m_szHeightMapName; // 地表高度描述文件

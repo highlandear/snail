@@ -1,8 +1,8 @@
 #include "Impl.hpp"
 #include "global.hpp"
-#include "gdraw.hpp"
 #include "tex.hpp"
 #include "gout.hpp"
+#include "gdraw.hpp"
 
 void World::init()
 {
@@ -11,23 +11,29 @@ void World::init()
 	m_Cam = Camera
 	(
 		
-		50.0f, 190.0f, 50.0f,
-		-10.0f, 190.0f, -10.0f,
+		300.0f, 210.0f, 300.0f,
+		500.0f, 190.0f, 500.0f,
 		0.0f, 1.0f, 0.0f
 	);
-	m_Cor = Coord(0.0f, 190.0f, 0.0f, 1.0f);
 
-	LightManager::onDefault();
+//	LightManager::onDefault();
+	TexManager::loadBmpTexrure(L"terrain", L"tex\\terrain.bmp");
 	TexManager::loadBmpTexrure(L"box", L"tex\\box.bmp");
-//	TexManager::attach(L"box");
 
 	m_Ter = Terrain(L"ter\\terrain.raw", 1024, 1024, 16);
 	m_Ter.load();
+
+	LightManager::disable();
 }
 
 void World::update()
 {
 	m_Cam.update();
+
+	if(isKeyDown('L'))
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	else
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 	Impl::update();
 }
@@ -38,18 +44,23 @@ void World::draw()
 	glLoadIdentity();
 
 	glColor3f(0.0f, 1.0f, 0.0f);
-	 m_Cam.set();
+	m_Cam.set();
 	{
-		glTranslatef(0.0f, 0.0f, -10.0f);
-		
-		glPushMatrix();
-		glColor3f(1.0f, 0.0f, 0.0f);
-		glTranslatef(0, 190, 0);
-		gdraw::drawBall(0.5f);
-		glPopMatrix();
+		glTranslatef(0.0f, 0.0f, -10.0f);	
 
-		m_Ter.drawPoints();
-		m_Ter.drawGridPoints();
+		m_Ter.drawSign();
+	//	m_Ter.drawPoints();
+		m_Ter.drawGridPoints();	
+		TexManager::attach(L"terrain");
+
+		m_Ter.drawGrid();
+
+		TexManager::attach(L"box");
+
+		float x0 = 300.0f;
+		float z0 = 300.0f;
+		float y0 = m_Ter.getAveHeight(x0, z0);
+		gdraw::drawCube(x0, y0, z0, 10.0f);
 		glLoadIdentity();
 		gout::wprint(usage(), -2.5f, 1.5f, -5.0f);
 	}

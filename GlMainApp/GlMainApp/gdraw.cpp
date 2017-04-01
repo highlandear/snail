@@ -24,12 +24,13 @@ void gdraw::drawCube(float size)
 //	glutSolidCube(size);
 }
 
-void gdraw::drawCube(float size, float x, float y, float z)
+void gdraw::drawCube( float x, float y, float z, float size)
 {
 	glPushMatrix();
 	{
 		glTranslatef(x, y, z);
-	//	glutSolidCube(size);
+		glScaled(size, size, size);
+		drawCube();
 	}
 	glPopMatrix();
 }

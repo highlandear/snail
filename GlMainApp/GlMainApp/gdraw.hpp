@@ -12,7 +12,7 @@ namespace gdraw
 
 	void drawCube(float size);	
 
-	void drawCube(float size, float x, float y, float z);
+	void drawCube(float x, float y, float z, float size);
 	
 	void drawTeaPot(float size);
 

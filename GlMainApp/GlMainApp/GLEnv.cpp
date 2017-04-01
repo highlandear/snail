@@ -1,7 +1,5 @@
 #include "GLEnv.hpp"
 
-//Light GLEnv::imp;
-
 PIXELFORMATDESCRIPTOR GLEnv::pfd =
 {
 	sizeof(PIXELFORMATDESCRIPTOR),
@@ -56,10 +54,11 @@ bool GLEnv::init(HWND h, int b)
 
 void GLEnv::glshape(int w, int h)
 {
-	glViewport(0, 0, w, h);									/**< 重新设置视口 */
+	glViewport(0, 0, w, h);	
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(45.0f, (GLfloat)w/h, 1.0f, 100.0f);	
+	//gluPerspective(45.0f, (GLfloat)w/h, 1.0f, 100.0f);	
+	gluPerspective(45.0f, (GLfloat)w / (GLfloat)h, 0.1f, 4000.0f);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 }

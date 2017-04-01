@@ -75,8 +75,8 @@ int Terrain::getAveHeight(float x, float z)
 	float h10 = floatHeight(find(r1, c0));
 	float h11 = floatHeight(find(r1, c1));
 
-	float dx = x - c0;
-	float dz = z - r0;
+	float dx = (x - c0) / m_scale;
+	float dz = (z - r0) / m_scale;
 
 	return gmath::bili_interpolation(h00, h01, h10, h11, dx, dz);
 }
@@ -88,9 +88,49 @@ void Terrain::draw()
 
 }
 
+void Terrain::drawSign()
+{
+	glPushMatrix();
+	glColor3f(1.0f, 0.0f, 0.0f);
+	glTranslatef(0, 190, 0);
+	gdraw::drawBall(0.8f);
+	glPopMatrix();
+}
+
+void Terrain::setTexCoord(float x, float z)
+{
+	glTexCoord2f((float)x / (float)m_width,
+		(float)z / (float) m_height);
+}
+
 void Terrain::drawGrid()
 {
+	glColor3f(1.0f, 1.0f, 1.0f);
 
+	for (int c = 0; (c + m_scale) < m_width; c += m_scale)
+	{
+		glBegin(GL_TRIANGLE_STRIP);
+		{
+			for (int r = 0; (r + m_scale) < m_height; r += m_scale)
+			{
+				float x0 = (float)c;
+				float z0 = (float)r;
+				float y0 = floatHeight(find(r, c));
+
+				int r1 = r, c1 = c + m_scale;
+				float x1 = (float)c1;
+				float z1 = (float)r1;
+				float y1 = floatHeight(find(r1, c1));
+
+				setTexCoord(x0, z0);
+				glVertex3f(x0, y0, z0);
+
+				setTexCoord(x1, z1);
+				glVertex3f(x1, y1, z1);
+			}			
+		}
+		glEnd();
+	}
 }
 
 void Terrain::drawGridPoints()
@@ -100,12 +140,12 @@ void Terrain::drawGridPoints()
 	glPointSize(5.0f);
 	glBegin(GL_POINTS);
 	{
-		for (int r = 0; r < m_width; r+=m_scale)
+		for (int r = 0; r < m_height; r+=m_scale)
 		{
-			for (int c = 0; c < m_height; c+= m_scale)
+			for (int c = 0; c < m_width; c+= m_scale)
 			{
-				float x = (float)r;
-				float z = (float)c;
+				float z = (float)r;
+				float x = (float)c;
 				float y = floatHeight(find(r, c));
 
 				glVertex3f(x, y, z);
@@ -117,7 +157,7 @@ void Terrain::drawGridPoints()
 
 void Terrain::drawPoints()
 {
-	glColor3f(0.0f, 1.0f, 0.0f);
+	glColor3f(1.0f, 1.0f, 1.0f);
 
 	glPointSize(1.0f);
 	glBegin(GL_POINTS);
@@ -126,8 +166,8 @@ void Terrain::drawPoints()
 		{
 			for (int c = 0; c < m_height; c++)
 			{
-				float x = (float) r;
-				float z = (float) c;
+				float z = (float) r;
+				float x = (float) c;
 				float y = floatHeight(find(r, c));
 
 				glVertex3f(x, y, z);
