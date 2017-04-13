@@ -294,7 +294,7 @@ private:
 };
 
 
-#include "coord.hpp"
+#include "skyBox.hpp"
 class World : public Impl
 {
 
@@ -313,7 +313,10 @@ private:
 
 	Terrain m_Ter;
 
+	SkyBox m_Sky;
 //	Coord m_Cor;
+
+
 
 };
 

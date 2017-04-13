@@ -43,7 +43,7 @@
     <Filter Include="physic">
       <UniqueIdentifier>{d534dd8d-5158-462b-a04f-ee24b1e3469a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="terrain">
+    <Filter Include="scene">
       <UniqueIdentifier>{f8eac82a-aa23-4d76-befe-e717b0136bdc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -115,10 +115,13 @@
       <Filter>physic</Filter>
     </ClInclude>
     <ClInclude Include="terrian.hpp">
-      <Filter>terrain</Filter>
+      <Filter>scene</Filter>
     </ClInclude>
     <ClInclude Include="coord.hpp">
       <Filter>helper</Filter>
+    </ClInclude>
+    <ClInclude Include="skyBox.hpp">
+      <Filter>scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -213,10 +216,13 @@
       <Filter>theme</Filter>
     </ClCompile>
     <ClCompile Include="terrian.cpp">
-      <Filter>terrain</Filter>
+      <Filter>scene</Filter>
     </ClCompile>
     <ClCompile Include="coord.cpp">
       <Filter>helper</Filter>
+    </ClCompile>
+    <ClCompile Include="skyBox.cpp">
+      <Filter>scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

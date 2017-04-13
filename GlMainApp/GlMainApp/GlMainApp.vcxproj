@@ -165,6 +165,7 @@
     <ClInclude Include="MainWnd.hpp" />
     <ClInclude Include="mconfig.hpp" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="skyBox.hpp" />
     <ClInclude Include="speed.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -201,6 +202,7 @@
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="MultiTexture.cpp" />
     <ClCompile Include="Quadrics.cpp" />
+    <ClCompile Include="skyBox.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

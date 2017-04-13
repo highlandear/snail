@@ -14,8 +14,6 @@ public:
 
 	void init();
 
-	void setTexName(std::wstring n) { m_szTexName = n; }
-
 	/*
 		 获取网格 (row, col)的高度值
 	*/
@@ -34,8 +32,6 @@ public:
 	*/
 	float floatHeight(unsigned char v) { return (float)v; }
 
-	void drawGrid();
-
 	void drawPoints();
 
 	void drawGridPoints();
@@ -44,9 +40,10 @@ public:
 
 	void setTexCoord(float x, float z);
 
+	void drawBox(float x, float z);
+
 private:
 	std::wstring m_szHeightMapName; // 地表高度描述文件
-	std::wstring m_szTexName;		// 地表纹理
 
 	int m_width;					// 网格 X方向上的顶点数
 	int m_height;					// 网格 Z方向上的顶点数

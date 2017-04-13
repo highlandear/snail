@@ -102,7 +102,7 @@ void Camera::update()
 
 float Camera::getMoveSpeed()
 {
-	return isKeyDown(VK_SHIFT) ? 1.0f : 0.5f;
+	return isKeyDown(VK_SHIFT) ? 3.0f : 1.5f;
 }
 
 float Camera::getRollSpeed()

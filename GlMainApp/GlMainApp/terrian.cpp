@@ -13,7 +13,10 @@ Terrain::Terrain(std::wstring hmpn, int w, int h, int s)
 void Terrain::init()
 {
 	load();
-//	TexManager::attach(m_szTexName);
+
+	TexManager::loadBmpTexrure(L"terrain", L"tex\\terrain.bmp");
+
+	TexManager::loadBmpTexrure(L"box", L"tex\\box.bmp");
 }
 
 bool Terrain::load()
@@ -81,13 +84,6 @@ int Terrain::getAveHeight(float x, float z)
 	return gmath::bili_interpolation(h00, h01, h10, h11, dx, dz);
 }
 
-void Terrain::draw()
-{
-	if (NULL == m_pData) return;
-
-
-}
-
 void Terrain::drawSign()
 {
 	glPushMatrix();
@@ -103,9 +99,11 @@ void Terrain::setTexCoord(float x, float z)
 		(float)z / (float) m_height);
 }
 
-void Terrain::drawGrid()
+void Terrain::draw()
 {
 	glColor3f(1.0f, 1.0f, 1.0f);
+	TexManager::attach(L"terrain");
+
 
 	for (int c = 0; (c + m_scale) < m_width; c += m_scale)
 	{
@@ -175,4 +173,13 @@ void Terrain::drawPoints()
 		}
 	}
 	glEnd();
+}
+
+void Terrain::drawBox(float x, float z)
+{
+	TexManager::attach(L"box");
+
+	float y = getAveHeight(x, z);
+
+	gdraw::drawCube(x, y, z, 10.0f);
 }

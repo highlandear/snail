@@ -11,17 +11,17 @@ void World::init()
 	m_Cam = Camera
 	(
 		
-		300.0f, 210.0f, 300.0f,
+		300.0f, 310.0f, 300.0f,
 		500.0f, 190.0f, 500.0f,
 		0.0f, 1.0f, 0.0f
 	);
 
-//	LightManager::onDefault();
-	TexManager::loadBmpTexrure(L"terrain", L"tex\\terrain.bmp");
-	TexManager::loadBmpTexrure(L"box", L"tex\\box.bmp");
-
 	m_Ter = Terrain(L"ter\\terrain.raw", 1024, 1024, 16);
 	m_Ter.load();
+	m_Ter.init();
+
+	m_Sky = SkyBox(0, 170, 0, 1024, 1024, 600 );
+	m_Sky.init();
 
 	LightManager::disable();
 }
@@ -50,19 +50,19 @@ void World::draw()
 
 		m_Ter.drawSign();
 	//	m_Ter.drawPoints();
-		m_Ter.drawGridPoints();	
-		TexManager::attach(L"terrain");
+	//	m_Ter.drawGridPoints();	
 
-		m_Ter.drawGrid();
+		m_Ter.draw();
+		
+		m_Sky.draw();
 
-		TexManager::attach(L"box");
-
-		float x0 = 300.0f;
-		float z0 = 300.0f;
-		float y0 = m_Ter.getAveHeight(x0, z0);
-		gdraw::drawCube(x0, y0, z0, 10.0f);
+		m_Ter.drawBox(300.0f, 300.0f);
+		
 		glLoadIdentity();
+//		LightManager::disable();
+		glColor3f(1.0f, 1.0f, 1.0f);
 		gout::wprint(usage(), -2.5f, 1.5f, -5.0f);
+//		LightManager::enable();
 	}
 	glFlush();
 }
