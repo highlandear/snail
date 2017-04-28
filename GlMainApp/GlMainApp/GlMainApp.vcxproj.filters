@@ -46,6 +46,9 @@
     <Filter Include="scene">
       <UniqueIdentifier>{f8eac82a-aa23-4d76-befe-e717b0136bdc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="model">
+      <UniqueIdentifier>{ace55f78-10e9-4d7f-815d-4119b4a46d5b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -122,6 +125,12 @@
     </ClInclude>
     <ClInclude Include="skyBox.hpp">
       <Filter>scene</Filter>
+    </ClInclude>
+    <ClInclude Include="3DS.hpp">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="3DSModel.hpp">
+      <Filter>model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -223,6 +232,12 @@
     </ClCompile>
     <ClCompile Include="skyBox.cpp">
       <Filter>scene</Filter>
+    </ClCompile>
+    <ClCompile Include="3DS.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="3DSModel.cpp">
+      <Filter>model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

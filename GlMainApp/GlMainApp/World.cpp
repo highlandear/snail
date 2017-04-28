@@ -12,7 +12,7 @@ void World::init()
 	(
 		
 		300.0f, 310.0f, 300.0f,
-		500.0f, 190.0f, 500.0f,
+		500.0f, 290.0f, 500.0f,
 		0.0f, 1.0f, 0.0f
 	);
 
@@ -22,6 +22,9 @@ void World::init()
 
 	m_Sky = SkyBox(0, 170, 0, 1024, 1024, 600 );
 	m_Sky.init();
+
+	m_Model = TDSModel();
+	m_Model.load(L"3ds\\main.3ds");
 
 	LightManager::disable();
 }
@@ -59,10 +62,8 @@ void World::draw()
 		m_Ter.drawBox(300.0f, 300.0f);
 		
 		glLoadIdentity();
-//		LightManager::disable();
 		glColor3f(1.0f, 1.0f, 1.0f);
 		gout::wprint(usage(), -2.5f, 1.5f, -5.0f);
-//		LightManager::enable();
 	}
 	glFlush();
 }

@@ -9,6 +9,8 @@
 #include "illuminant.hpp"
 #include "vector3D.hpp"
 #include "terrian.hpp"
+#include "skyBox.hpp"
+#include "3DSModel.hpp"
 
 #ifndef _IMPL_CLASS
 #define _IMPL_CLASS World
@@ -294,7 +296,7 @@ private:
 };
 
 
-#include "skyBox.hpp"
+
 class World : public Impl
 {
 
@@ -314,8 +316,8 @@ private:
 	Terrain m_Ter;
 
 	SkyBox m_Sky;
-//	Coord m_Cor;
-
+	
+	TDSModel m_Model;
 
 
 };

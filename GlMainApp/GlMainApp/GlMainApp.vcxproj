@@ -103,7 +103,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -152,6 +152,8 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="3DS.hpp" />
+    <ClInclude Include="3DSModel.hpp" />
     <ClInclude Include="AppManager.hpp" />
     <ClInclude Include="coord.hpp" />
     <ClInclude Include="gcamera.hpp" />
@@ -178,6 +180,8 @@
     <ClInclude Include="vector3D.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="3DS.cpp" />
+    <ClCompile Include="3DSModel.cpp" />
     <ClCompile Include="Antialiasing.cpp" />
     <ClCompile Include="AppManager.cpp" />
     <ClCompile Include="CameraTest.cpp" />
