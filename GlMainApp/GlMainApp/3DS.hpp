@@ -32,6 +32,7 @@
 #define OBJ_FACES	  0x4120		// 对象的面
 #define OBJ_MATERIAL  0x4130		// 对象的材质
 #define OBJ_UV		  0x4140		// 对象的UV纹理坐标
+#define OBJ_SMOOTH	  0x4150
 #define MESH_MATRIX	  0x4160
 
 typedef unsigned short TDSWORD;
@@ -51,6 +52,7 @@ class TDSFile
 public:
 	bool load(std::wstring pn);
 	bool readChunkHead(TDSChunk & chunk);
+
 	void read3DS(TDSDWORD len);
 	void readObject(TDSDWORD len);
 	void readObjMesh(TDSDWORD len);
@@ -61,10 +63,6 @@ public:
 
 
 	size_t readString(char * out);
-
-
-
 private:
 	FILE * m_File;
-	long m_cur;
 };

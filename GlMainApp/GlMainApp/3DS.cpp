@@ -91,12 +91,14 @@ void TDSFile::readObject(TDSDWORD len)
 	if (len < 6)
 		return;
 
-	char name[100];
-	memset(name, 0, 100);
+	char name[128];
+	memset(name, 0, 128);
 	size_t sz = readString(name);
 
 	int cur = ftell(m_File);
-	int bar = cur + len - 6 -(sz + 1);
+	int bar = cur + len - 6;
+	bar -= (sz + 1);
+
 	TDSChunk chunk;
 	while (cur < bar)
 	{	
@@ -126,30 +128,24 @@ void TDSFile::readObjMesh(TDSDWORD len)
 	
 	TDSChunk chunk;
 	while (cur < bar)
-	{
+	{	
 		readChunkHead(chunk);
 		switch (chunk.id)
 		{
 		case OBJ_VERTICES:
-			fseek(m_File, chunk.len - 6, SEEK_CUR);
-		//	readObjVertex(chunk.len);
+			readObjVertex(chunk.len);
 			break;
 		case OBJ_FACES:
-			fseek(m_File, chunk.len - 6, SEEK_CUR);
-			//readObjFace(chunk.len);
+			readObjFace(chunk.len);
 			break;
 		case OBJ_UV:
-			fseek(m_File, chunk.len - 6, SEEK_CUR);
-			//readObjUV(chunk.len);
-			break;
-		case OBJ_MATERIAL:
-			readObjMat(chunk.len);
+			readObjUV(chunk.len);
 			break;
 		default:
 			fseek(m_File, chunk.len - 6, SEEK_CUR);
 			break;
 		}
-
+		
 		cur = ftell(m_File);
 	}
 }
@@ -174,12 +170,38 @@ void TDSFile::readObjFace(TDSDWORD len)
 	if (0 == fread(&num, 1, 2, m_File))
 		return;
 
-	TDSDWORD readlen = len - 6 - 2;
-	TDSBYTE * data = new TDSBYTE[readlen];
-	fread(data, 1, readlen, m_File);
-	// TODO : 详细面信息
+	for (int i = 0; i < num; i++)
+	{
+		fseek(m_File, 8, SEEK_CUR);
+	}
 
-	delete[]  data;
+	int cur = ftell(m_File);
+	int bar = cur + len - 6;
+	bar -= 2;
+	bar -= num * 8;
+
+	TDSChunk chunk;
+	while (cur < bar)
+	{
+		readChunkHead(chunk);
+		switch (chunk.id)
+		{
+		case OBJ_MATERIAL:
+		{
+			readObjMat(chunk.len);
+		}break;
+		case OBJ_SMOOTH:
+		{
+			fseek(m_File, chunk.len - 6, SEEK_CUR);
+		}break;
+		default:
+		{
+			fseek(m_File, chunk.len - 6, SEEK_CUR);
+		}break;
+		}
+
+		cur = ftell(m_File);
+	}
 }
 
 void TDSFile::readObjUV(TDSDWORD len)
@@ -198,17 +220,18 @@ void TDSFile::readObjUV(TDSDWORD len)
 
 void TDSFile::readObjMat(TDSDWORD len)
 {
+	
 	char name[255];
 	memset(name, 0, 255);
 	size_t sz = readString(name);
 
-	TDSDWORD readlen = len - (sz + 1);
-	//TDSBYTE * data = new TDSBYTE[readlen];
-	//fread(data, 1, readlen, m_File);
-	//// TODO : 详细材质信息
+	TDSDWORD readlen = len - 6;
+	readlen -= (sz + 1);
+	TDSBYTE * data = new TDSBYTE[readlen];
+	fread(data, 1, readlen, m_File);
+	// TODO : 详细材质信息
 
-	//delete[]  data;
-	fseek(m_File, readlen, SEEK_CUR);
+	delete[]  data;
 }
 
 size_t TDSFile::readString(char * out)
