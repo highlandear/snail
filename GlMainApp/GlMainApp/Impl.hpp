@@ -10,11 +10,10 @@
 #include "vector3D.hpp"
 #include "terrian.hpp"
 #include "skyBox.hpp"
-#include "3DSModel.hpp"
 
 #ifndef _IMPL_CLASS
-#define _IMPL_CLASS World
-//#define _IMPL_CLASS CameraTest
+//#define _IMPL_CLASS World
+#define _IMPL_CLASS CameraTest
 //#define _IMPL_CLASS MultiTexture
 //#define _IMPL_CLASS BezierSurface
 //#define _IMPL_CLASS Bezier
@@ -280,6 +279,7 @@ private:
 	…„œÒª˙ µœ÷
 */
 #include "gcamera.hpp"
+#include "3DS.hpp"
 class CameraTest : public Impl
 {
 public:
@@ -293,6 +293,8 @@ public:
 
 private:
 	Camera m_Cam;
+
+	TDSFile m_TDSFile;
 };
 
 
@@ -317,7 +319,8 @@ private:
 
 	SkyBox m_Sky;
 	
-	TDSModel m_Model;
+	TDSFile m_TDSFile;
+//	TDSModel m_Model;
 
 
 };

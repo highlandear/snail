@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
-
+#include <vector>
+#include "vector3D.hpp"
 /**
 	3DS 格式文件解析相关
 	
@@ -23,6 +24,7 @@
 // 材质的次级定义
 #define MATNAME       0xA000		// 材质名称
 #define MATDIFFUSE    0xA020		// 对象/材质的颜色
+#define COLOR_24	  0x0011
 #define MATMAP        0xA200		// 新材质的头部
 #define MATMAPFILE    0xA300		// 保存纹理的文件名
 #define OBJ_MESH	  0x4100		// 新的网格对象
@@ -43,9 +45,34 @@ typedef struct _Chunk
 {
 	TDSWORD id;
 	TDSDWORD len;
-//	TDSBYTE * data;
-
 }TDSChunk;
+
+typedef struct _3DSFace
+{
+	unsigned short vertex_index[3];
+	unsigned short coord_index[3];
+}TDSFace;
+
+typedef struct _3DSObject
+{
+	std::string name;
+	std::vector<Vector3D> vertices;
+	std::vector<Vector2D> texuvs;
+	std::vector<TDSFace> faces;
+}TDSObject;
+
+typedef struct _3DSMaterial
+{
+	std::string name;
+	std::string filename;
+	TDSBYTE  color[3];
+}TDSMaterial;
+
+typedef struct _3DSModel
+{
+	std::vector<TDSObject> objs;
+	std::vector<TDSMaterial> mats;
+}TDSModel;
 
 class TDSFile
 {
@@ -53,16 +80,22 @@ public:
 	bool load(std::wstring pn);
 	bool readChunkHead(TDSChunk & chunk);
 
-	void read3DS(TDSDWORD len);
-	void readObject(TDSDWORD len);
-	void readObjMesh(TDSDWORD len);
-	void readObjVertex(TDSDWORD len);
-	void readObjFace(TDSDWORD len);
-	void readObjUV(TDSDWORD len);
-	void readObjMat(TDSDWORD len);
+	void read3DS(int len);
+	void readObject(int len);
+	void readMaterial(int len);
+	void readObjMesh(int len, TDSObject & tdsobj);
+	void readObjVertex(int len, TDSObject & tdsobj);
+	void readObjFace(int len, TDSObject & tdsobj);
+	void readObjUV(int len, TDSObject & tdsobj);
+	
+	void readObjMat(int len);
+	void readMatColor(int len, TDSMaterial & tdsmat);
+	void readMatMap(int len, TDSMaterial & tdsmat);
 
 
 	size_t readString(char * out);
 private:
 	FILE * m_File;
+
+	TDSModel m_Model;
 };

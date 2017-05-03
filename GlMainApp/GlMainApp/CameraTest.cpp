@@ -15,6 +15,9 @@ void CameraTest::init()
 	LightManager::onDefault();
 	TexManager::loadBmpTexrure(L"box", L"tex\\box.bmp");
 	TexManager::attach(L"box");	
+
+	m_TDSFile = TDSFile();
+	m_TDSFile.load(L"3ds\\main.3ds");
 }
 
 void CameraTest::update()

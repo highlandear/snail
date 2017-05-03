@@ -129,9 +129,6 @@
     <ClInclude Include="3DS.hpp">
       <Filter>model</Filter>
     </ClInclude>
-    <ClInclude Include="3DSModel.hpp">
-      <Filter>model</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -234,9 +231,6 @@
       <Filter>scene</Filter>
     </ClCompile>
     <ClCompile Include="3DS.cpp">
-      <Filter>model</Filter>
-    </ClCompile>
-    <ClCompile Include="3DSModel.cpp">
       <Filter>model</Filter>
     </ClCompile>
   </ItemGroup>
