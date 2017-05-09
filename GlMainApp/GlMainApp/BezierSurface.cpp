@@ -40,9 +40,9 @@ void BezierSurface::init()
 
 	glEnable(GL_TEXTURE_2D);
 	
-	TexManager::loadBmpTexrure(L"sea", L"tex\\sea.bmp");
-	TexManager::loadBmpTexrure(L"leaf", L"tex\\leaf.bmp");
-	TexManager::attach(L"sea");
+	TexManager::loadBmpTexrure("sea", "tex\\sea.bmp");
+	TexManager::loadBmpTexrure("leaf", "tex\\leaf.bmp");
+	TexManager::attach("sea");
 
 	glEnable(GL_MAP2_VERTEX_3);
 	glEnable(GL_MAP2_TEXTURE_COORD_2);

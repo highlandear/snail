@@ -1,6 +1,5 @@
 #include "3DS.hpp"
 
-
 bool TDSFile::readChunkHead(TDSChunk & chunk)
 {
 	if (0 == fread(&chunk.id, 1, 2, m_File))
@@ -293,7 +292,7 @@ void TDSFile::readObjFace(int len, TDSObject & tdsobj)
 		{
 		case OBJ_MATERIAL:
 		{
-			readObjMat(chunk.len - 6);
+			readObjMat(chunk.len - 6, tdsobj);
 		}break;
 		case OBJ_SMOOTH:
 		{
@@ -327,19 +326,29 @@ void TDSFile::readObjUV(int len, TDSObject & tdsobj)
 	delete[]  data;
 }
 
-void TDSFile::readObjMat(int len)
+void TDSFile::readObjMat(int len, TDSObject & tdsobj)
 {	
-	char name[255];
-	memset(name, 0, 255);
-	size_t sz = readString(name);
+	char mname[255];
+	memset(mname, 0, 255);
+	size_t sz = readString(mname);
 
 	TDSDWORD readlen = len;
 	readlen -= (sz + 1);
 	TDSBYTE * data = new TDSBYTE[readlen];
 	fread(data, 1, readlen, m_File);
-	// TODO : 详细材质信息
+	// 详细材质信息 nothing to do 
 
 	delete[]  data;
+	tdsobj.texname = "";
+
+	for (TDSMaterial & t : m_Model.mats)
+	{
+		if (t.name == mname)
+		{
+			tdsobj.texname = t.filename;
+		}
+	}
+	
 }
 
 size_t TDSFile::readString(char * out)

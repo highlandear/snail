@@ -1,7 +1,6 @@
 #pragma once
-#include <string>
-#include <vector>
-#include "vector3D.hpp"
+#include"3dsmodel.hpp"
+
 /**
 	3DS 格式文件解析相关
 	
@@ -37,9 +36,6 @@
 #define OBJ_SMOOTH	  0x4150
 #define MESH_MATRIX	  0x4160
 
-typedef unsigned short TDSWORD;
-typedef unsigned int  TDSDWORD;
-typedef unsigned char TDSBYTE;
 
 typedef struct _Chunk
 {
@@ -47,37 +43,15 @@ typedef struct _Chunk
 	TDSDWORD len;
 }TDSChunk;
 
-typedef struct _3DSFace
-{
-	unsigned short vertex_index[3];
-	unsigned short coord_index[3];
-}TDSFace;
-
-typedef struct _3DSObject
-{
-	std::string name;
-	std::vector<Vector3D> vertices;
-	std::vector<Vector2D> texuvs;
-	std::vector<TDSFace> faces;
-}TDSObject;
-
-typedef struct _3DSMaterial
-{
-	std::string name;
-	std::string filename;
-	TDSBYTE  color[3];
-}TDSMaterial;
-
-typedef struct _3DSModel
-{
-	std::vector<TDSObject> objs;
-	std::vector<TDSMaterial> mats;
-}TDSModel;
 
 class TDSFile
 {
 public:
 	bool load(std::wstring pn);
+	void draw() { m_Model.draw(); }
+	void init() { m_Model.init(); }
+
+private:
 	bool readChunkHead(TDSChunk & chunk);
 
 	void read3DS(int len);
@@ -86,15 +60,13 @@ public:
 	void readObjMesh(int len, TDSObject & tdsobj);
 	void readObjVertex(int len, TDSObject & tdsobj);
 	void readObjFace(int len, TDSObject & tdsobj);
-	void readObjUV(int len, TDSObject & tdsobj);
-	
-	void readObjMat(int len);
+	void readObjUV(int len, TDSObject & tdsobj);	
+	void readObjMat(int len, TDSObject & tdsobj);
 	void readMatColor(int len, TDSMaterial & tdsmat);
 	void readMatMap(int len, TDSMaterial & tdsmat);
-
-
+	
 	size_t readString(char * out);
-private:
+
 	FILE * m_File;
 
 	TDSModel m_Model;

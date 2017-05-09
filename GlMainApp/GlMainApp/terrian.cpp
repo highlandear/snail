@@ -14,9 +14,9 @@ void Terrain::init()
 {
 	load();
 
-	TexManager::loadBmpTexrure(L"terrain", L"tex\\terrain.bmp");
+	TexManager::loadBmpTexrure("terrain", "tex\\terrain.bmp");
 
-	TexManager::loadBmpTexrure(L"box", L"tex\\box.bmp");
+	TexManager::loadBmpTexrure("box", "tex\\box.bmp");
 }
 
 bool Terrain::load()
@@ -102,7 +102,7 @@ void Terrain::setTexCoord(float x, float z)
 void Terrain::draw()
 {
 	glColor3f(1.0f, 1.0f, 1.0f);
-	TexManager::attach(L"terrain");
+	TexManager::attach("terrain");
 
 
 	for (int c = 0; (c + m_scale) < m_width; c += m_scale)
@@ -177,7 +177,7 @@ void Terrain::drawPoints()
 
 void Terrain::drawBox(float x, float z)
 {
-	TexManager::attach(L"box");
+	TexManager::attach("box");
 
 	float y = getAveHeight(x, z);
 

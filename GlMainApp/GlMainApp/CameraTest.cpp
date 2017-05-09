@@ -13,11 +13,13 @@ void CameraTest::init()
 					0.0f, 1.0f, 0.0f);
 
 	LightManager::onDefault();
-	TexManager::loadBmpTexrure(L"box", L"tex\\box.bmp");
-	TexManager::attach(L"box");	
+	TexManager::loadBmpTexrure("box", "tex\\box.bmp");
+
+	
 
 	m_TDSFile = TDSFile();
 	m_TDSFile.load(L"3ds\\main.3ds");
+	m_TDSFile.init();
 }
 
 void CameraTest::update()
@@ -37,12 +39,19 @@ void CameraTest::draw()
 		glTranslatef(0.0f, -3.0f, -0.0f);
 		glColor3f(1.0f, 1.0f, 1.0f);
 		gdraw::drawGrid(30.0f, 1.0f);
-		
+		TexManager::enable();
+
+		glPushMatrix();
+		glScalef(3.0f, 3.0f, 3.0f);
+		m_TDSFile.draw();
+		glPopMatrix();
+
 		glTranslatef(0.0f, 1.0f, -10.0f);
 
-		TexManager::enable();
+		TexManager::attach("box");
 		glRotatef(getParam(), 1.0f, 1.0f, 0.0f);		
 		gdraw::drawCube();
+		
 		TexManager::disable();
 		glLoadIdentity();
 		glColor3f(1.0f, 0.0f, 0.0f);

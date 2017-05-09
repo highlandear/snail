@@ -34,12 +34,12 @@ void Emboss::init()
 
 	global::gset();
 
-	TexManager::loadTgaTexrure(L"woodfloor", L"tex\\woodfloor.tga");
+	TexManager::loadTgaTexrure("woodfloor", "tex\\woodfloor.tga");
 	
 //	if (! TexManager::attach(L"woodfloor"))
 //		return;
 
-	m_uTexID = TexManager::get(L"woodfloor");
+	m_uTexID = TexManager::get("woodfloor");
 
 	m_fRedis = 2.0f;
 
@@ -72,7 +72,7 @@ void Emboss::start()
 
 	// 两个相同纹理叠加 第 0 个
 	glActiveTextureARB(GL_TEXTURE0_ARB);
-	TexManager::attach(L"woodfloor");
+	TexManager::attach("woodfloor");
 
 	// 纹理环境模式为组合函数方式。
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_COMBINE_EXT);
@@ -89,7 +89,7 @@ void Emboss::start()
 
 	// 两个相同纹理叠加 第 1 个
 	glActiveTextureARB(GL_TEXTURE1_ARB);
-	TexManager::attach(L"woodfloor");
+	TexManager::attach("woodfloor");
 
 	// 纹理环境模式为组合函数方式
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_COMBINE_EXT);

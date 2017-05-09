@@ -26,11 +26,11 @@ void Quadrics::init()
 	glEnable(GL_TEXTURE_2D);
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 	TexManager::clear();
-	TexManager::loadBmpTexrure(L"galaxy", L"tex\\galaxy.bmp");
-	TexManager::loadBmpTexrure(L"sea", L"tex\\sea.bmp");
-	TexManager::loadBmpTexrure(L"web", L"tex\\web.bmp");
-	TexManager::loadBmpTexrure(L"leaf", L"tex\\leaf.bmp");
-	TexManager::loadRawTexrure(L"raw");
+	TexManager::loadBmpTexrure("galaxy", "tex\\galaxy.bmp");
+	TexManager::loadBmpTexrure("sea", "tex\\sea.bmp");
+	TexManager::loadBmpTexrure("web", "tex\\web.bmp");
+	TexManager::loadBmpTexrure("leaf", "tex\\leaf.bmp");
+//	TexManager::loadRawTexrure(L"raw");
 
 	LightManager::onDefault();
 
@@ -67,7 +67,7 @@ void Quadrics::draw()
 	glTranslatef(0.0f, 0.0f, -8.0f);
 	
 	// 绘制圆柱体	
-	TexManager::attach(L"web");
+	TexManager::attach("web");
 	glPushMatrix();
 	{
 		glTranslatef(-2.0f, 1.1f, 0.0f);
@@ -79,7 +79,7 @@ void Quadrics::draw()
 	
 	// 绘制圆锥体
 	//TexManager::attach(L"raw");
-	TexManager::attach(L"sea");
+	TexManager::attach("sea");
 	glPushMatrix();
 	{
 		glTranslatef(2.0f, 1.1f, 0.0f);
@@ -90,7 +90,7 @@ void Quadrics::draw()
 	glPopMatrix();
 	
 	// 绘制圆盘	 
-	TexManager::attach(L"leaf");
+	TexManager::attach("leaf");
 	glPushMatrix();
 	{
 		glTranslatef(-2.0f, -1.1f, 0.0f);
@@ -100,7 +100,7 @@ void Quadrics::draw()
 	glPopMatrix();
 	
 	// 绘制球体  
-	 TexManager::attach(L"galaxy");
+	 TexManager::attach("galaxy");
 	glPushMatrix();
 	{
 		glTranslatef(2.0f, -1.1f, 0.0f);

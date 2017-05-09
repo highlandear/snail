@@ -19,21 +19,26 @@
 class Tex
 {
 public:
+	Tex() : m_uType(GL_RGB), m_pData(0){}
 
-	Tex(std::wstring n) : m_szName(n) {}
+	~Tex() { _SAFE_DEL_ARRAY(m_pData); }
+	virtual bool load(std::string pn) = 0;
+	virtual bool load(std::wstring wpn) = 0;
 
-	virtual bool load() = 0;
+	int setTexture();
 
 	void setTextureID(UINT id) { m_uID = id; }
 
-	std::wstring getName() { return m_szName; }
-
 	UINT getTextureID() { return m_uID; }
 
-	virtual void useMipmap() = 0;
+protected: 
+
+	int m_nWith;						// bmp的宽度
+	int m_nHight;						// bmp的高度
+	unsigned int m_uType;				// GL_RGB 或GL_RGBA
+	unsigned char * m_pData;
 
 private:
-	std::wstring m_szName;
 	UINT m_uID;
 };
 
@@ -43,17 +48,12 @@ private:
 class RawTex : public Tex
 {
 public:
-	RawTex(std::wstring n, GLfloat c[]) : Tex(n), m_pData(c) {}
-	RawTex(std::wstring n) : Tex(n), m_pData(simple_data) {}
+//	RawTex( GLfloat c[]): m_pData(c) {}
+//	RawTex(std::wstring n):m_pData(simple_data) {}
 
-	bool load();
+//	bool load();
 
 	static GLfloat simple_data[];
-
-	void useMipmap() {}
-
-private:
-	GLfloat  * m_pData;
 };
 
 /**
@@ -62,46 +62,18 @@ private:
 class BmpTex : public Tex
 {
 public:
+	bool load(std::string pns);
+	bool load(std::wstring wpns);
 
-	BmpTex(std::wstring n, std::wstring pn) : Tex(n), m_szPathName(pn) {}
-
-	BmpTex(std::wstring pn) : Tex(pn), m_szPathName(pn) {}
-
-	~BmpTex() { _SAFE_DEL_ARRAY(m_pData); }
-
-	bool load();
-
-	void useMipmap();
 private:
-	std::wstring m_szPathName;			// bmp格式图片文件名（含路径）
-
-	int m_nWith;						// bmp的宽度
-	int m_nHight;						// bmp的高度
-	unsigned char * m_pData;			// 按RGB格式读取出的像素纹理数据
-
 	static const int BITMAP_FLAG = 0x4D42;
 };
 
 class TgaTex : public Tex
 {
 public:
-	TgaTex(std::wstring n, std::wstring pn) : Tex(n), m_szPathName(pn) {}
-
-	TgaTex(std::wstring pn) : Tex(pn), m_szPathName(pn) {}
-
-	~TgaTex() { _SAFE_DEL_ARRAY(m_pData); }
-
-	bool load();
-
-	void useMipmap();
-
-private:
-	std::wstring m_szPathName;			// bmp格式图片文件名（含路径）
-	int m_nWith;						// bmp的宽度
-	int m_nHight;						// bmp的高度
-	unsigned char * m_pData;			// 按RGB格式读取出的像素纹理数据
-
-	unsigned int m_uType;				// GL_RGB 或GL_RGBA
+	bool load(std::string pn); 
+	bool load(std::wstring wpn);
 };
 
 /**
@@ -110,23 +82,23 @@ private:
 class TexManager
 {
 public:
-	typedef std::unordered_map<std::wstring, unsigned int> TMAP;
+	typedef std::unordered_map<std::string, unsigned int> TMAP;
 
-	static void put(Tex & t);
+	static void TexManager::put(std::string name, int tid){tmap[name] = tid;}
+
+	static unsigned int get(std::string n);
 	
-	static unsigned int get(std::wstring n);
-	
-	static bool attach(std::wstring n);	
+	static bool attach(std::string n);	
 
 	static void detachAll();
 	
 	static void clear();
 
-	static void loadBmpTexrure(std::wstring name, std::wstring fpn);
+	static void loadBmpTexrure(std::string name, std::string fpn);
 
-	static void loadTgaTexrure(std::wstring name, std::wstring fpn);
+	static void loadTgaTexrure(std::string name, std::string fpn);
 	
-	static void loadRawTexrure(std::wstring name);
+//	static void loadRawTexrure(std::wstring name);
 
 	static void enable() { glEnable(GL_TEXTURE_2D); }
 

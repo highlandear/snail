@@ -28,10 +28,10 @@ void MultiTexture::init()
 
 	global::gset();
 
-	TexManager::loadBmpTexrure(L"wall", L"tex\\wall.bmp");
-	TexManager::loadBmpTexrure(L"fog", L"tex\\fog.bmp");
-	TexManager::loadBmpTexrure(L"lake", L"tex\\lake.bmp");
-	TexManager::loadBmpTexrure(L"sun", L"tex\\sun.bmp");
+	TexManager::loadBmpTexrure("wall", "tex\\wall.bmp");
+	TexManager::loadBmpTexrure("fog", "tex\\fog.bmp");
+	TexManager::loadBmpTexrure("lake", "tex\\lake.bmp");
+	TexManager::loadBmpTexrure("sun", "tex\\sun.bmp");
 }
 
 void MultiTexture::update()
@@ -52,10 +52,10 @@ void MultiTexture::draw()
 	glTranslatef(0.0f, 0.0f, -10.0f);
 
 	glATARB(GL_TEXTURE0_ARB);
-	TexManager::attach(L"wall");
+	TexManager::attach("wall");
 
 	glATARB(GL_TEXTURE1_ARB);
-	TexManager::attach(L"sun");
+	TexManager::attach("sun");
 
 	glPushMatrix();
 	glTranslatef(-2.5, 0, 0);
@@ -83,10 +83,10 @@ void MultiTexture::draw()
 
 
 	glATARB(GL_TEXTURE0_ARB);
-	TexManager::attach(L"lake");
+	TexManager::attach("lake");
 
 	glATARB(GL_TEXTURE1_ARB);
-	TexManager::attach(L"fog");
+	TexManager::attach("fog");
 
 	glTranslatef(2.5, 0, 0);
 	glScalef(2.0f, 2.0f, 2.0f);

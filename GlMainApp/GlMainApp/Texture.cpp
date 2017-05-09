@@ -15,9 +15,9 @@ Texture::~Texture()
 
 void Texture::init()
 {
-	TexManager::loadBmpTexrure(L"me", L"C:\\Users\\hzs\\Desktop\\me\\image.bmp");
-	TexManager::loadRawTexrure(L"raw");
-	TexManager::attach(L"me");
+	TexManager::loadBmpTexrure("me", "C:\\Users\\hzs\\Desktop\\me\\image.bmp");
+//	TexManager::loadRawTexrure(L"raw");
+	TexManager::attach("me");
 
 	glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
 	glClearDepth(1.0f);
