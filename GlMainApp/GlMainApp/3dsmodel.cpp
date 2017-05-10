@@ -25,11 +25,12 @@ void _3DSModel::draw()
 
 	for (TDSObject & o : objs)
 	{
+		glColor3f(1.0, 1.0f, 1.0f);
+
 		if (!o.texname.empty())
 		{
 			TexManager::attach(o.texname);
 		}
-		glColor3f(1.0, 1.0f, 1.0f);
 		glBegin(GL_TRIANGLES);
 		{
 			for (TDSFace & f : o.faces)
@@ -50,6 +51,10 @@ void _3DSModel::draw()
 	glPopAttrib();
 }
 
+/*
+	这是一个对比效果，最简单的方式画一个模型
+	以格子的方式画出模型的框架
+*/
 void _3DSModel::drawHollow()
 {
 	glPushAttrib(GL_CURRENT_BIT);

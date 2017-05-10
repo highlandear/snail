@@ -20,7 +20,7 @@ bool TDSFile::load(std::wstring pn)
 	TDSChunk chunk;
 	readChunkHead(chunk);
 	
-	if (MAIN3DS != chunk.id)
+	if (ID_3DS_MAIN != chunk.id)
 	{
 		fclose(m_File);
 		return false;
@@ -30,17 +30,17 @@ bool TDSFile::load(std::wstring pn)
 	{
 		switch (chunk.id)
 		{
-		case VERSION:
+		case ID_3DS_VER:
 			int ver;
 			fread(&ver, 1, 4, m_File);
 			if (ver > 0x03)
 				return false;
 			break;
-		case OBJECTINFO:
+		case ID_3DS_OBJ:
 			read3DS(chunk.len - 6);
 			break;
 
-	//	case EDITKEYFRAME:
+		case ID_3DS_KEYFRAME:
 		default:
 		{	
 			fseek(m_File, chunk.len - 6, SEEK_CUR);
@@ -67,14 +67,14 @@ void TDSFile::read3DS(int len)
 		readChunkHead(chunk);
 		switch (chunk.id)
 		{
-		case MESH_VERSION:
+		case ID_OBJ_MESHVER:
 			int mver;
 			fread(&mver, 1, 4, m_File);
 			break;
-		case EDIT_MATERIAL:
+		case ID_OBJ_MAT:
 			readMaterial(chunk.len - 6);
 			break;
-		case EDIT_OBJECT:
+		case ID_OBJ_INFO:
 			readObject(chunk.len - 6);
 			break;
 		default:
@@ -100,15 +100,15 @@ void TDSFile::readMaterial(int len)
 		readChunkHead(chunk);
 		switch (chunk.id)
 		{
-		case MATNAME:
+		case ID_MAT_NAME:
 			char name[256];
 			fread(name, 1, chunk.len - 6, m_File);
 			tdsmat.name = std::string(name);
 			break;
-		case MATDIFFUSE:
+		case ID_MAT_COLOR:
 			readMatColor(chunk.len - 6, tdsmat);
 			break;
-		case MATMAP:
+		case ID_MAT_MAP:
 			readMatMap(chunk.len - 6, tdsmat);
 			break;
 
@@ -128,7 +128,7 @@ void TDSFile::readMatColor(int len, TDSMaterial & tdsmat)
 
 	TDSChunk chunk;
 	readChunkHead(chunk);
-	if (COLOR_24 == chunk.id)
+	if (ID_COLOR_24 == chunk.id)
 	{
 		fread(tdsmat.color, 1, chunk.len - 6, m_File);
 	}
@@ -152,7 +152,7 @@ void TDSFile::readMatMap(int len, TDSMaterial & tdsmat)
 		readChunkHead(chunk);
 		switch (chunk.id)
 		{
-		case MATMAPFILE:
+		case ID_MAP_FILE:
 			char fname[256];
 			fread(fname, 1, chunk.len - 6, m_File);
 			tdsmat.filename = std::string(fname);
@@ -188,7 +188,7 @@ void TDSFile::readObject(int len)
 		readChunkHead(chunk);
 		switch (chunk.id)
 		{
-		case OBJ_MESH:
+		case ID_INFO_MESH:
 			readObjMesh(chunk.len - 6, tdsobj);
 			break;
 
@@ -216,13 +216,13 @@ void TDSFile::readObjMesh(int len, TDSObject & tdsobj)
 		readChunkHead(chunk);
 		switch (chunk.id)
 		{
-		case OBJ_VERTICES:
+		case ID_MESH_VERTICES:
 			readObjVertex(chunk.len - 6, tdsobj);
 			break;
-		case OBJ_FACES:
+		case ID_MESH_FACES:
 			readObjFace(chunk.len - 6, tdsobj);
 			break;
-		case OBJ_UV:
+		case ID_MESH_TEX:
 			readObjUV(chunk.len - 6, tdsobj);
 			break;
 		default:
@@ -290,11 +290,11 @@ void TDSFile::readObjFace(int len, TDSObject & tdsobj)
 		readChunkHead(chunk);
 		switch (chunk.id)
 		{
-		case OBJ_MATERIAL:
+		case ID_MESH_MAT:
 		{
 			readObjMat(chunk.len - 6, tdsobj);
 		}break;
-		case OBJ_SMOOTH:
+		case ID_MESH_SMOOTH:
 		{
 			fseek(m_File, chunk.len - 6, SEEK_CUR);
 		}break;
