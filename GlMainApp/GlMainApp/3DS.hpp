@@ -4,7 +4,7 @@
 	3DS 格式文件解析相关
 */
 
-#include"3dsmodel.hpp"
+#include"3dmodel.hpp"
 
 #define ID_3DS_MAIN     0x4D4D		// 3DS 文件的标识是  0x4D4D
 #define ID_3DS_OBJ		0x3D3D		// 网格对象的版本号
@@ -51,17 +51,17 @@ private:
 	void read3DS(int len);
 	void readObject(int len);
 	void readMaterial(int len);
-	void readObjMesh(int len, TDSObject & tdsobj);
-	void readObjVertex(int len, TDSObject & tdsobj);
-	void readObjFace(int len, TDSObject & tdsobj);
-	void readObjUV(int len, TDSObject & tdsobj);	
-	void readObjMat(int len, TDSObject & tdsobj);
-	void readMatColor(int len, TDSMaterial & tdsmat);
-	void readMatMap(int len, TDSMaterial & tdsmat);
+	void readObjMesh(int len, MObject & tdsobj);
+	void readObjVertex(int len, MObject & tdsobj);
+	void readObjFace(int len, MObject & tdsobj);
+	void readObjUV(int len, MObject & tdsobj);	
+	void readObjMat(int len, MObject & tdsobj);
+	void readMatColor(int len, MMaterial & tdsmat);
+	void readMatMap(int len, MMaterial & tdsmat);
 	
 	size_t readString(char * out);
 
 	FILE * m_File;
 
-	TDSModel m_Model;
+	TModel m_Model;
 };

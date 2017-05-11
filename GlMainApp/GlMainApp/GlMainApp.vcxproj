@@ -152,8 +152,8 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="3DS.hpp" />
-    <ClInclude Include="3dsmodel.hpp" />
+    <ClInclude Include="3ds.hpp" />
+    <ClInclude Include="3dmodel.hpp" />
     <ClInclude Include="AppManager.hpp" />
     <ClInclude Include="coord.hpp" />
     <ClInclude Include="gcamera.hpp" />
@@ -166,6 +166,7 @@
     <ClInclude Include="keyStatus.hpp" />
     <ClInclude Include="MainWnd.hpp" />
     <ClInclude Include="mconfig.hpp" />
+    <ClInclude Include="md2.hpp" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="skyBox.hpp" />
     <ClInclude Include="speed.hpp" />
@@ -180,8 +181,8 @@
     <ClInclude Include="vector3D.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="3DS.cpp" />
-    <ClCompile Include="3dsmodel.cpp" />
+    <ClCompile Include="3ds.cpp" />
+    <ClCompile Include="3dmodel.cpp" />
     <ClCompile Include="Antialiasing.cpp" />
     <ClCompile Include="AppManager.cpp" />
     <ClCompile Include="CameraTest.cpp" />
@@ -204,6 +205,7 @@
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="MainWnd.cpp" />
     <ClCompile Include="Material.cpp" />
+    <ClCompile Include="md2.cpp" />
     <ClCompile Include="MultiTexture.cpp" />
     <ClCompile Include="Quadrics.cpp" />
     <ClCompile Include="skyBox.cpp" />

@@ -126,10 +126,13 @@
     <ClInclude Include="skyBox.hpp">
       <Filter>scene</Filter>
     </ClInclude>
-    <ClInclude Include="3DS.hpp">
+    <ClInclude Include="md2.hpp">
       <Filter>model</Filter>
     </ClInclude>
-    <ClInclude Include="3dsmodel.hpp">
+    <ClInclude Include="3ds.hpp">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="3dmodel.hpp">
       <Filter>model</Filter>
     </ClInclude>
   </ItemGroup>
@@ -233,10 +236,13 @@
     <ClCompile Include="skyBox.cpp">
       <Filter>scene</Filter>
     </ClCompile>
-    <ClCompile Include="3DS.cpp">
+    <ClCompile Include="3ds.cpp">
       <Filter>model</Filter>
     </ClCompile>
-    <ClCompile Include="3dsmodel.cpp">
+    <ClCompile Include="md2.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="3dmodel.cpp">
       <Filter>model</Filter>
     </ClCompile>
   </ItemGroup>

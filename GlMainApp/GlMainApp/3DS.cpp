@@ -1,4 +1,4 @@
-#include "3DS.hpp"
+#include "3ds.hpp"
 
 bool TDSFile::readChunkHead(TDSChunk & chunk)
 {
@@ -90,7 +90,7 @@ void TDSFile::readMaterial(int len)
 	if (len < 0)
 		return;
 
-	TDSMaterial tdsmat;
+	MMaterial tdsmat;
 
 	int cur = ftell(m_File);
 	int bar = cur + len;
@@ -121,7 +121,7 @@ void TDSFile::readMaterial(int len)
 
 	m_Model.mats.push_back(tdsmat);
 }
-void TDSFile::readMatColor(int len, TDSMaterial & tdsmat)
+void TDSFile::readMatColor(int len, MMaterial & tdsmat)
 {
 	if(len < 0)
 		return;
@@ -139,7 +139,7 @@ void TDSFile::readMatColor(int len, TDSMaterial & tdsmat)
 
 }
 
-void TDSFile::readMatMap(int len, TDSMaterial & tdsmat)
+void TDSFile::readMatMap(int len, MMaterial & tdsmat)
 {
 	if (len < 0)
 		return;
@@ -175,7 +175,7 @@ void TDSFile::readObject(int len)
 	char name[128];
 	memset(name, 0, 128);
 	size_t sz = readString(name);
-	TDSObject tdsobj;
+	MObject tdsobj;
 	tdsobj.name = std::string(name);
 
 	int cur = ftell(m_File);
@@ -202,7 +202,7 @@ void TDSFile::readObject(int len)
 
 	m_Model.objs.push_back(tdsobj);
 }
-void TDSFile::readObjMesh(int len, TDSObject & tdsobj)
+void TDSFile::readObjMesh(int len, MObject & tdsobj)
 {
 	if (len < 0)
 		return;
@@ -234,7 +234,7 @@ void TDSFile::readObjMesh(int len, TDSObject & tdsobj)
 	}
 }
 
-void TDSFile::readObjVertex(int len, TDSObject & tdsobj)
+void TDSFile::readObjVertex(int len, MObject & tdsobj)
 {
 	TDSWORD num = 0;
 	if (0 == fread(&num, 1, 2, m_File))
@@ -257,7 +257,7 @@ void TDSFile::readObjVertex(int len, TDSObject & tdsobj)
 	delete[]  data;
 }
 
-void TDSFile::readObjFace(int len, TDSObject & tdsobj)
+void TDSFile::readObjFace(int len, MObject & tdsobj)
 {
 	TDSWORD num = 0;
 	if (0 == fread(&num, 1, 2, m_File))
@@ -267,7 +267,7 @@ void TDSFile::readObjFace(int len, TDSObject & tdsobj)
 	unsigned short index = 0;
 	for (int i = 0; i < num; i++)
 	{
-		TDSFace face;
+		ModelFace face;
 		for (int j = 0; j < 4; j++)
 		{			
 			fread(&index, 1, 2, m_File);
@@ -308,7 +308,7 @@ void TDSFile::readObjFace(int len, TDSObject & tdsobj)
 	}
 }
 
-void TDSFile::readObjUV(int len, TDSObject & tdsobj)
+void TDSFile::readObjUV(int len, MObject & tdsobj)
 {
 	TDSWORD num = 0;
 	if (0 == fread(&num, 1, 2, m_File))
@@ -326,7 +326,7 @@ void TDSFile::readObjUV(int len, TDSObject & tdsobj)
 	delete[]  data;
 }
 
-void TDSFile::readObjMat(int len, TDSObject & tdsobj)
+void TDSFile::readObjMat(int len, MObject & tdsobj)
 {	
 	char mname[255];
 	memset(mname, 0, 255);
@@ -341,7 +341,7 @@ void TDSFile::readObjMat(int len, TDSObject & tdsobj)
 	delete[]  data;
 	tdsobj.texname = "";
 
-	for (TDSMaterial & t : m_Model.mats)
+	for (MMaterial & t : m_Model.mats)
 	{
 		if (t.name == mname)
 		{

@@ -320,7 +320,7 @@ private:
 	SkyBox m_Sky;
 	
 	TDSFile m_TDSFile;
-//	TDSModel m_Model;
+//	TModel m_Model;
 
 
 };

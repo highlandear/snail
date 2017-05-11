@@ -23,7 +23,7 @@ void World::init()
 	m_Sky = SkyBox(0, 170, 0, 1024, 1024, 600 );
 	m_Sky.init();
 
-//	m_Model = TDSModel();
+//	m_Model = TModel();
 	m_TDSFile = TDSFile();
 	m_TDSFile.load(L"3ds\\main.3ds");
 

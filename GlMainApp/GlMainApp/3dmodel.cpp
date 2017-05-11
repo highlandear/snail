@@ -1,16 +1,16 @@
-#include "3dsmodel.hpp"
+#include "3dmodel.hpp"
 #include <Windows.h>
 #include <gl/GL.h>
 #include "tex.hpp"
 
-void _3DSModel::init()
+void _3DModel::init()
 {
 	loadTex();
 }
 
-void _3DSModel::loadTex()
+void _3DModel::loadTex()
 {
-	for (TDSMaterial & t : mats)
+	for (MMaterial & t : mats)
 	{
 		if (t.filename.empty())
 			continue;
@@ -19,11 +19,11 @@ void _3DSModel::loadTex()
 	}
 }
 
-void _3DSModel::draw()
+void _3DModel::draw()
 {
 	glPushAttrib(GL_CURRENT_BIT);
 
-	for (TDSObject & o : objs)
+	for (MObject & o : objs)
 	{
 		glColor3f(1.0, 1.0f, 1.0f);
 
@@ -33,7 +33,7 @@ void _3DSModel::draw()
 		}
 		glBegin(GL_TRIANGLES);
 		{
-			for (TDSFace & f : o.faces)
+			for (ModelFace & f : o.faces)
 			{
 				for (int i = 0; i < 3; i++)
 				{
@@ -55,17 +55,17 @@ void _3DSModel::draw()
 	这是一个对比效果，最简单的方式画一个模型
 	以格子的方式画出模型的框架
 */
-void _3DSModel::drawHollow()
+void _3DModel::drawHollow()
 {
 	glPushAttrib(GL_CURRENT_BIT);
 
-	for (TDSObject & o : objs)
+	for (MObject & o : objs)
 	{
 		glColor3f(1.0, 0.0f, 0.0f);
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		glBegin(GL_TRIANGLES);
 		{
-			for (TDSFace & f : o.faces)
+			for (ModelFace & f : o.faces)
 			{
 				for (int i = 0; i < 3; i++)
 				{
