@@ -124,6 +124,6 @@ typedef struct Vector3D : public Triple<float>
 
 typedef struct Vector2D : public Pair<float>
 {
-
+	Vector2D(float x0, float y0) : Pair(x0, y0) {}
 }Vec2D;
 

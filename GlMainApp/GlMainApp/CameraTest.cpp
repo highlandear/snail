@@ -18,8 +18,13 @@ void CameraTest::init()
 	
 
 	m_TDSFile = TDSFile();
-	m_TDSFile.load(L"3ds\\main.3ds");
+	m_TDSFile.load(L"model\\main.3ds");
 	m_TDSFile.init();
+
+	m_MD2File = MD2File();
+	m_MD2File.load(L"model\\monster.md2");
+	m_MD2File.loadTex("model\\hobgoblin.bmp");
+	m_MD2File.init();
 }
 
 void CameraTest::update()
@@ -27,6 +32,11 @@ void CameraTest::update()
 	m_Cam.update();
 
 	Impl::update();
+
+
+	m_MD2File.update();
+
+
 }
 
 void CameraTest::draw()
@@ -39,11 +49,17 @@ void CameraTest::draw()
 		glTranslatef(0.0f, -3.0f, -0.0f);
 		glColor3f(1.0f, 1.0f, 1.0f);
 		gdraw::drawGrid(30.0f, 1.0f);
-		TexManager::enable();
 
 		glPushMatrix();
 		glScalef(3.0f, 3.0f, 3.0f);
 		m_TDSFile.draw();
+		glPopMatrix();
+
+		TexManager::attach("model\\hobgoblin.bmp");
+		glPushMatrix();
+		glScalef(0.1f, 0.1f, 0.1f);
+		glTranslatef(60.0f, 25.0f, 0.0f);
+		m_MD2File.draw();
 		glPopMatrix();
 
 		glTranslatef(0.0f, 1.0f, -10.0f);

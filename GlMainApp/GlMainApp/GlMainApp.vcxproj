@@ -154,6 +154,7 @@
   <ItemGroup>
     <ClInclude Include="3ds.hpp" />
     <ClInclude Include="3dmodel.hpp" />
+    <ClInclude Include="animodel.hpp" />
     <ClInclude Include="AppManager.hpp" />
     <ClInclude Include="coord.hpp" />
     <ClInclude Include="gcamera.hpp" />
@@ -167,22 +168,26 @@
     <ClInclude Include="MainWnd.hpp" />
     <ClInclude Include="mconfig.hpp" />
     <ClInclude Include="md2.hpp" />
+    <ClInclude Include="3dfile.hpp" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="skyBox.hpp" />
     <ClInclude Include="speed.hpp" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="strhelper.hpp" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="terrian.hpp" />
     <ClInclude Include="tess.hpp" />
     <ClInclude Include="tex.hpp" />
     <ClInclude Include="global.hpp" />
     <ClInclude Include="gdraw.hpp" />
+    <ClInclude Include="timer.hpp" />
     <ClInclude Include="tuple.hpp" />
     <ClInclude Include="vector3D.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="3ds.cpp" />
     <ClCompile Include="3dmodel.cpp" />
+    <ClCompile Include="animodel.cpp" />
     <ClCompile Include="Antialiasing.cpp" />
     <ClCompile Include="AppManager.cpp" />
     <ClCompile Include="CameraTest.cpp" />

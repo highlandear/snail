@@ -280,6 +280,7 @@ private:
 */
 #include "gcamera.hpp"
 #include "3DS.hpp"
+#include "md2.hpp"
 class CameraTest : public Impl
 {
 public:
@@ -295,6 +296,8 @@ private:
 	Camera m_Cam;
 
 	TDSFile m_TDSFile;
+
+	MD2File m_MD2File;
 };
 
 
@@ -362,7 +365,7 @@ private:
 		float x, y, z;    // 顶点坐标
 	} g_VerInfo [];
 	
-	TexCoord tc[VER_NUM];	// 偏移后的纹理坐标
+//	TexCoord tc[VER_NUM];	// 偏移后的纹理坐标
 	Vector3D vt[VER_NUM];	// 顶点的切线T分量
 	Vector3D vb[VER_NUM];	// 顶点的切线B分量
 };

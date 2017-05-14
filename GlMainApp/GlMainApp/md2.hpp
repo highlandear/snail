@@ -1,7 +1,8 @@
 #pragma once
-#include "3dmodel.hpp"
+#include "3dfile.hpp"
+#include "animodel.hpp"
 
-struct tMd2Header
+struct MD2Header
 {
 	int magic;					// 文件标志
 	int version;				// 文件版本号
@@ -22,17 +23,71 @@ struct tMd2Header
 	int offsetEnd;				// 文件结尾偏移位置
 };
 
-class MD2File
+struct UV
 {
+	short u, v;
+};
+
+struct MD2Triangle
+{
+	float vertex[3];
+	float normal[3];
+};
+
+struct FrameVertex
+{
+	TDSBYTE vertex[3];
+	TDSBYTE lightNormalIndex;
+};
+
+// 帧结构
+struct MD2Frame
+{
+	float scale[3];
+	float translate[3];
+	char name[16];
+	FrameVertex fvertex[1];
+};
+
+// 关键帧
+struct MD2KeyFrame
+{
+	std::string name;
+	std::vector<MD2Triangle> triangles;
+};
+
+class MD2File : public ModelFile
+{
+
 public:
+
 	bool load(std::wstring pn);
+
+	void loadTex(std::string tfn);
+
 	void draw() { m_Model.draw(); }
-	void init() { m_Model.init(); }
+
+	void init() { m_Model.init(); };
+
+	void update() { m_Model.update(); }
 
 private:
 
+	std::string readSkinName();
 
-	FILE * m_File;
+	int readUVs();
+	int readFaces();
+	int readFrames();
 
-	TModel m_Model;
+	void addModelAnimation();
+
+	void addModelObjects();
+
+	AniModel m_Model;
+
+	MD2Header m_Header;
+
+	std::vector<UV> m_uvs;
+	std::vector<ModelFace> m_faces;
+	std::vector<MD2KeyFrame> m_kfs;
 };

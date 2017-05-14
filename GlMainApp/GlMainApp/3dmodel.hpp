@@ -35,18 +35,9 @@ typedef struct _ModelMaterial
 	std::string name;				// 纹理名称
 	std::string filename;			// 纹理所在文件的名称
 	TDSBYTE  color[3];				// 对象的RGB颜色
-	int tid;						// 纹理ID
+//	int tid;						// 纹理ID
 }MMaterial;
 
-/*
-	动作信息
-*/
-struct tAnimationInfo
-{
-	char strName[255];			/**< 帧的名称 */
-	int startFrame;				/**< 开始帧 */
-	int endFrame;				/**< 结束帧 */
-};
 
 typedef struct _3DModel
 {

@@ -1,15 +1,15 @@
 #pragma once
 
 /*
-	3DS 格式文件解析相关
+	.3DS 格式文件解析相关
 */
 
-#include"3dmodel.hpp"
+#include"3dfile.hpp"
 
 #define ID_3DS_MAIN     0x4D4D		// 3DS 文件的标识是  0x4D4D
 #define ID_3DS_OBJ		0x3D3D		// 网格对象的版本号
 #define ID_3DS_VER		0x0002		// 3ds文件的版本
-#define ID_3DS_KEYFRAME	0xB000		// 所有关键帧信息的头部l
+#define ID_3DS_KEYFRAME	0xB000		// 所有关键帧信息的头部
 									// 对象的次级定义
 #define ID_OBJ_MAT		0xAFFF		// 纹理信息
 #define ID_OBJ_INFO		0x4000		// 对象的面、顶点等信息
@@ -38,16 +38,17 @@ typedef struct _Chunk
 }TDSChunk;
 
 
-class TDSFile
+class TDSFile : public ModelFile
 {
 public:
 	bool load(std::wstring pn);
-	void draw() { m_Model.draw(); }
+
 	void init() { m_Model.init(); }
 
+	void draw() { m_Model.draw(); }
 private:
-	bool readChunkHead(TDSChunk & chunk);
 
+	bool readChunkHead(TDSChunk & chunk);
 	void read3DS(int len);
 	void readObject(int len);
 	void readMaterial(int len);
@@ -60,8 +61,6 @@ private:
 	void readMatMap(int len, MMaterial & tdsmat);
 	
 	size_t readString(char * out);
-
-	FILE * m_File;
 
 	TModel m_Model;
 };

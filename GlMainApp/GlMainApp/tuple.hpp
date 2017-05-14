@@ -24,9 +24,9 @@ struct Triple
 
 	T x, y, z;
 };
-
-struct TexCoord : public Pair<float>
-{
-	TexCoord(float x0, float y0) : Pair(x0, y0) {}
-	TexCoord() : Pair(.0f, 0.0f) {}
-};
+//
+//struct TexCoord : public Pair<float>
+//{
+//	TexCoord(float x0, float y0) : Pair(x0, y0) {}
+//	TexCoord() : Pair(.0f, 0.0f) {}
+//};
