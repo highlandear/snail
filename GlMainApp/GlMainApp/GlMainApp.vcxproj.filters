@@ -260,6 +260,9 @@
     <ClCompile Include="animodel.cpp">
       <Filter>model</Filter>
     </ClCompile>
+    <ClCompile Include="Triangle.cpp">
+      <Filter>theme</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GlMainApp.rc">

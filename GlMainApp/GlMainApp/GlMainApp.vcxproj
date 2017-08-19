@@ -225,6 +225,7 @@
     <ClCompile Include="Tessellation.cpp" />
     <ClCompile Include="tex.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="Triangle.cpp" />
     <ClCompile Include="vector3D.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>

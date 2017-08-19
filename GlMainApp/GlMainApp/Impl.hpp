@@ -12,8 +12,9 @@
 #include "skyBox.hpp"
 
 #ifndef _IMPL_CLASS
-//#define _IMPL_CLASS World
-#define _IMPL_CLASS CameraTest
+
+#define _IMPL_CLASS World
+//#define _IMPL_CLASS CameraTest
 //#define _IMPL_CLASS MultiTexture
 //#define _IMPL_CLASS BezierSurface
 //#define _IMPL_CLASS Bezier
@@ -23,6 +24,8 @@
 //#define _IMPL_CLASS Fog
 //#define _IMPL_CLASS Texture
 //#define _IMPL_CLASS Antialiasing
+//#define _IMPL_CLASS Cube
+//#define _IMPL_CLASS Triangle
 #endif
 
 #ifndef _SAFE_DEL
@@ -65,6 +68,13 @@ public:
 private:
 
 	float m_Angle;								// 控制旋转
+};
+
+class Triangle : public Impl
+{
+	void init();
+	//	void update();
+	void draw();
 };
 /**
 	简单的绘图示例

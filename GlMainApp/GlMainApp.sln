@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GlMainApp", "GlMainApp\GlMainApp.vcxproj", "{407F19B1-CD36-4A35-80FE-65647354A0DB}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CameraRove", "..\..\..\otheworks\opengl\第16章\CameraRove\CameraRove.vcxproj", "{3AFE40CD-BA60-4D6B-A02B-053827048074}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BoneAnimation", "..\..\..\otheworks\opengl\第21章\BoneAnimation\BoneAnimation.vcxproj", "{D2CBE1EE-E29C-4B6A-B1B6-ECA73B4B8F59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +13,8 @@ Global
 		Debug|x86 = Debug|x86
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
+		Template|x64 = Template|x64
+		Template|x86 = Template|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{407F19B1-CD36-4A35-80FE-65647354A0DB}.Debug|x64.ActiveCfg = Debug|x64
@@ -23,12 +25,20 @@ Global
 		{407F19B1-CD36-4A35-80FE-65647354A0DB}.Release|x64.Build.0 = Release|x64
 		{407F19B1-CD36-4A35-80FE-65647354A0DB}.Release|x86.ActiveCfg = Release|Win32
 		{407F19B1-CD36-4A35-80FE-65647354A0DB}.Release|x86.Build.0 = Release|Win32
-		{3AFE40CD-BA60-4D6B-A02B-053827048074}.Debug|x64.ActiveCfg = Debug|Win32
-		{3AFE40CD-BA60-4D6B-A02B-053827048074}.Debug|x86.ActiveCfg = Debug|Win32
-		{3AFE40CD-BA60-4D6B-A02B-053827048074}.Debug|x86.Build.0 = Debug|Win32
-		{3AFE40CD-BA60-4D6B-A02B-053827048074}.Release|x64.ActiveCfg = Release|Win32
-		{3AFE40CD-BA60-4D6B-A02B-053827048074}.Release|x86.ActiveCfg = Release|Win32
-		{3AFE40CD-BA60-4D6B-A02B-053827048074}.Release|x86.Build.0 = Release|Win32
+		{407F19B1-CD36-4A35-80FE-65647354A0DB}.Template|x64.ActiveCfg = Release|x64
+		{407F19B1-CD36-4A35-80FE-65647354A0DB}.Template|x64.Build.0 = Release|x64
+		{407F19B1-CD36-4A35-80FE-65647354A0DB}.Template|x86.ActiveCfg = Release|Win32
+		{407F19B1-CD36-4A35-80FE-65647354A0DB}.Template|x86.Build.0 = Release|Win32
+		{D2CBE1EE-E29C-4B6A-B1B6-ECA73B4B8F59}.Debug|x64.ActiveCfg = Debug|Win32
+		{D2CBE1EE-E29C-4B6A-B1B6-ECA73B4B8F59}.Debug|x86.ActiveCfg = Debug|Win32
+		{D2CBE1EE-E29C-4B6A-B1B6-ECA73B4B8F59}.Debug|x86.Build.0 = Debug|Win32
+		{D2CBE1EE-E29C-4B6A-B1B6-ECA73B4B8F59}.Release|x64.ActiveCfg = Release|Win32
+		{D2CBE1EE-E29C-4B6A-B1B6-ECA73B4B8F59}.Release|x86.ActiveCfg = Release|Win32
+		{D2CBE1EE-E29C-4B6A-B1B6-ECA73B4B8F59}.Release|x86.Build.0 = Release|Win32
+		{D2CBE1EE-E29C-4B6A-B1B6-ECA73B4B8F59}.Template|x64.ActiveCfg = Release|Win32
+		{D2CBE1EE-E29C-4B6A-B1B6-ECA73B4B8F59}.Template|x64.Build.0 = Release|Win32
+		{D2CBE1EE-E29C-4B6A-B1B6-ECA73B4B8F59}.Template|x86.ActiveCfg = Release|Win32
+		{D2CBE1EE-E29C-4B6A-B1B6-ECA73B4B8F59}.Template|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

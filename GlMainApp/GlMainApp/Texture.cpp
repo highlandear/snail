@@ -15,9 +15,10 @@ Texture::~Texture()
 
 void Texture::init()
 {
-	TexManager::loadBmpTexrure("me", "C:\\Users\\hzs\\Desktop\\me\\image.bmp");
+	TexManager::loadBmpTexrure("box", "tex\\box.bmp");
+	TexManager::loadBmpTexrure("wall", "tex\\wall.bmp");
 //	TexManager::loadRawTexrure(L"raw");
-	TexManager::attach("me");
+	TexManager::attach("box");
 
 	glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
 	glClearDepth(1.0f);
@@ -75,6 +76,7 @@ static void drawBoxWithNorm(float r)
 	glTexCoord2f(1.0f, 1.0f); glVertex3f(1.0f, 1.0f, -1.0f);
 	glTexCoord2f(0.0f, 1.0f); glVertex3f(1.0f, 1.0f, 1.0f);
 	glTexCoord2f(0.0f, 0.0f); glVertex3f(1.0f, -1.0f, 1.0f);
+	
 	// 左侧面
 	glNormal3f(-1.0f, 0.0f, 0.0f);								// 指定法线朝左
 	glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f, -1.0f, -1.0f);
@@ -109,12 +111,5 @@ void Texture::draw()
 glPopMatrix();
 
 
-	//glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
-	//glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
-	//glEnable(GL_TEXTURE_GEN_S);
-	//glEnable(GL_TEXTURE_GEN_T);
-	//glutSolidSphere(0.5, 30, 30);
-	//glutsolidcube(2);
-	//glutsolidteapot(2.0);
-	glFlush();
+glFlush();
 }
